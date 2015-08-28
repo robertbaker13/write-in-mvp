@@ -48,7 +48,7 @@ end
 30.times do
   Endorsement.create(
     candidate_id: Candidate.all.sample.id,
-    endorser_id: User.limit(10).sample.id
+    user_id: User.limit(10).sample.id
     )
 end
 
