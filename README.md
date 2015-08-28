@@ -1,2 +1,8 @@
-# write-in-mvp
-phase 3 final project mvp
+# Write-In - Phase 3 Final Project
+
+
+###[Wireframe](wireframe.md)
+
+###[Schema](schema.md)
+
+###[Schedule](schedule.md)
