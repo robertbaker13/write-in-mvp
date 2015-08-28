@@ -1,8 +1,8 @@
 # Write-In - Phase 3 Final Project
 
 
-###[Wireframe](wireframe.md)
+###[Wireframe](schema-wireframe-schedule/wireframe.md)
 
-###[Schema](schema.md)
+###[Schema](schema-wireframe-schedule/schema.md)
 
-###[Schedule](schedule.md)
+###[Schedule](schema-wireframe-schedule/schedule.md)
