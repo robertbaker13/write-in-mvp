@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :twitter_id
       t.string :token
       t.datetime :expires
-      t.reference :district
+      t.references :district
 
       t.timestamps null: false
     end
