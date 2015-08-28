@@ -2,10 +2,12 @@ District.create(
   name: "United States"
   )
 
-District.create(
-  name: Faker::Address.city,
-  parent_id: District.find_by(name: "United States").id
-  )
+10.times do
+  District.create(
+    name: Faker::Address.city,
+    parent_id: District.find_by(name: "United States").id
+    )
+end
 
 30.times do
 User.create(
