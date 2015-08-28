@@ -5,4 +5,5 @@ class District < ActiveRecord::Base
   # has_many :children, through: :children
   belongs_to :parent, class_name: "District",
                       foreign_key: "parent_id"
+  has_many :users
 end
