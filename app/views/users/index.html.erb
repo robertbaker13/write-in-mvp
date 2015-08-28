@@ -19,7 +19,7 @@
         <td><%= user.twitter_id %></td>
         <td><%= user.token %></td>
         <td><%= user.expires %></td>
-        <td><%= user.district %></td>
+<!--         I took out district for now as it was breaking the code -->
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
