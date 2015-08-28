@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828223527) do
+ActiveRecord::Schema.define(version: 20150828224354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20150828223527) do
     t.integer  "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  add_index "districts", ["parent_id"], name: "index_districts_on_parent_id", using: :btree
+
+  create_table "endorsements", force: :cascade do |t|
+    t.integer  "candidate_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "offices", force: :cascade do |t|
@@ -53,5 +62,7 @@ ActiveRecord::Schema.define(version: 20150828223527) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "watchings", ["observer_id", "subject_id"], name: "index_watchings_on_observer_id_and_subject_id", unique: true, using: :btree
 
 end
