@@ -6,4 +6,5 @@ class District < ActiveRecord::Base
   belongs_to :parent, class_name: "District",
                       foreign_key: "parent_id"
   has_many :users
+  has_many :offices
 end
