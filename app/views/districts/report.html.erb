@@ -1,1 +1,17 @@
-<!-- report layout goes here -->
+
+<h1>Report Card</h1>
+<% @districts.each do |district| %>
+    <h2><%= district.name %></h2>
+    <ul>
+      <% district.offices.each do |office|%>
+        <li><%= office.title %></li>
+          <ul>
+            <% @candidates.each do |candidate| %>
+              <li>candidate.name</li>
+              <li>candidate.score</li>
+            <% end %>
+          </ul>
+      <% end %>
+    </ul>
+<% end %>
+
