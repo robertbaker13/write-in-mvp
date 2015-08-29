@@ -20,15 +20,15 @@ end
 
 20.times do
 Watching.create(
-  subject_id: User.first,
-  observer_id: User.all.sample.id,
+  observer_id: User.first,
+  subject_id: User.all.sample.id,
   )
 end
 
 15.times do
 Watching.create(
-  subject_id: User.last,
-  observer_id: User.all.sample.id,
+  observer_id: User.last,
+  subject_id: User.all.sample.id,
   )
 end
 
@@ -49,8 +49,8 @@ end
 
 30.times do
   Endorsement.create(
-    endorser_id: Candidate.all.sample.id,
-    endorsee_id: User.limit(10).sample.id
+    endorsee_id: Candidate.all.sample.id,
+    endorser_id: User.limit(10).sample.id
     )
 end
 
@@ -79,22 +79,22 @@ amy = User.create(
 # Endorsements from George's subjects
 5.times do
   Endorsement.create(
-    endorser_id: Candidate.all.sample.id,
-    endorsee_id: tony.id
+    endorsee_id: Candidate.all.sample.id,
+    endorser_id: tony.id
     )
 end
 
 15.times do
   Endorsement.create(
-    endorser_id: Candidate.all.sample.id,
-    endorsee_id: ashley.id
+    endorsee_id: Candidate.all.sample.id,
+    endorser_id: ashley.id
     )
 end
 
 20.times do
   Endorsement.create(
-    endorser_id: Candidate.all.sample.id,
-    endorsee_id: amy.id
+    endorsee_id: Candidate.all.sample.id,
+    endorser_id: amy.id
     )
 end
 
