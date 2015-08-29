@@ -18,12 +18,12 @@ class District < ActiveRecord::Base
     end
   end
 
-result = []
-Watching.where(observer: self).each do |watching|
-  result << Endorsement.where(user: User
+# result = []
+# Watching.where(observer: self).each do |watching|
+#   result << Endorsement.where(user: User
 
-    watching.subject)
-end
+#     watching.subject)
+# end
 
 # self.subjects.endorsements.group(:candidate).count
 end
