@@ -49,8 +49,8 @@ end
 
 30.times do
   Endorsement.create(
-    endorsee_id: Candidate.all.sample.id,
-    endorser_id: User.limit(10).sample.id
+    candidate: Candidate.all.sample,
+    user: User.limit(10).sample
     )
 end
 
@@ -79,22 +79,22 @@ amy = User.create(
 # Endorsements from George's subjects
 5.times do
   Endorsement.create(
-    endorsee_id: Candidate.all.sample.id,
-    endorser_id: tony.id
+    candidate: Candidate.all.sample,
+    user: tony
     )
 end
 
 15.times do
   Endorsement.create(
-    endorsee_id: Candidate.all.sample.id,
-    endorser_id: ashley.id
+    candidate: Candidate.all.sample,
+    user: ashley
     )
 end
 
 20.times do
   Endorsement.create(
-    endorsee_id: Candidate.all.sample.id,
-    endorser_id: amy.id
+    candidate: Candidate.all.sample,
+    user: amy
     )
 end
 
