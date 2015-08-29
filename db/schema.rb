@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20150829223250) do
 
   create_table "organizations", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "watching_id"
   end
 
   create_table "users", force: :cascade do |t|

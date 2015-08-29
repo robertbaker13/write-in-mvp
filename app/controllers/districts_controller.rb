@@ -1,9 +1,10 @@
 class DistrictsController < ApplicationController
 
   def report
-    user = User.find_by(id: params[:user_id])
-    @districts = user.district.add_parents
-    @subjects = list_subjects_for(user)
+    @user = User.find(params[:id])
+    @watched_accounts = @user.watchings.map{ |watching| watching.subject }
+    @endorsed_candidates = @user.endorsements.map{ |endorsement| endorsement.candidate }
+    @watchers = Watching.where(subject: self).map { |watching| watching.observer }
   end
 
   private

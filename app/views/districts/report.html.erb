@@ -4,6 +4,12 @@
     <ul>
       <% district.offices.each do |office|%>
         <li><%= office.title %></li>
+          <ul>
+            <% @candidates.each do |candidate| %>
+              <li>candidate.name</li>
+              <li>candidate.score</li>
+            <% end %>
+          </ul>
       <% end %>
     </ul>
 <% end %>

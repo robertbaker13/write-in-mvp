@@ -7,9 +7,5 @@ class User < ActiveRecord::Base
   has_many :watchings
 
 
-  def add_watch (user)
-      Watching.create(observer: self, subject: user)
-  end
-
 end
 
