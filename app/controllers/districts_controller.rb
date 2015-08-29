@@ -1,7 +1,7 @@
 class DistrictsController < ApplicationController
 
   def report
-    @districts = District.find(params[:id]).add_parents
+    @districts = District.find(params[:district_id]).add_parents
   end
 
   private
