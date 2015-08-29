@@ -54,4 +54,71 @@ end
     )
 end
 
+# Subjects of George
+tony = User.create(
+  twitter_id: 2,
+  token: Faker::Name.name,
+  expires: Faker::Date.forward(199),
+  district_id: District.all.sample.id
+  )
+
+ashley = User.create(
+  twitter_id: 2,
+  token: Faker::Name.name,
+  expires: Faker::Date.forward(199),
+  district_id: District.all.sample.id
+  )
+
+amy = User.create(
+  twitter_id: 3,
+  token: Faker::Name.name,
+  expires: Faker::Date.forward(199),
+  district_id: District.all.sample.id
+  )
+
+# Endorsements from George's subjects
+5.times do
+  Endorsement.create(
+    candidate_id: Candidate.all.sample.id,
+    user_id: tony.id
+    )
+end
+
+15.times do
+  Endorsement.create(
+    candidate_id: Candidate.all.sample.id,
+    user_id: ashley.id
+    )
+end
+
+20.times do
+  Endorsement.create(
+    candidate_id: Candidate.all.sample.id,
+    user_id: amy.id
+    )
+end
+
+# Target subject for report card
+george = User.create(
+  twitter_id: 1,
+  token: Faker::Name.name,
+  expires: Faker::Date.forward(199),
+  district_id: District.all.sample.id
+  )
+
+george.subjects.create(
+  subject_id: tony.id
+  )
+
+george.subjects.create(
+  subject_id: ashley.id
+  )
+
+
+george.subjects.create(
+  subject_id: amy.id
+  )
+
+
+
 
