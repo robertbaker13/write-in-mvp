@@ -2,8 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.navbar {
-  display: inline;
+.not-bs-nav {
+  font-family:Arial,sans-serif;
+  font-weight: 500;
 }
 
 .debug {
@@ -12,15 +13,18 @@
 
 .home-left-column {
   float:left;
-  width:30%;
+  width:25%;
+  background-color:pink;
   }
 
 .home-middle-column {
   float:left;
   width: 40%;
+  background-color:blue;
   }
 
 .home-right-column {
   float:left;
-  width: 30%;
+  width: 29%;
+  background-color:purple;
   }
