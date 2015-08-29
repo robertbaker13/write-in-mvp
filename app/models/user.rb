@@ -9,11 +9,5 @@ class User < ActiveRecord::Base
   def add_watch (user)
       Watching.create(observer: self, subject: user)
   end
-
-  # Temporary filler method
-  def current_user
-    current_user = User.first
-  end
-
 end
 
