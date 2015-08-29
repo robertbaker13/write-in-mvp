@@ -19,16 +19,29 @@ User.create(
 end
 
 20.times do
+  Watching.create(
+    user: User.all.sample,
+    organization: Organization.all.sample
+    )
+end
+
+20.times do
+  Organization.create(
+    user: User.all.sample
+    )
+end
+
+20.times do
 Watching.create(
-  observer_id: User.first,
-  subject_id: User.all.sample.id,
+  user: User.first,
+  organization: Organization.all.sample,
   )
 end
 
 15.times do
 Watching.create(
-  observer_id: User.last,
-  subject_id: User.all.sample.id,
+  user: User.last,
+  organization: Organization.all.sample,
   )
 end
 
@@ -54,27 +67,14 @@ end
     )
 end
 
-# Subjects of George
-tony = User.create(
-  twitter_id: 2,
-  token: Faker::Name.name,
-  expires: Faker::Date.forward(199),
-  district_id: District.all.sample.id
-  )
+# Organization of George
+tony = User.first
+ashley = User.find(2)
+amy = User.find(3)
 
-ashley = User.create(
-  twitter_id: 2,
-  token: Faker::Name.name,
-  expires: Faker::Date.forward(199),
-  district_id: District.all.sample.id
-  )
-
-amy = User.create(
-  twitter_id: 3,
-  token: Faker::Name.name,
-  expires: Faker::Date.forward(199),
-  district_id: District.all.sample.id
-  )
+tony_org = tony.organization
+ashley_org = ashley.organization
+amy_org = amy.organization
 
 # Endorsements from George's subjects
 5.times do
@@ -106,17 +106,17 @@ george = User.create(
   district_id: District.all.sample.id
   )
 
-george.subjects.create(
-  subject_id: tony.id
+george.watchings.create(
+  organization: tony_org
   )
 
-george.subjects.create(
-  subject_id: ashley.id
+george.watchings.create(
+  organization: ashley_org
   )
 
 
-george.subjects.create(
-  subject_id: amy.id
+george.watchings.create(
+  organization: amy_org
   )
 
 
