@@ -1,7 +1,9 @@
 class DistrictsController < ApplicationController
 
   def report
-    @districts = District.find(params[:district_id]).add_parents
+    user = User.find_by(id: params[:user_id])
+    @districts = user.district.add_parents
+    @subjects = list_subjects_for(user)
   end
 
   private
