@@ -1,8 +1,8 @@
 class CreateEndorsements < ActiveRecord::Migration
   def change
     create_table :endorsements do |t|
-      t.references :candidate
-      t.references :user
+      t.integer :endorser_id
+      t.integer :endorsee_id
 
       t.timestamps null: false
     end
