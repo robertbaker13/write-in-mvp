@@ -8,6 +8,12 @@ class User < ActiveRecord::Base
   # Refractor later, and User can watch other user multiple time, need to fix
   def add_watch (user)
       Watching.create(observer: self, subject: user)
-    end
+  end
+
+  # Temporary filler method
+  def current_user
+    current_user = User.first
+  end
+
 end
 
