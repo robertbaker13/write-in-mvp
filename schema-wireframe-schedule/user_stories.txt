@@ -1,0 +1,73 @@
+#a user can see a generic home page if they have not logged in and have simply navigated to the page
+#=> a user can see and use a search box
+#=> searches return candidates, elections, and accounts to watch
+#=> candidates and accounts have visible avatars that are pulled from twitter
+
+#a user can see a personalized page if they have followed a link to our page but have not yet logged in
+
+#a user can log in (using twitter)
+#=> oauth works, with tokens stored in our db
+#=> sessions work, keeping track of a user's login status
+#=> a user can add their voting region
+#=> a user can edit their voting region
+#=> a user can have their voting region autodetected by zip code, address, or geolocation
+
+
+#a user can see an even more personalized home page when they are logged in
+#=> a user can see their own twitter avatar on our page (navbar - thumbnail)
+#=> a user can see a simple version of their voting report card in the leftmost column of their home page
+
+
+#a user can navigate to their own profile page
+#=> a user can see their basic profile information
+#=> a user can edit their applicable info
+#=> a user can see the accounts they watch
+#=> a user can unwatch accounts from the profile page
+#=> a user can see the candidates they endorse
+#=> a user can change these endorsements from the profile page
+
+
+#a user can navigate to another account's profile page
+#=> a user can see another user's basic profile information
+#=> a user cannot edit another user's info
+#=> a user can see the candidates this user endorses
+#=> a user can see the accounts this user watches
+
+#a user can log out
+
+#a user can see a full list of candidates to vote for (report card)
+#=> the candidates in the report card have number values that represent their compatibility score
+#=> a compatibility scores change color based on its proportions
+#=> the candidates are grouped by the office they are running for
+#=> there is a 'candidate' that represents the number of subjects that did not endorse any candidate for that race (this number should not be color coded - perhaps black or grey?)
+#=> individual number scores can be clicked to pull up a report on which of your watched accounts give their endorsement
+
+#a user can endorse candidates
+#=> other users who watch this user will have their report cards affected properly
+#=> endorsements can be viewed by other users from this user's profile page
+
+#a user can "watch" other users to have their endorsements included in their own report card
+#=> a user should be able to see how many accounts they watch in their profile page
+#=> a user should be able to see how many accounts watch them in their profile page
+
+#a user can change their endorsements
+
+#a user will see suggestions for accounts to watch
+#=> these suggestions will be sorted by the number of observers of the account plus the number of endorsements made by the account
+
+#a user can watch accounts they agree OR disagree with
+#=> disagreement accounts will have their numbers compiled separately in the report card
+
+#a user can "nominate" a candidate
+#=> this will notify the candidate
+#=> this will make the candidate appear in lists of people to endorse for a particular office
+
+#a user can browse candidates:
+#=> by number of followee endorsements
+#=> by number of endorsements
+
+#a user can give the people the watch more or less weight
+
+a user can see how many endorsements another user has, weighted by whether or not they follow them on twitter
+
+our application will send tweets that mention users and potential users when events that affect them occur
