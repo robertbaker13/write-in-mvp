@@ -28,16 +28,29 @@ User.create(
 end
 
 20.times do
+  Watching.create(
+    user: User.all.sample,
+    organization: Organization.all.sample
+    )
+end
+
+20.times do
+  Organization.create(
+    user: User.all.sample
+    )
+end
+
+20.times do
 Watching.create(
-  subject_id: User.first,
-  observer_id: User.all.sample.id,
+  user: User.first,
+  organization: Organization.all.sample,
   )
 end
 
 15.times do
 Watching.create(
-  subject_id: User.last,
-  observer_id: User.all.sample.id,
+  user: User.last,
+  organization: Organization.all.sample,
   )
 end
 
@@ -58,9 +71,63 @@ end
 
 30.times do
   Endorsement.create(
-    candidate_id: Candidate.all.sample.id,
-    user_id: User.limit(10).sample.id
+    candidate: Candidate.all.sample,
+    user: User.limit(10).sample
     )
 end
+
+# Organization of George
+tony = User.first
+ashley = User.find(2)
+amy = User.find(3)
+
+tony_org = tony.organization
+ashley_org = ashley.organization
+amy_org = amy.organization
+
+# Endorsements from George's subjects
+5.times do
+  Endorsement.create(
+    candidate: Candidate.all.sample,
+    user: tony
+    )
+end
+
+15.times do
+  Endorsement.create(
+    candidate: Candidate.all.sample,
+    user: ashley
+    )
+end
+
+20.times do
+  Endorsement.create(
+    candidate: Candidate.all.sample,
+    user: amy
+    )
+end
+
+# Target subject for report card
+george = User.create(
+  twitter_id: 1,
+  token: Faker::Name.name,
+  expires: Faker::Date.forward(199),
+  district_id: District.all.sample.id
+  )
+
+george.watchings.create(
+  organization: tony_org
+  )
+
+george.watchings.create(
+  organization: ashley_org
+  )
+
+
+george.watchings.create(
+  organization: amy_org
+  )
+
+
 
 
