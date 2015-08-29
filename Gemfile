@@ -45,5 +45,7 @@ group :development, :test do
 
   # Better Error gems for rails
   gem "better_errors"
+
+  gem 'faker'
 end
 
