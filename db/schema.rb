@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20150828224354) do
   add_index "districts", ["parent_id"], name: "index_districts_on_parent_id", using: :btree
 
   create_table "endorsements", force: :cascade do |t|
-    t.integer  "candidate_id"
-    t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "endorser_id"
+    t.integer  "endorsee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "offices", force: :cascade do |t|
