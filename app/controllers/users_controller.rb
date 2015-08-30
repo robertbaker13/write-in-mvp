@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_create :set_twitter
 
   # GET /users
   # GET /users.json
@@ -25,6 +26,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.twitter_id = new_twitter.id
 
     respond_to do |format|
       if @user.save
@@ -70,5 +72,17 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:twitter_id, :token, :expires, :district)
+    end
+
+    def set_twitter
+      new_twitter = Twitter.create(
+        name: Faker::Name.name,
+        screen_name: Faker::Name.name,
+        uri: Faker::Internet.url,
+        website: Faker::Internet.url,
+        profile_img: Faker::Avatar.image,
+        followers: Array.new(5){Faker::Name.name},
+        following: Array.new(2){Faker::Name.name}
+        )
     end
 end
