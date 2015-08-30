@@ -14,4 +14,12 @@ class District < ActiveRecord::Base
     end
   end
 
+  def rc_offices(user)
+    self.offices.map do |office|
+      {
+        office: office,
+        candidates: office.rc_candidates(user)
+      }
+    end
+  end
 end
