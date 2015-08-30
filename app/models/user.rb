@@ -7,11 +7,31 @@ class User < ActiveRecord::Base
   has_many :watchings
   has_one :twitter
 
+  #top candidate suggestions for a specific user
+  def home_login_candidates
+  end
 
-  # def districts
-  #   self.districts.add_parents
-  # end
+  #top candidate suggestions for a specific user
+  def home_login_candidates
+  end
 
+  #watched users for a specific profile
+  def profile_watched_users
+    watched_organizations = self.watchings.map { |watching| watching.organization }
+    watched_users = watched_organizations.compact.map { |organization| organization.user }
+    watched_users_twitter = watched_users.compact.map { |user| user.twitter }
+    watched_users_twitter.compact
+  end
+
+  #watched endorsed users (candidates) for a specific profile
+  def profile_endorsed_candidates
+    endorsements = self.endorsements.map { |endorsement| endorsement }
+    endorsed_candidates = endorsements.map { |endorsement| endorsement.candidate }
+    endorsed_candidate_users = endorsed_candidates.map { |candidate| candidate.user }
+    endorsed_user_twitter = endorsed_candidate_users.map { |user| user.twitter }
+  end
+
+  #report card information
   def report_card
     self.district.add_parents.map do |district|
       { district: district,
@@ -20,13 +40,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def profile_info
-    watched_accounts = current_user.watchings.map { |watching|  }
-  end
+  #watched organizations of user profile
+  # def profile_info
+  #   watched_accounts = current_user.watchings.map { |watching|  }
+  # end
 
-
-
-
+  #checks that the listed candidates are only those candidates that are also endorsed by people i am watching
   def check_candidate(passed_candidate)
 
     watched_organizations = self.watchings.map { |watching| watching.organization }
