@@ -57,15 +57,14 @@ ActiveRecord::Schema.define(version: 20150830001741) do
     t.string   "uri"
     t.string   "website"
     t.string   "profile_img"
+    t.integer  "user_id"
     t.string   "followers",                array: true
     t.string   "following",                array: true
-    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer  "twitter_id"
     t.string   "token"
     t.datetime "expires"
     t.integer  "district_id"
