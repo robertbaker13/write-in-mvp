@@ -36,7 +36,7 @@ gem 'autoprefixer-rails' #optional
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'omniauth'
+# gem 'omniauth'
 gem 'omniauth-twitter'
 
 
