@@ -1,2 +1,66 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
+.debug {
+  border: 1px solid red;
+}
 
+ul { list-style: none; }
+
+.bg-w { background-color: #fff;}
+
+.c-r { color: red; }
+
+.c-b { color: blue; }
+
+.body-not-bs {
+  background-color:#FBF4F6;
+  font-family: Gotham Narrow,Arial,sans-serif;
+  font-weight: 500;
+}
+
+.mg-l { margin-left: .3em; }
+
+.mg-r { margin-right: .3em; }
+
+.mg-t { margin-top: .5em; }
+
+.mg-b { margin-bottom: .2em; }
+
+.mg { margin: .3em .3em .3em .3em;}
+
+.d-i { display: inline-block; }
+
+.d-b { display: block; }
+
+.txt-c { text-align: center;}
+
+.p-s { padding: .5em; }
+
+.m-s { margin: .2em; }
+
+.rcorners {
+    border-radius: 0px;
+    border: 1px solid #e1e8ed;
+}
+
+.col-md-3 { padding: 0 }
+
+.navbar-brand
+  {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: center;
+      margin: auto;
+  }
+
+/* Normalize */
+
+ul, menu, dir {
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
