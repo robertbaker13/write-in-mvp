@@ -38,6 +38,8 @@ gem 'autoprefixer-rails' #optional
 
 # gem 'omniauth'
 gem 'omniauth-twitter'
+# gem to extract twitter user info
+gem 'twitter'
 
 
 group :development, :test do
