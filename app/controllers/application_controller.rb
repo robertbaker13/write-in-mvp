@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= session[:user] # this will not work until sessions are built
-    return User.first # delete this line once sessions are working
+  end
+
+  def logged_in?
+    !!@current_user
   end
 end
