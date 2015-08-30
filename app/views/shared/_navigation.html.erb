@@ -15,8 +15,19 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class=><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home <span class="sr-only">(current)</span></a></li>
-        <li class=><a href="/users/1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile <span class="sr-only">(current)</span></a></li>
-        <li class=><a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout <span class="sr-only">(current)</span></a></li> 
+        <li class=><a href="/users/<%= @current_user_id %>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile <span class="sr-only">(current)</span></a></li>
+        <li class=>
+          <!-- <a href="#"> -->
+          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+
+          <% if @logged_in %>
+            <%= button_to "Logout", logout_path, { method: 'delete' } %>
+          <% else %>
+            <%= button_to "Login", login_path, { method: 'put' } %>
+          <% end %>
+          <span class="sr-only">(current)</span>
+          <!-- </a> -->
+        </li>
       </ul>
 
 
