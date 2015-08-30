@@ -5,8 +5,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def current_user
-    @current_user ||= session[:user] # this will not work until sessions are built
-    return User.first # delete this line once sessions are working
+  def current_user_id
+    @current_user_id ||= session[:current_user_id]
+  end
+
+  def logged_in?
+    User.where(id: session[:current_user_id]).count > 0
   end
 end
