@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  put 'login' => 'sessions#create', as: 'login'
+  delete 'logout' => 'sessions#destroy', as: 'logout'
 
   resources :users
 
