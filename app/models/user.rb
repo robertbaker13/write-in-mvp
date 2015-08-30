@@ -19,13 +19,21 @@ class User < ActiveRecord::Base
   end
 
   #checks that the listed users to watch are only those users that are not already watched by the viewer
-  def home_check_watched_users
+  def acceptable_watched_users #not suggested already
+    watched_organizations = self.watchings.map { |watching| watching.organization }
+    watched_users = watched_organizations.map { |organization|
+      if organization == nil #here we need a check for eventualities
+        nil
+      else
+        organization.user_id
+      end }
+    watched_users.compact
   end
 
   #check that all information is district specific
   def acceptable_district_watched_users
-    districts_for_user = self.district.add_parents
-    district_for_user_array = districts_for_user.map {|district| district.id}
+    districts = self.district.add_parents
+    districts_array = districts.map {|district| district.id}
   end
 
   #returns all users
@@ -37,7 +45,11 @@ class User < ActiveRecord::Base
   def home_login_users_to_watch
     users_array = users.map {|user| user}
     users_array = users_array.sort_by {|user| user.home_watched_users_score}
-    specific_district_user_array = users_array.select {|user| acceptable_district_watched_users.include?(user.district_id)}
+    filtered_district_user_array = users_array.select {|user| acceptable_district_watched_users.include?(user.district_id)}
+    filtered_district_and_watched_user_array = filtered_district_user_array.select{|user|
+      unless acceptable_watched_users.include?(user.id)
+        user
+       }
     # cut_off_users_array = specific_district_user_array[0..10]
   end
 
