@@ -7,13 +7,43 @@ class User < ActiveRecord::Base
   has_many :watchings
   has_one :twitter
 
-  def home_info
-    #one object which we access in the few
-    User.find(id).district.add_parents.map { |district| {district => Office.where(district: district)} }
 
+  def districts
+    self.districts.add_parents
+  end
+
+  def report_card_data
+    [
+      {
+        district_name: USA,
+        offices: {
+          office: "President",
+          candidates: {}
+
+        },
+      }
+      district_name: CA,
+      offices: {
+        office: "Senator",
+        candidates: {}
+        }
+      district: SF,
+      offices: {
+        office: "Mayor",
+        candidates: {}
+      }
+    ]
   end
 
 
+  # def offices_by_district_for_specific_user(user)
+  #   self.district.add_parents.map do |district|
+  #     {
+  #       district: district,
+  #       offices: Office.where(district: district)
+  #     }
+  #   end
+  # end
 
 
 
