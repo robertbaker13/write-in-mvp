@@ -4,6 +4,7 @@ class CreateTwitters < ActiveRecord::Migration
       t.string :name
       t.string :screen_name
       t.string :uri
+      t.string :uid
       t.string :website
       t.string :profile_img
       t.integer :user_id
