@@ -51,5 +51,8 @@ group :development, :test do
   gem "better_errors"
 
   gem 'faker'
+
+  # hide API key
+  gem 'dotenv-rails'
 end
 
