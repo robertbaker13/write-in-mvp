@@ -28,10 +28,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.twitter_id %></td>
-        <td><%= user.token %></td>
-        <td><%= user.expires %></td>
-        <td><%= user.district %></td>
+
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

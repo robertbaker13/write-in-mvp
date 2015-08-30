@@ -20,7 +20,6 @@ end
 
 30.times do
 User.create(
-  twitter_id: rand(1000),
   token: Faker::Name.name,
   expires: Faker::Date.forward(199),
   district_id: District.all.sample.id
@@ -80,6 +79,12 @@ end
 tony = User.first
 ashley = User.find(2)
 amy = User.find(3)
+kristie = User.find(4)
+katie = User.find(5)
+gloria = User.find(6)
+christina = User.find(7)
+jay = User.find(8)
+
 
 tony_org = tony.organization
 ashley_org = ashley.organization
@@ -109,7 +114,6 @@ end
 
 # Target subject for report card
 george = User.create(
-  twitter_id: 1,
   token: Faker::Name.name,
   expires: Faker::Date.forward(199),
   district_id: District.all.sample.id
@@ -129,7 +133,7 @@ george.watchings.create(
   )
 
 Twitter.create(
-  user: User.first,
+  user: tony,
   name: Faker::Name.name,
   screen_name: Faker::Name.name,
   uri: Faker::Internet.url,
@@ -140,7 +144,7 @@ Twitter.create(
   )
 
 Twitter.create(
-  user: User.find(2),
+  user: ashley,
   name: Faker::Name.name,
   screen_name: Faker::Name.name,
   uri: Faker::Internet.url,
@@ -150,7 +154,7 @@ Twitter.create(
   following: Array.new(20){Faker::Name.name}
   )
 Twitter.create(
-  user: User.find(3),
+  user: amy,
   name: Faker::Name.name,
   screen_name: Faker::Name.name,
   uri: Faker::Internet.url,
@@ -160,7 +164,7 @@ Twitter.create(
   following: Array.new(34){Faker::Name.name}
   )
 Twitter.create(
-  user: User.find(4),
+  user: katie,
   name: Faker::Name.name,
   screen_name: Faker::Name.name,
   uri: Faker::Internet.url,
@@ -170,7 +174,7 @@ Twitter.create(
   following: Array.new(0){Faker::Name.name}
   )
 Twitter.create(
-  user: User.find(5),
+  user: kristie,
   name: Faker::Name.name,
   screen_name: Faker::Name.name,
   uri: Faker::Internet.url,
@@ -180,7 +184,7 @@ Twitter.create(
   following: Array.new(4){Faker::Name.name}
   )
 Twitter.create(
-  user: User.find(6),
+  user: gloria,
   name: Faker::Name.name,
   screen_name: Faker::Name.name,
   uri: Faker::Internet.url,
@@ -190,7 +194,7 @@ Twitter.create(
   following: Array.new(10){Faker::Name.name}
   )
 Twitter.create(
-  user: User.find(7),
+  user: christina,
   name: Faker::Name.name,
   screen_name: Faker::Name.name,
   uri: Faker::Internet.url,
@@ -200,7 +204,7 @@ Twitter.create(
   following: Array.new(11){Faker::Name.name}
   )
 Twitter.create(
-  user: User.find(8),
+  user: jay,
   name: Faker::Name.name,
   screen_name: Faker::Name.name,
   uri: Faker::Internet.url,

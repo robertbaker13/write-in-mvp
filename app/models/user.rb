@@ -8,55 +8,48 @@ class User < ActiveRecord::Base
   has_one :twitter
 
 
-  def districts
-    self.districts.add_parents
-  end
-
-  def report_card_data
-    [
-      {
-        district_name: USA,
-        offices: {
-          office: "President",
-          candidates: {}
-
-        },
-      }
-      district_name: CA,
-      offices: {
-        office: "Senator",
-        candidates: {}
-        }
-      district: SF,
-      offices: {
-        office: "Mayor",
-        candidates: {}
-      }
-    ]
-  end
-
-
-  # def offices_by_district_for_specific_user(user)
-  #   self.district.add_parents.map do |district|
-  #     {
-  #       district: district,
-  #       offices: Office.where(district: district)
-  #     }
-  #   end
+  # def districts
+  #   self.districts.add_parents
   # end
 
-
+  def report_card
+    self.district.add_parents.map do |district|
+      { district: district,
+        offices: district.rc_offices(self)
+      }
+    end
+  end
 
   def profile_info
     watched_accounts = current_user.watchings.map { |watching|  }
   end
 
 
-  # @user = User.find(params[:id])
-  # @watched_accounts = @user.watchings.map{ |watching| watching.subject }
-  # @endorsed_candidates = @user.endorsements.map{ |endorsement| endorsement.candidate }
-  # @watchers = Watching.where(subject: self).map { |watching| watching.observer }
 
+
+  def check_candidate(passed_candidate)
+
+    watched_organizations = self.watchings.map { |watching| watching.organization }
+    watched_users = watched_organizations.compact.map { |organization| organization.user }
+
+    p "pass first call"
+    return false if watched_users.count == 0
+
+    watched_user_endorsements = watched_users.map { |user| user.endorsements }.flatten
+    acceptable_candidates = watched_user_endorsements.map { |endorsement| endorsement.candidate }
+    acceptable_users = acceptable_candidates.compact.map { |candidate| candidate.user }
+
+    p "pass second call"
+    return false if acceptable_users.count == 0
+
+    p "passed_candidate: #{passed_candidate}"
+    p "passed_candidate.user: #{passed_candidate.user}"
+    if acceptable_users.include?(passed_candidate.user)
+      return passed_candidate.user
+    else
+      return false
+    end
+  end
 
 end
 
