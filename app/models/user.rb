@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   has_one :organization
   has_many :watchings
-
+  has_one :twitter
 
   def home_info
     #one object which we access in the few
