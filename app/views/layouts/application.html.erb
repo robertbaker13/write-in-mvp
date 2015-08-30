@@ -8,17 +8,17 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="body-not-bs">
-    <%= render 'shared/navigation' %>
+      <%= render 'shared/navigation' %>
+    <div class="container">
 
 <!-- FL removed in line 14 (below) id="main-container" class="container"
- -->    <div >
-          <% flash.each do |name, msg| -%>
-            <%= content_tag :div, msg, class: "alert alert-dismissible alert-#{name}" %>
-          <% end -%>
-        </div>
+ --> <div >
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: "alert alert-dismissible alert-#{name}" %>
+      <% end -%>
+    </div>
 
-          <%= yield %>
-
-
+      <%= yield %>
+    </div>
   </body>
 </html>
