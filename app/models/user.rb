@@ -108,11 +108,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  #watched organizations of user profile
-  # def profile_info
-  #   watched_accounts = current_user.watchings.map { |watching|  }
-  # end
-
   #checks that the listed candidates are only those candidates that are also endorsed by people i am watching
   def check_candidate(passed_candidate)
 
