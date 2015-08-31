@@ -11,6 +11,14 @@ class User < ActiveRecord::Base
     self.twitteruser.name
   end
 
+  def populate_district
+    if self.district == nil
+      return ""
+    else
+      self.district.name
+    end
+  end
+
   def nickname
     self.twitteruser.nickname
   end
