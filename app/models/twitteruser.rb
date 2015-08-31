@@ -12,14 +12,7 @@ class Twitteruser < ActiveRecord::Base
     twitteruser.twitter = auth["info"]["urls"]["Twitter"]
     twitteruser.token = auth["credentials"]["token"]
     twitteruser.save
-    twitteruser.organize!
     twitteruser
-  end
-
-  def organize!
-    user = User.find_by(uid: self.uid)
-    p "user: #{user}"
-    p user.organization || Organization.create(user: user)
   end
 
   def larger_image
