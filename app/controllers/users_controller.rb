@@ -5,6 +5,12 @@ class UsersController < ApplicationController
     @reports = current_user.report_card
   end
 
+  def watch
+    @user = User.find(params[:id])
+    @user.watch(current_user)
+    redirect_to show_path(@user)
+  end
+
   # GET /users
   # GET /users.json
 
