@@ -10,6 +10,17 @@ class SessionsController < ApplicationController
     redirect_to root_url, notice: "Signed in"
   end
 
+  def create_then_watch
+    twitter_user = Twitteruser.create_or_update(env["omniauth.auth"])
+    user = User.create_or_update(twitter_user)
+    organization = Organization.create_or_update(user)
+    session[:current_user_id] = user.id
+    twitter_user.user_id = user.id
+    twitter_user.save
+    # post request includes a :organization object in the :headers that needs to be added to this user's watch list
+    redirect_to root_url, notice: "Signed in"
+  end
+
   # def create_user
   #   user = User.create(token: @twitter_user.token)
   #   @twitter_user.user_id = user.id
