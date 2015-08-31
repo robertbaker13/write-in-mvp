@@ -7,13 +7,17 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="body-not-bs">
+    <% if request.path != root_path %>
+      <% placeholder = "p-a" %>
+    <% else %>
+      <% placeholer = "" %>
+    <% end %>
     <%= render 'shared/navigation' %>
     <% if request.path != root_path %>
       <div class="bg-g w h-s"></div>
       <div class="bg-w w h-l p-a"></div>
-      <div class="bg-g w h-m <% if request.path != root_path %>p-a<% end %>
+      <div class="bg-g w h-m <%= placeholder %>"></div>
     <% end %>
-      "></div>
     <div class="container debug">
       <div >
         <% flash.each do |name, msg| -%>
