@@ -7,7 +7,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @watched_users = current_user.profile_watched_users
+    @twitter_profile_name = current_user.twitteruser.name
+    @twitter_handle = current_user.twitteruser.nickname
+    @twitter_profile_image = current_user.twitteruser.larger_image
   end
+
 
   # GET /users/new
   def new
