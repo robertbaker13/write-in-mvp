@@ -22,4 +22,9 @@ class Twitteruser < ActiveRecord::Base
     p user.organization || Organization.create(user: user)
   end
 
+  def larger_image
+    self.image.gsub(/_normal/,"")
+  end
+
+
 end

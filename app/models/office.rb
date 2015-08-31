@@ -16,5 +16,4 @@ class Office < ActiveRecord::Base
   #   watched_candidates = watched_endorsements.map { |endorsement| endorsement.candidate }
   #   candidates.select { |candidate| watched_candidates.include?(candidate) }
 
-
 end

@@ -6,6 +6,7 @@ class District < ActiveRecord::Base
   has_many :users
   has_many :offices
 
+  #adds all the parent districts
   def add_parents
     if self.parent == nil
       return District.where(id: self.id)
@@ -14,6 +15,7 @@ class District < ActiveRecord::Base
     end
   end
 
+  #returns the offices for a specific district
   def rc_offices(user)
     self.offices.map do |office|
       {
