@@ -12,21 +12,12 @@ class User < ActiveRecord::Base
   #   self.districts.add_parents
   # end
 
-  def self.from_omniauth(auth)
-    p "*" * 100
-    p auth
-    p "*" * 100
-
-    # where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
+  def self.create_or_update(twitter_user)
+    user = User.find_by(uid: twitter_user.uid) || User.new(uid: twitter_user.uid)
+    user.save
+    user
   end
 
-  def self.create_from_omniauth(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
-      user.name = auth["info"]["nickname"]
-    end
-  end
 
   def report_card
     self.district.add_parents.map do |district|
