@@ -5,13 +5,14 @@ class User < ActiveRecord::Base
 
   has_one :organization
   has_many :watchings
-  has_one :twitter
+  has_one :twitteruser
 
   def self.create_or_update(twitter_user)
-    user = User.find_by(uid: twitter_user.uid) || User.new(uid: twitter_user.uid)
+    user = User.find_by(uid: twitter_user.uid) || User.new(uid: twitter_user.uid, district_id: 1)
     user.save
     user
   end
+
 
 #Home page after logged in:
 #--------------------------
@@ -83,6 +84,10 @@ class User < ActiveRecord::Base
 
 #Profile page:
 #--------------------------
+  # def self.twitter_profile_name
+  #   Twitteruser.find_by(user_id: session[:current_user_id]).name
+  # end
+
 
   #watched users for a specific profile
   def profile_watched_users
