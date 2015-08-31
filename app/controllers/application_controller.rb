@@ -5,11 +5,13 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def current_user_id
-    @current_user_id ||= session[:current_user_id]
+  def current_user
+    @current_user ||= User.find(session[:current_user_id]) if session[:current_user_id]
   end
 
   def logged_in?
     User.where(id: session[:current_user_id]).count > 0
   end
+
+  helper_method :current_user
 end

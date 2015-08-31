@@ -7,9 +7,15 @@ class User < ActiveRecord::Base
   has_many :watchings
   has_one :twitter
 
+  def self.create_or_update(twitter_user)
+    user = User.find_by(uid: twitter_user.uid) || User.new(uid: twitter_user.uid)
+    user.save
+    user
+  end
 
 #Home page after logged in:
 #--------------------------
+
 
   #top users to watch in user specific district calculation
   def users_score
