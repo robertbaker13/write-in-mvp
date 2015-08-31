@@ -2,12 +2,12 @@
 
   <div class="col-md-3 debug bg-w mg">
       <div class='row mg p'>
-        <img src="http://placehold.it/72x72" class='debug img-thumbnail col-md-3'>
+        <img src=<%= @twitter_profile_image %> class='debug img-thumbnail col-md-3'>
         <div class='col-md-9'>
           <div class='h-xs debug'></div>
           <ul class='debug'>
-            <li class='fs-xl mg-t'>Twitter Name</li>
-            <li class='fs-m'>@handle</li>
+            <li class='fs-xl mg-t'><%= @twitter_profile_name%></li>
+            <li class='fs-m'><%= @twitter_handle %></li>
           </ul>
         </div>
       </div>
@@ -45,15 +45,15 @@
       <table class='debug w txt-c'>
         <tr class='debug'>
           <td>Organization 1</td>
-          <td><span class="glyphicon glyphicon-plus-sign c-g" aria-hidden="true"></span></td>
+          <td><%= button_to "Watch this Organization", new_user_path, :class => "glyphicon glyphicon-plus-sign c-g",:"aria-hidden"=> "true", :method => :post  %></td>
         </tr>
         <tr>
           <td>Organization 1</td>
-          <td><span class="glyphicon glyphicon-plus-sign c-g" aria-hidden="true"></span></td>
+          <td><%= button_to "Watch this Organization", new_user_path, :class => "glyphicon glyphicon-plus-sign c-g",:"aria-hidden"=> "true", :method => :post  %></td>
         </tr>
         <tr>
           <td>Organization 1</td>
-          <td><span class="glyphicon glyphicon-plus-sign c-g" aria-hidden="true"></span></td>
+          <td><%= button_to "Watch this Organization", new_user_path, :class => "glyphicon glyphicon-plus-sign c-g",:"aria-hidden"=> "true", :method => :post  %></td>
         </tr>
       </table>
     </div>
