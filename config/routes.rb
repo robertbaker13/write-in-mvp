@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # Example of regular route:
     get 'users/:user_id/districts/:id/report' => 'districts#report'
     get 'auth/:provider/callback' => 'sessions#create'
+    get 'deauth/twitter' => "sessions#destroy"
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
