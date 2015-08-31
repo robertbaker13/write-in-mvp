@@ -8,4 +8,6 @@ class Candidate < ActiveRecord::Base
     p "self: #{self}"
     active_user.check_candidate(self.class)
   end
+
+
 end
