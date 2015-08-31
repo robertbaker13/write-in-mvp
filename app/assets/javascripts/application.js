@@ -16,13 +16,3 @@
 //= require bootstrap
 //= require_tree .
 
-$(function() {
-    var availableTags = [
-      "San Francisco",
-      "Oakland",
-      "San Jose"
-    ];
-    $( "#setDistrict" ).autocomplete({
-      source: availableTags
-    });
-  });
