@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @logged_in = logged_in?
     @current_user = current_user
     @watched_users = current_user.profile_watched_users
     @watched_user_endorsements = @watched_users.map { |twitteruser| twitteruser.user.profile_endorsed_candidates }
