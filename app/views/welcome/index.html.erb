@@ -9,24 +9,23 @@
           <li class='fs-m'><%= @twitter_handle %></li>
         </ul>
       </div>
-
-    <ul class='p-s mg-b'>
-      <li class="d-i debug p-r">
-        <a href="#">
-          <span class='fs-xs'>WATCHINGS<span class='d-b txt-c fs-m'>20</span></span>
-        </a>
-      </li>
-      <li class="d-i debug p-r">
-        <a href="#">
-          <span class='fs-xs'>WATCHED<span class='d-b txt-c fs-m'>100</span></span>
-        </a>
-      </li>
-      <li class="d-i debug p-r">
-        <a href="#">
-          <span class='fs-xs'>ENDORSED<span class='d-b txt-c fs-m'>32</span></span>
-        </a>
-      </li>
-    </ul>
+      <ul class='p-s mg-b'>
+        <li class="d-i debug p-r">
+          <a href="#">
+            <span class='fs-xs'>WATCHINGS<span class='d-b txt-c fs-m'>20</span></span>
+          </a>
+        </li>
+        <li class="d-i debug p-r">
+          <a href="#">
+            <span class='fs-xs'>WATCHED<span class='d-b txt-c fs-m'>100</span></span>
+          </a>
+        </li>
+        <li class="d-i debug p-r">
+          <a href="#">
+            <span class='fs-xs'>ENDORSED<span class='d-b txt-c fs-m'>32</span></span>
+          </a>
+        </li>
+      </ul>
     </div>
     <div class='debug bg-w mg mg-t p'>
       <h4 class='fw-t txt-c'>How This Works</h4>
@@ -51,32 +50,31 @@
       <li><a href="#candidates" data-toggle='tab'><strong>Candidates To Endorse</strong></a></li>
     </ul>
     <div class='tab-content'>
-    <div class='rcorners bg-w row txt-c tab-pane active' id='organizations'>
-      <%= render "shared/organizations_to_watch" %>
+      <div class='tab-pane active' id='organizations'>
+        <%= render "shared/organizations_to_watch" %>
+        </div>
+        <div class='tab-pane' id='candidates'>
+          <%= render "shared/candidates_to_watch" %>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-3 mg bg-w debug">
+        <h4 class='fw-t txt-c'>Recent Endorsements</h4>
+        <div>
+          <dl class='p-l-m'>
+            <dt><a href="google.com">Planned Parenting</a></dt>
+            <dd><span>Hillary Clinton<span> for president</dd>
+            <dd class='c-g'><span>32</span> endorsements for this candidate</dd>
+            <dt><a href='msn.com'>Peeper Rams</a></dt>
+            <dd><span>Robert Baker<span> for vice president</dd>
+            <dd class='c-g'><span>532</span> endorsements for this candidate</dd>
+            <dt><a href="google.com">Grasshopperz</a></dt>
+            <dd><span>Tom Lee<span> for mayor</dd>
+            <dd class='c-g'><span>1000</span> endorsements for this candidate</dd>
+            <dt><a href='msn.com'>DBC</a></dt>
+            <dd><span>Felix Lobkowicz<span> for governor</dd>
+            <dd class='c-g'><span>120</span> endorsements for this candidate</dd>
+          </dl>
+        </div>
+      </div>
     </div>
-    <div class='rcorners bg-w row txt-c tab-pane active' id='candidates'>
-      <%= render "shared/candidates_to_watch" %>
-    </div>
-
-</div>
-</div>
-<div class="col-md-3 mg bg-w debug">
-  <h4 class='fw-t txt-c'>Recent Endorsements</h4>
-  <div>
-    <dl class='p-l-m'>
-      <dt><a href="google.com">Planned Parenting</a></dt>
-      <dd><span>Hillary Clinton<span> for president</dd>
-      <dd class='c-g'><span>32</span> endorsements for this candidate</dd>
-      <dt><a href='msn.com'>Peeper Rams</a></dt>
-      <dd><span>Robert Baker<span> for vice president</dd>
-      <dd class='c-g'><span>532</span> endorsements for this candidate</dd>
-      <dt><a href="google.com">Grasshopperz</a></dt>
-      <dd><span>Tom Lee<span> for mayor</dd>
-      <dd class='c-g'><span>1000</span> endorsements for this candidate</dd>
-      <dt><a href='msn.com'>DBC</a></dt>
-      <dd><span>Felix Lobkowicz<span> for governor</dd>
-      <dd class='c-g'><span>120</span> endorsements for this candidate</dd>
-    </dl>
-  </div>
-</div>
-</div>

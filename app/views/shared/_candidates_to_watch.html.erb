@@ -1,17 +1,20 @@
-<img src="http://placehold.it/48x48" alt="" class='mg p-s col-md-2'>
-      <div class='col-md-9 mg p-s debug'>
-      <a href="#"><strong>Hillary Clinton - District - Office</strong></a href="#">
-      <table class='debug w txt-c'>
-        <% @organizations.each do |organization| %>
-            <tr class='debug'>
-              <td><%= organization.user.name %></td>
-            <% if @logged_in %>
-              <td><%= button_to "Watch", watch_path(organization.user), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
-            <% else %>
-                <!-- this below button doesnt work for now -->
-              <td><%= button_to "Watch", login_and_watch_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization }  %></td>
-            <% end %>
-            </tr>
-        <% end %>
-      </table>
-    </div>
+<div class='rcorners bg-w row txt-c'>
+  <img src="http://placehold.it/48x48" alt="" class='mg p-s col-md-2'>
+  <div class='col-md-9 mg p-s debug'>
+  <a href="#"><strong>Hillary Clinton - District - Office</strong></a href="#">
+  <table class='debug w txt-c'>
+    <% @organizations.each do |organization| %>
+    <tr class='debug'>
+      <td><%= organization.user.name %></td>
+      <% if @logged_in %>
+      <td><%= button_to "Watch", watch_path(organization.user), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
+      <% else %>
+      <!-- this below button doesnt work for now -->
+      <td><%= button_to "Watch", login_and_watch_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization }  %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
+</div>
+</div>
+
