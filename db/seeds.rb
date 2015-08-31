@@ -184,8 +184,8 @@ Twitteruser.create(
   )
 
 Endorsement.create(
-  candidate_id: hc.id,
-  user_id: parenthood.id
+  candidate: hc,
+  user: parenthood
   )
 
 Watching.create(

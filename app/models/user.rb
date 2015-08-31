@@ -135,7 +135,7 @@ class User < ActiveRecord::Base
   def profile_endorsed_candidates
     endorsed_users = self.endorsements.map { |endorsement| endorsement }
     endorsed_candidates = endorsed_users.map { |endorsement| endorsement.candidate }
-    endorsed_candidate_users = endorsed_candidates.map { |candidate| candidate.user }
+    endorsed_candidate_users = endorsed_candidates.compact.map { |candidate| candidate.user }
     endorsed_users_twitter = endorsed_candidate_users.map { |user| user.twitteruser }
     #not sorted yet, nor any imit
   end

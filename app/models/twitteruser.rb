@@ -15,6 +15,10 @@ class Twitteruser < ActiveRecord::Base
     twitteruser
   end
 
+  def endorsements
+    self.user.endorsements
+  end
+
   def larger_image
     self.image.gsub(/_normal/,"")
   end

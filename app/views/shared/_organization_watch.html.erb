@@ -1,17 +1,30 @@
-<% @watched_users.each do |organization| %>
-<div class='rcorners bg-w row txt-c'>
-          <img src=<%= organization.image %> alt="" class='mg p-s col-md-2'>
-          <div class='col-md-9 mg p-s debug'>
-          <a href="#"><strong><%= organization.name %></strong></a href="#">
-          <ul class='mg-l'>
-            <li>Hillary Clinton - Office - District</li>
-            <li>Joe Biden - Office - District</li>
-            <li>Bernie Sanders - Office - District</li>
-          </ul>
-          <ul>
-            <li class='d-i p-s'><a href='#'><span class="glyphicon glyphicon-ban-circle c-r" aria-hidden="true"></span></a></li>
-            <li class='d-i p-s'><a href='#'><span class="glyphicon glyphicon-info-sign c-b" aria-hidden="true"></span></a></li>
-          </ul>
+<% @watched_users.each_with_index do |twitteruser, index| %>
+
+
+      <div class='rcorners bg-w row txt-c'>
+
+        <img src=<%= twitteruser.image %> alt="" class='mg p-s col-md-2'>
+
+        <div class='col-md-9 mg p-s debug'>
+
+              <a href="#"><strong><%= twitteruser.name %></strong></a href="#">
+                <ul class='mg-l'>
+                  <li><%= twitteruser.description %></li>
+                  <li>NUMBER OF ENDORSEMENTS:<%= @watched_user_endorsements[index].length %>
+                    <% @watched_user_endorsements[index].each_with_index do |endorsed_twitteruser, index| %>
+                      <li><%= "endorsed_twit: #{endorsed_twitteruser}" %><%= index %></li>
+                    <% end %>
+                  </li>
+                </ul>
+
+                <!-- <ul>
+                  <li class='d-i p-s'><a href='#'><span class="glyphicon glyphicon-ban-circle c-r" aria-hidden="true"></span></a></li>
+                  <li class='d-i p-s'><a href='#'><span class="glyphicon glyphicon-info-sign c-b" aria-hidden="true"></span></a></li>
+                </ul>
+         -->
         </div>
+
       </div>
+
+
 <% end %>
