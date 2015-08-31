@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  def report_card
+    @reports = current_user.report_card
+  end
+
   # GET /users
   # GET /users.json
 
