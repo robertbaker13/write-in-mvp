@@ -10,9 +10,24 @@ District.create(
   name: "USA"
   )
 
+District.create(
+  name: "California",
+  parent_id: 1
+  )
+
+District.create(
+  name: "San Francisco",
+  parent_id: 2
+  )
+
 Office.create(
   title: "President",
   district_id: 1
+)
+
+Office.create(
+  title: "Mayor",
+  district_id: 3
 )
 
 Candidate.create(
