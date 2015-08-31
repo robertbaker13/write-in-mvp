@@ -2,10 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*
+ *= require jquery-ui
+ */
+
 .not-bs-nav {
   font-family: Gotham,Arial,sans-serif;
   font-weight: 500;
   background-color: #f5f8fa;
+}
+
+.ui-autocomplete.opened {
+    opacity: 1;
 }
 
 
