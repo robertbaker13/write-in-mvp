@@ -1,59 +1,65 @@
 <div class='row'>
-
   <div class="col-md-3 debug bg-w mg">
-      <div class='row mg p'>
-        <img src=<%= @twitter_profile_image %> class='debug img-thumbnail col-md-3'>
-        <div class='col-md-9'>
-          <div class='h-xs debug'></div>
-          <ul class='debug'>
-            <li class='fs-xl mg-t'><%= @twitter_profile_name%></li>
-            <li class='fs-m'><%= @twitter_handle %></li>
-          </ul>
-        </div>
+    <div class='row mg p'>
+      <img src=<%= @twitter_profile_image %> class='debug img-thumbnail col-md-3'>
+      <div class='col-md-9'>
+        <div class='h-xs debug'></div>
+        <ul class='debug'>
+          <li class='fs-xl mg-t'><%= @twitter_profile_name%></li>
+          <li class='fs-m'><%= @twitter_handle %></li>
+        </ul>
       </div>
-      <ul class='p-s mg-b'>
-        <li class="d-i debug p-r">
-          <a href="#">
-            <span class='fs-xs'>WATCHINGS<span class='d-b txt-c fs-m'>20</span></span>
-          </a>
-        </li>
-        <li class="d-i debug p-r">
-          <a href="#">
-            <span class='fs-xs'>WATCHED<span class='d-b txt-c fs-m'>100</span></span>
-          </a>
-        </li>
-        <li class="d-i debug p-r">
-          <a href="#">
-            <span class='fs-xs'>ENDORSED<span class='d-b txt-c fs-m'>32</span></span>
-          </a>
-        </li>
-      </ul>
+
+    <ul class='p-s mg-b'>
+      <li class="d-i debug p-r">
+        <a href="#">
+          <span class='fs-xs'>WATCHINGS<span class='d-b txt-c fs-m'>20</span></span>
+        </a>
+      </li>
+      <li class="d-i debug p-r">
+        <a href="#">
+          <span class='fs-xs'>WATCHED<span class='d-b txt-c fs-m'>100</span></span>
+        </a>
+      </li>
+      <li class="d-i debug p-r">
+        <a href="#">
+          <span class='fs-xs'>ENDORSED<span class='d-b txt-c fs-m'>32</span></span>
+        </a>
+      </li>
+    </ul>
+    </div>
+    <div class='debug bg-w mg-t'>
+      <h4>How This Works</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+      </p>
+    </div>
   </div>
   <div class="col-md-5 bg-w debug mg bg-g">
     <form class="navbar-form">
-       <div class="form-group" style="display:inline;">
-         <div class="input-group" style="display:table;">
-           <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
-           <input class="form-control" name="search" placeholder="Search for Candidates and Endorsers" autocomplete="off" autofocus="autofocus" type="text">
-         </div>
-       </div>
-     </form>
+      <div class="form-group" style="display:inline;">
+        <div class="input-group" style="display:table;">
+          <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
+          <input class="form-control" name="search" placeholder="Search for Candidates and Endorsers" autocomplete="off" autofocus="autofocus" type="text">
+        </div>
+      </div>
+    </form>
     <div class='rcorners bg-w row txt-c'>
       <img src="http://placehold.it/48x48" alt="" class='mg p-s col-md-2'>
       <div class='col-md-9 mg p-s debug'>
       <a href="#"><strong>Hillary Clinton - District - Office</strong></a href="#">
       <table class='debug w txt-c'>
-        <tr class='debug'>
+        <tr>
           <td>Organization 1</td>
-          <td><%= button_to "Watch this Organization", new_user_path, :class => "glyphicon glyphicon-plus-sign c-g",:"aria-hidden"=> "true", :method => :post  %></td>
+          <td><%= button_to "Watch", new_user_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
         </tr>
         <tr>
           <td>Organization 1</td>
-          <td><%= button_to "Watch this Organization", new_user_path, :class => "glyphicon glyphicon-plus-sign c-g",:"aria-hidden"=> "true", :method => :post  %></td>
+          <td><%= button_to "Watch", new_user_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
         </tr>
         <tr>
           <td>Organization 1</td>
-          <td><%= button_to "Watch this Organization", new_user_path, :class => "glyphicon glyphicon-plus-sign c-g",:"aria-hidden"=> "true", :method => :post  %></td>
+          <td><%= button_to "Watch", new_user_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
         </tr>
       </table>
     </div>
@@ -62,5 +68,4 @@
 <div class="col-md-3 mg debug">
   Activity Feed
 </div>
-
 </div>
