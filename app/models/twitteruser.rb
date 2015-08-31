@@ -19,6 +19,10 @@ class Twitteruser < ActiveRecord::Base
     twitteruser
   end
 
+  def larger_image
+    self.image.gsub(/_normal/,"")
+  end
+
   # def self.create_from_omniauth(auth)
   #   create! do |twitter|
   #     twitter.uid = auth["uid"]
