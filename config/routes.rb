@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   put 'login' => 'sessions#create', as: 'login'
+
+  post 'login_and_watch' => 'sessions#create_then_watch', as: 'login_and_watch'
   delete 'logout' => 'sessions#destroy', as: 'logout'
 
   resources :users
@@ -17,9 +19,10 @@ Rails.application.routes.draw do
 
   # Example of regular route:
     get 'users/:user_id/report_card' => 'users#report_card'
-
+    get 'users/:user_id' => 'users#show', as: 'show'
     get 'auth/:provider/callback' => 'sessions#create'
     get 'deauth/twitter' => "sessions#destroy"
+    post 'users/:id/watch' => "users#watch", as: 'watch'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
