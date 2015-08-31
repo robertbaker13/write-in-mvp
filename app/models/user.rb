@@ -88,12 +88,11 @@ class User < ActiveRecord::Base
   #   Twitteruser.find_by(user_id: session[:current_user_id]).name
   # end
 
-
   #watched users for a specific profile
   def profile_watched_users
     watched_organizations = self.watchings.map { |watching| watching.organization }
     watched_users = watched_organizations.compact.map { |organization| organization.user }
-    watched_users_twitter = watched_users.compact.map { |user| user.twitter }
+    watched_users_twitter = watched_users.compact.map { |user| user.twitteruser }
     watched_users_twitter.compact
     #not sorted yet, nor any limit
   end
@@ -103,7 +102,7 @@ class User < ActiveRecord::Base
     endorsed_users = self.endorsements.map { |endorsement| endorsement }
     endorsed_candidates = endorsed_users.map { |endorsement| endorsement.candidate }
     endorsed_candidate_users = endorsed_candidates.map { |candidate| candidate.user }
-    endorsed_users_twitter = endorsed_candidate_users.map { |user| user.twitter }
+    endorsed_users_twitter = endorsed_candidate_users.map { |user| user.twitteruser }
     #not sorted yet, nor any imit
   end
 
