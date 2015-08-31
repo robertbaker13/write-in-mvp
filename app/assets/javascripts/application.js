@@ -12,8 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery-ui
 //= require bootstrap
 //= require_tree .
 
-
+$(function() {
+    var availableTags = [
+      "San Francisco",
+      "Oakland",
+      "San Jose"
+    ];
+    $( "#setDistrict" ).autocomplete({
+      source: availableTags
+    });
+  });
