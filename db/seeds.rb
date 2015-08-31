@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-----------------
-6 districts
--------------------
+# ----------------
+# 6 districts
+# -------------------
 
 usa = District.create(
   name: "USA"
@@ -29,7 +29,7 @@ sf = District.create(
   parent: sfc
   )
 
-6 offices
+# 6 offices
 
 #1 president per USA
 president = Office.create(
@@ -65,18 +65,18 @@ sfpc = Office.create(
   district: sf
 )
 
--------------------------
-9 twitter users
-  3 users (also organizations)
-  6 organizations (also users)
-  3 endorsements (also candidates)
-  ------
-  6 watchings
-  -----------------------
-1 user-user:
+# -------------------------
+# 9 twitter users
+#   3 users (also organizations)
+#   6 organizations (also users)
+#   3 endorsements (also candidates)
+#   ------
+#   6 watchings
+#   -----------------------
+# 1 user-user:
 
 bobby = User.create(
-  uid: "3399540193"
+  uid: "3399540193",
   district: sf
   )
 
@@ -97,10 +97,10 @@ Twitteruser.create(
  user: bobby
   )
 
-1 user-candidate:
+# 1 user-candidate:
 
 hc = User.create(
-  uid: "3388540193"
+  uid: "3388540193",
   district: usa
   )
 
@@ -115,7 +115,7 @@ Twitteruser.create(
  location: "Washington DC",
  email: "hc@gmail.com",
  image: "http://a4.files.biography.com/image/upload/c_fill,cs_srgb,dpr_1.0,g_face,h_300,q_80,w_300/MTE4MDAzNDEwMDU4NTc3NDIy.jpg",
- description: "Running for President:)", #notsure?
+ description: "Democrat - Running for President:)", #notsure?
  website: "https://www.hillaryclinton.com/",
  twitter: "https://twitter.com/hc", #take real one?
  token: "3388540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
@@ -123,15 +123,45 @@ Twitteruser.create(
   )
 
 Candidate.create(
-  user: hc
+  user: hc,
+  office_id: president.id
+  )
+
+jb = User.create(
+  uid: "33877777",
+  district: usa
+  )
+
+Organization.create(
+  user_id: jb.id
+  )
+
+Twitteruser.create(
+ uid: "33877777",
+ nickname: "Jeb",
+ name: "Jeb Bush",
+ location: "Washington DC",
+ email: "jb@gmail.com",
+ image: "http://www.adweek.com/files/imagecache/node-blog/blogs/jeb-bush-logo-hed-2015.jpg",
+ description: "Republican - Running for President:)", #notsure?
+ twitter: "https://twitter.com/jb", #take real one?
+ token: "33877777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+ user: jb
+  )
+
+Candidate.create(
+  user: jb,
   office_id: president.id
   )
 
 
-1 user-candidate-organization:
+
+
+
+# 1 user-candidate-organization:
 
 parenthood = User.create(
-  uid: "3388550193"
+  uid: "3388550193",
   district: usa
   )
 
@@ -154,21 +184,21 @@ Twitteruser.create(
   )
 
 Endorsement.create(
-  candidate_id: hc.id
+  candidate_id: hc.id,
   user_id: parenthood.id
   )
 
 Watching.create(
-  user_id: bobby.id
+  user_id: bobby.id,
   organization_id: parenthood.id
   )
 
-------------------------------------------------
+# ------------------------------------------------
 
-2 more user-user:
+# 2 more user-user:
 
 john = User.create(
-  uid: "3399511193"
+  uid: "3399511193",
   district: sf
   )
 
@@ -190,7 +220,7 @@ Twitteruser.create(
   )
 
 anna = User.create(
-  uid: "339952223"
+  uid: "339952223",
   district: sf
   )
 
@@ -210,11 +240,11 @@ Twitteruser.create(
  token: "339952223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: anna
   )
-------------------------
-6 user-candidates
-----------------------
+# ------------------------
+# 6 user-candidates
+# ----------------------
 df = User.create(
-  uid: "33333333"
+  uid: "33333333",
   district: ca
   )
 
@@ -236,12 +266,12 @@ Twitteruser.create(
   )
 
 Candidate.create(
-  user: df
+  user: df,
   office_id: ssen.id
   )
 
 bb = User.create(
-  uid: "44444444"
+  uid: "44444444",
   district: ca
   )
 
@@ -263,14 +293,14 @@ Twitteruser.create(
   )
 
 Candidate.create(
-  user: bb
+  user: bb,
   office_id: jsen.id
   )
 
 
 
 cf = User.create(
-  uid: "44444333"
+  uid: "44444333",
   district: ca
   )
 
@@ -292,13 +322,13 @@ Twitteruser.create(
   )
 
 Candidate.create(
-  user: cf
+  user: cf,
   office_id: jsen.id
   )
 
 
 as = User.create(
-  uid: "446666333"
+  uid: "446666333",
   district: ca
   )
 
@@ -320,16 +350,16 @@ Twitteruser.create(
   )
 
 Candidate.create(
-  user: as
+  user: as,
   office_id: ssen.id
   )
 
-----------------
-2 more organizations
-------------------
+# ----------------
+# 2 more organizations
+# ------------------
 
 nra = User.create(
-  uid: "999952223"
+  uid: "999952223",
   district: usa
   )
 
@@ -352,7 +382,7 @@ Twitteruser.create(
 
 
  srclub = User.create(
-  uid: "222252223"
+  uid: "222252223",
   district: usa
   )
 
@@ -362,11 +392,11 @@ Organization.create(
 
 Twitteruser.create(
  uid: "222252223",
- nickname: "NRA",
- name: "National Rifle Association",
- location: "San Francisco",
+ nickname: "SierraC",
+ name: "SierraClub",
+ location: "USA",
  email: "srclub@gmail.com",
- image: "https://upload.wikimedia.org/wikipedia/en/thumb/7/73/National_Rifle_Association.svg/1024px-National_Rifle_Association.svg.png",
+ image: "http://www.stevestenger.com/wp-content/uploads/2014/10/sierraclub-logo.png",
  description: "EXPLORE, ENJOY, AND PROTECT THE PLANET",
  twitter: "https://twitter.com/srclub",
  token: "222252223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
@@ -374,32 +404,37 @@ Twitteruser.create(
   )
 
 Endorsement.create(
-  candidate_id: bb.id
+  candidate_id: bb.id,
   user_id: parenthood.id
   )
 
 Endorsement.create(
-  candidate_id: df.id
+  candidate_id: df.id,
   user_id: srclub.id
   )
 
+Endorsement.create(
+  candidate_id: jb.id,
+  user_id: nra.id
+  )
+
 Watching.create(
-  user_id: john.id
+  user_id: john.id,
   organization_id: parenthood.id
   )
 
 Watching.create(
-  user_id: bobby.id
+  user_id: bobby.id,
   organization_id: srclub.id
   )
 
 Watching.create(
-  user_id: anna.id
+  user_id: anna.id,
   organization_id: srclub.id
   )
 
 Watching.create(
-  user_id: anna.id
+  user_id: anna.id,
   organization_id: parenthood.id
   )
 
