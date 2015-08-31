@@ -4,6 +4,8 @@ class SessionsController < ApplicationController
     twitter_user = Twitteruser.create_or_update(env["omniauth.auth"])
     user = User.create_or_update(twitter_user)
     session[:current_user_id] = user.id
+    twitter_user.user_id = user.id
+    twitter_user.save
     redirect_to root_url, notice: "Signed in"
   end
 
