@@ -1,0 +1,9 @@
+<%= form_for @user do |f| %>
+
+<li class='fs-l mg-t p-l'><%= f.label :where_will_you_vote? %></li>
+
+<li class='fs-l mg-t p-l'><%= f.text_field :district, :class => "glyphicon glyphicon-search", :placeholder => @current_user.district %></li>
+
+<li class='fs-l mg-t p-l'><%= f.submit "Update your district", :class => "form-control" %></li>
+
+<% end %>
