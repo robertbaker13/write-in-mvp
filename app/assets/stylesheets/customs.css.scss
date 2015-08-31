@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 .debug {
-  border: 0px solid red;
+  border: 1px solid red;
 }
 
 a:active { color: grey !important; }
@@ -30,6 +30,8 @@ ul { list-style: none; }
 
 .h-s { height: 5em; }
 
+.h-xs { height: 2em; }
+
 .h-l { height: 14em; }
 
 .h-xl { height: 14.5em; }
@@ -37,6 +39,8 @@ ul { list-style: none; }
 .t { top: 10em; }
 
 .c-r { color: red; }
+
+.c-g { color: green; }
 
 .c-b { color: blue; }
 
@@ -50,10 +54,14 @@ ul { list-style: none; }
 
 .fs-xm { font-size: 13px; }
 
+
+.fs-xs { font-size: 8px; }
+
+
 .fs-l { font-size: 18px; }
 
 .body-not-bs {
-  background-color:#DBE7E0;
+  background-color:#F7FFFC;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 500;
 }
@@ -85,6 +93,10 @@ ul { list-style: none; }
 .p-r { padding-right: 2em; }
 
 .p-t { padding-top: 1.5em; }
+
+
+.p { padding: .5em; }
+
 
 .m-s { margin: .2em; }
 
