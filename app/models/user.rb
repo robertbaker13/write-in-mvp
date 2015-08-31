@@ -7,12 +7,46 @@ class User < ActiveRecord::Base
   has_many :watchings
   has_one :twitteruser
 
+  def name
+    self.twitteruser.name
+  end
+
+  def nickname
+    self.twitteruser.nickname
+  end
+
+  def location
+    self.twitteruser.location
+  end
+
+  def email
+    self.twitteruser.email
+  end
+
+  def image
+    self.twitteruser.image
+  end
+
+  def description
+    self.twitteruser.description
+  end
+
+  def website
+    self.twitteruser.website
+  end
+
+  def watch(current_user)
+    args = {}
+    args[:user] = current_user
+    args[:organization] = self.organization
+    Watching.find_or_create(args)
+  end
+
   def self.create_or_update(twitter_user)
     user = User.find_by(uid: twitter_user.uid) || User.new(uid: twitter_user.uid, district_id: 1)
     user.save
     user
   end
-
 
 #Home page after logged in:
 #--------------------------

@@ -6,7 +6,7 @@ class Office < ActiveRecord::Base
     result = self.candidates.map do |candidate|
       { candidate: candidate, user: candidate.rc_user(active_user) }
     end
-    result.select { |record| record.user }
+    result.select { |record| record[:user] }
   end
 
   # def candidates_for_specific_user(user)
