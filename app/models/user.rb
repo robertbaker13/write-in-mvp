@@ -54,11 +54,11 @@ class User < ActiveRecord::Base
 
   #top users to watch in user specific district calculation
   def users_score
-    if self.twitter == nil || self.twitter.followers == nil || self.twitter.followers == [] || self.endorsements == [] #FL double checked these. However are there more eventualities?
+    if self.twitteruser == nil || self.twitteruser.followers == nil || self.twitteruser.followers == [] || self.endorsements == [] #FL double checked these. However are there more eventualities?
       sum_score = 1
     else
       endorsements = self.endorsements.map { |endorsement| endorsement }
-      followers = self.twitter.followers.map { |follower| follower }
+      followers = self.twitteruser.followers.map { |follower| follower }
       sum_score = endorsements.compact.count + followers.compact.count
     end
   end
@@ -118,7 +118,7 @@ class User < ActiveRecord::Base
 
 #Profile page:
 #--------------------------
-  # def self.twitter_profile_name
+  # def self.twitteruser_profile_name
   #   Twitteruser.find_by(user_id: session[:current_user_id]).name
   # end
 
