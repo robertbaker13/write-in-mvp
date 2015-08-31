@@ -10,9 +10,9 @@
               <a href="#"><strong><%= twitteruser.name %></strong></a href="#">
                 <ul class='mg-l'>
                   <li><%= twitteruser.description %></li>
-                  <li>NUMBER OF ENDORSEMENTS:<%= @watched_user_endorsements[index].length %>
+                  <li>Test: NUMBER OF ENDORSEMENTS:<%= @watched_user_endorsements[index].length %>
                     <% @watched_user_endorsements[index].each_with_index do |endorsed_twitteruser, index| %>
-                      <li><%= "endorsed_twit: #{endorsed_twitteruser}" %><%= index %></li>
+                      <li>Is endorsing: <%= endorsed_twitteruser.name %></li>
                     <% end %>
                   </li>
                 </ul>
