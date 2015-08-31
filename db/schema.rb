@@ -68,10 +68,7 @@ ActiveRecord::Schema.define(version: 20150830213852) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "token"
     t.string   "uid"
-    t.datetime "expires"
     t.integer  "district_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
