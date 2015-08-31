@@ -1,15 +1,72 @@
-<h1>Report Card</h1>
+<div class='row'>
+  <div class="col-md-3">
+    <div class="mg-r">
+      <img src=<%= @twitter_profile_image %> class='debug img-thumbnail' height="200" width="200">
+      <ul class='d-i debug'>
+        <li class='fs-xl mg-t p-l'><%= @twitter_profile_name %></li>
+        <li class='fs-m p-l'><%= @twitter_handle %></li>
+      </ul>
+    </div>
+    <div class="p-s rcorners bg-w mg-t mg-r">
+      <a href="#"><p class="txt-c fs-l">Compatibility Report</p></a>
+      <p class='fs-xm txt-c'>Which candidates share my values?</p>
+      <table class='w mg'>
+        <tr>
+          <th colspan="2" class='txt-c p-t'>President</th>
+        </tr>
+        <tr>
+          <td>Hillary Clinton</td>
 
-<% @reports.each do |report| %>
-  <div>
-    <% report[:district].offices.each do |office|  %>
+          <td>48%</td>
+        </tr>
+        <tr>
+          <td>Donald Trump</td>
 
-          <h5><%= office.title %> - <%= report[:district].name %></h5>
-          <ul>
-              <% office.candidates.each do |candidate| %>
-                  <li><%= candidate.user.name %></li>
-              <% end %>
-          </ul>
-    <% end %>
+          <td>28%</td>
+        </tr>
+        <tr>
+          <td>Undecided</td>
+
+          <td>34%</td>
+        </tr>
+        <th colspan="2" class='txt-c p-t'>Vice President</th>
+        </tr>
+        <tr>
+          <td>Jeb Bush</td>
+
+          <td>18%</td>
+        </tr>
+      </table>
+    </div>
   </div>
-<% end %>
+  <div class="col-md-9 debug">
+    <div class='h-m'></div>
+     <ul class='p-s mg-b'>
+        <li class="d-i debug p-r">
+          <a href="#">
+            <span class='fs-s'>WATCHINGS<span class='d-b txt-c fs-l'>20</span></span>
+          </a>
+        </li>
+        <li class="d-i debug p-r">
+          <a href="#">
+            <span class='fs-s'>WATCHED<span class='d-b txt-c fs-l'>100</span></span>
+          </a>
+        </li>
+        <li class="d-i debug p-r">
+          <a href="#">
+            <span class='fs-s'>ENDORSED<span class='d-b txt-c fs-l'>32</span></span>
+          </a>
+        </li>
+      </ul>
+    <ul class='nav nav-tabs bg-w row txt-c'>
+      <li class="active"><a href="#watching" data-toggle="tab"><strong>People I Watch</strong></a></li>
+      <li><a href="#endorse" data-toggle='tab'><strong>People I Endorse</strong></a></li>
+    </ul>
+    <div class='tab-content'>
+      <div class='tab-pane active' id='watching'>
+        <%= render "shared/organization_watch" %>
+    </div>
+        <%= render "/shared/candidate_endorse" %>
+</div>
+</div>
+</div>

@@ -25,8 +25,58 @@ sfc = District.create(
   )
 
 sf = District.create(
-  name: "San Francisco",
+  name: "San Francisco, CA",
   parent: sfc
+  )
+
+District.create(
+  name: "Alameda, CA",
+  parent: ca
+  )
+
+District.create(
+  name: "San Jose, CA",
+  parent: ca
+  )
+
+District.create(
+  name: "Del Norte, CA",
+  parent: ca
+  )
+
+District.create(
+  name: "Lake, CA",
+  parent: ca
+  )
+
+District.create(
+  name: "Marin, CA",
+  parent: ca
+  )
+
+District.create(
+  name: "Napa, CA",
+  parent: ca
+  )
+
+District.create(
+  name: "Mendocino, CA",
+  parent: ca
+  )
+
+District.create(
+  name: "San Mateo, CA",
+  parent: ca
+  )
+
+District.create(
+  name: "Solano, CA",
+  parent: ca
+  )
+
+District.create(
+  name: "Sonoma, CA",
+  parent: ca
   )
 
 # 6 offices

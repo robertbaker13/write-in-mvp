@@ -1,5 +1,11 @@
 class DistrictsController < ApplicationController
 
+  def update
+    district_set = District.find_by(name: params[:user][:populate_district])
+    current_user.district = district_set
+    current_user.save
+    redirect_to show_url
+  end
 
   private
 
