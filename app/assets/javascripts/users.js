@@ -13,6 +13,7 @@ $(function() {
       "Napa, CA",
       "Mendocino, CA",
       "San Mateo, CA",
+      "San Francisco, CA",
       "Solano, CA",
       "Sonoma, CA"
     ];
