@@ -1,16 +1,1 @@
-<h1>Report Card</h1>
 
-<% @reports.each do |report| %>
-  <div>
-    <% report[:district].offices.each do |office|  %>
-
-          <h5><%= office.title %> - <%= report[:district].name %></h5>
-          <ul>
-              <% office.candidates.each do |candidate| %>
-                  <li><%= candidate.user.name %></li>
-              <% end %>
-          </ul>
-    <% end %>
-  </div>
-<% end %>
-test
