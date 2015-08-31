@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @logged_in = logged_in?
     @watched_users = current_user.profile_watched_users
     @twitter_profile_name = current_user.twitteruser.name
     @twitter_handle = current_user.twitteruser.nickname
