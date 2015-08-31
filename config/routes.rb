@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   # Example of regular route:
-    get 'users/:user_id/districts/:id/report' => 'districts#report'
+    get 'users/:user_id/report_card' => 'users#report_card'
+
     get 'auth/:provider/callback' => 'sessions#create'
     get 'deauth/twitter' => "sessions#destroy"
 
