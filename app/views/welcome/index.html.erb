@@ -1,45 +1,24 @@
-
-<div class='home-left-column debug'>
-
-
-<h1> About Write.In</h1>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-
-</div>
-
-
-<div class='home-middle-column debug'>
-  IfnotLoggedin: Here go top candidates (top followers)
-
-<h1>Listing Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Twitter</th>
-      <th>Token</th>
-      <th>Expires</th>
-      <th>District</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-</div>
-
-<div class='home-right-column debug'>
-   IfnotLoggedin: This is our activity feed
+<div class='row'>
+  <div class="col-md-3">
   </div>
-
+  <div class="col-md-6">
+    <div class='h-m'></div>
+    <div class='tab-pane rcorners bg-w row txt-c' id="endorse">
+      <img src="http://placehold.it/48x48" alt="" class='mg p-s col-md-2'>
+      <div class='col-md-9 mg p-s debug'>
+      <a href="#"><strong>Hillary Clinton</strong></a href="#">
+      <ul class='mg-l'>
+        <li>Organization 1</li>
+        <li>Organization 2</li>
+        <li>Organization 3</li>
+      </ul>
+      <ul>
+        <li class='d-i p-s'><a href='#'><span class="glyphicon glyphicon-ban-circle c-r" aria-hidden="true"></span></a></li>
+        <li class='d-i p-s'><a href='#'><span class="glyphicon glyphicon-info-sign c-b" aria-hidden="true"></span></a></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-3">
+  </div>
+</div>
