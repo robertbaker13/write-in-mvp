@@ -5,7 +5,6 @@ $(function() {
     var availableTags = [
       "Alameda, CA",
       "Contra Costa, CA",
-      "Oakland, CA",
       "San Jose, CA",
       "Del Norte, CA",
       "Lake, CA",
