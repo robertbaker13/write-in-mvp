@@ -12,6 +12,13 @@ class User < ActiveRecord::Base
   #   self.districts.add_parents
   # end
 
+  def self.create_or_update(twitter_user)
+    user = User.find_by(uid: twitter_user.uid) || User.new(uid: twitter_user.uid)
+    user.save
+    user
+  end
+
+
   def report_card
     self.district.add_parents.map do |district|
       { district: district,
