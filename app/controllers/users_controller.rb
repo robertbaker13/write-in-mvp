@@ -46,7 +46,6 @@ class UsersController < ApplicationController
     # @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| twitteruser.user.  "which organizations are watching this user"  }
   end
 
-
   # GET /users/new
   def new
     @user = User.new

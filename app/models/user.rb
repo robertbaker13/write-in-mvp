@@ -65,16 +65,44 @@ class User < ActiveRecord::Base
 #--------------------------
 
 
-  #top users to watch in user specific district calculation
+  #top orgs based on how many are watching them and how many they are endorsing
   def org_score
-    if  self.endorsements == []
-      #self.twitteruser == nil || #|| self.twitteruser.followers == nil || self.twitteruser.followers == []
-      sum_score = 0
+    if  self.watchings == []
+      watchings_count = 0
     else
-      endorsements = self.endorsements.map { |endorsement| endorsement }
-      # followers = self.twitteruser.followers.map { |follower| follower }
-      sum_score = endorsements.compact.count #+ followers.compact.count
+      watchings = Watching.all
+      watchings_array_user_id = watchings.map { |watching| watching.user_id }
+      watchings_filtered = watchings_array_user_id.select {|user_id| user_id ==  self.id}
+      watchings_count = watchings_filtered.compact.count
     end
+
+    endorsements = self.endorsements.map { |endorsement| endorsement }
+
+    sum_score = endorsements.compact.count + watchings_count
+  end
+
+  #top candidates based on how many are watching them and how many have endorsed them
+  def cand_score
+
+    if  self.watchings == []
+      watchings_count = 0
+    else
+      watchings = Watching.all
+      watchings_array_user_id = watchings.map { |watching| watching.user_id }
+      watchings_filtered = watchings_array_user_id.select {|user_id| user_id ==  self.id}
+      watchings_count = watchings_filtered.compact.count
+    end
+
+    if  self.endorsements == []
+      endorsements_count = 0
+    else
+      endorsements = Endorsements.all
+      endorsements_array_user_id = endorsements.map { |endorsements| endorsements.user_id }
+      endorsements_filtered = endorsements_array_user_id.select {|user_id| user_id ==  self.id}
+      endorsements_count = endorsements_filtered.compact.count
+    end
+
+    sum_score = endorsements_count + watchings_count
   end
 
   #checks that the listed users to watch are only those users that are not already watched by the viewer
@@ -92,12 +120,12 @@ class User < ActiveRecord::Base
   #checks that the listed users to watch are only those users that are not already watched by the viewer
   def already_endorsed_candidates
     if self.endorsements == nil || self.endorsements == []
-      [100]
+      [1000] #FL: this could be a timebomb, once we have more then a 1000 candidates.
     else
       endorsed_candidates = self.endorsements.map { |endorsement| endorsement.candidate }
       watched_users = endorsed_candidates.map { |candidate|
         if candidate == nil || candidate == [nil]
-          100
+          1000
         else
           candidate.user_id
         end }
@@ -151,8 +179,8 @@ class User < ActiveRecord::Base
   def home_candidates_to_endorse
     #takes all candidates
     candidates_array = candidates_users.map {|user| user}
-    #sorts candidates by their candidate score (org_score needs to be changed)
-    candidates_array_sort = candidates_array.sort_by {|user| user.org_score}
+    #sorts candidates by their candidate score
+    candidates_array_sort = candidates_array.sort_by {|user| user.cand_score}
     #selects only the candidates of relevant districts
     filtered_district_candidate_array = candidates_array_sort.select {|user| user_specific_districts.include?(user.district_id)}
     #this filters out all candidates that you are endorsing already
@@ -188,7 +216,7 @@ class User < ActiveRecord::Base
     endorsed_candidates = endorsed_users.map { |endorsement| endorsement.candidate }
     endorsed_candidate_users = endorsed_candidates.compact.map { |candidate| candidate.user }
     #sorts candidates according to organization score (should be candidate score)
-    endorsed_candidate_users_sorted = endorsed_candidate_users.sort_by {|user| user.org_score}
+    endorsed_candidate_users_sorted = endorsed_candidate_users.sort_by {|user| user.cand_score}
     endorsed_users_twitter = endorsed_candidate_users_sorted.map { |user| user.twitteruser }
     # cut_off_twitteruser_array = endorsed_users_twitter[0..10]
   end
