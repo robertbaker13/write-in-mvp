@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     session[:current_user_id] = user.id
     twitter_user.user_id = user.id
     twitter_user.save
-    redirect_to root_url, notice: "Signed in"
+    redirect_to root_url
   end
 
   def create_then_watch
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     twitter_user.user_id = user.id
     twitter_user.save
     # post request includes a :organization object in the :headers that needs to be added to this user's watch list
-    redirect_to root_url, notice: "Signed in"
+    redirect_to root_url
   end
 
   # def create_user
