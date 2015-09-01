@@ -35,7 +35,7 @@ $(document).ready(function() {
 });
 
 var watchListener = function () {
-  $(".button_to").on("submit", function(e) {
+  $(".button_to").one("submit", function(e) {
     e.preventDefault();
     var url = this.action;
     var $watchButton = $(this).parent();
@@ -49,8 +49,8 @@ var watchListener = function () {
       url: url,
       method: "post"
     }).done(function() {
-      $watchButton.hide();
-      $watchedCandidate.append("<td><button class='btn-danger btn-xs'> Unwatch </button></td>");
+      // $watchButton.hide();
+      $watchedCandidate.toggle("fast");
     }).fail(function(){
       console.log("fail");
     });
