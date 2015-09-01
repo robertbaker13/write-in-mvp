@@ -13,7 +13,7 @@
         <th><%= button_to "Endorse", endorse_path(candidate.user.id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></th>
         <% else %>
         <!-- this below button logins in but does not redirect to the right page -->
-        <th><%= button_to "Endorse", login_and_endorse_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => candidate.user }  %></th>
+        <th><%= button_to "Endorse", login_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => candidate.user }  %></th>
         <% end %>
       </thead>
       <tr>
