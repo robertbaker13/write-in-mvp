@@ -13,10 +13,10 @@
         <tr>
             <td><%= twitteruser.name %></td>
           <% if @logged_in %>
-          <td><%= button_to "Watch", watch_path(organization.user_id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
+          <td class='td-w'><%= button_to "Watch", watch_path(organization.user_id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
           <% else %>
           <!-- this below button logins in but does not redirect to the right page -->
-          <td><%= button_to "Watch", "/auth/twitter", :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></td>
+          <td class='td-w'><%= button_to "Watch", "/auth/twitter", :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></td>
         </tr>
         <% end %>
       <% end %>
