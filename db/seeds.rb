@@ -43,7 +43,7 @@ District.create(
   name: "Del Norte, CA",
   parent: ca
   )
-`
+
 District.create(
   name: "Lake, CA",
   parent: ca
@@ -131,7 +131,7 @@ bobby = User.create(
   )
 
 Organization.create(
-  user_id: bobby.id
+  user: bobby
   )
 
 Twitteruser.create(
@@ -155,7 +155,7 @@ hc = User.create(
   )
 
 Organization.create(
-  user_id: hc.id
+  user: hc
   )
 
 Twitteruser.create(
@@ -172,9 +172,9 @@ Twitteruser.create(
  user: hc
   )
 
-Candidate.create(
+hcan = Candidate.create(
   user: hc,
-  office_id: president.id
+  office: president
   )
 
 jb = User.create(
@@ -183,7 +183,7 @@ jb = User.create(
   )
 
 Organization.create(
-  user_id: jb.id
+  user: jb
   )
 
 Twitteruser.create(
@@ -199,9 +199,9 @@ Twitteruser.create(
  user: jb
   )
 
-Candidate.create(
+jbcan = Candidate.create(
   user: jb,
-  office_id: president.id
+  office: president
   )
 
 
@@ -215,8 +215,8 @@ parenthood = User.create(
   district: usa
   )
 
-Organization.create(
-  user_id: parenthood.id
+parenthoodorg = Organization.create(
+  user: parenthood
   )
 
 Twitteruser.create(
@@ -234,13 +234,13 @@ Twitteruser.create(
   )
 
 Endorsement.create(
-  candidate: hc,
+  candidate: hcan,
   user: parenthood
   )
 
 Watching.create(
-  user_id: bobby.id,
-  organization_id: parenthood.id
+  user: bobby,
+  organization: parenthoodorg
   )
 
 # ------------------------------------------------
@@ -253,7 +253,7 @@ john = User.create(
   )
 
 Organization.create(
-  user_id: john.id
+  user: john
   )
 
 Twitteruser.create(
@@ -275,7 +275,7 @@ anna = User.create(
   )
 
 Organization.create(
-  user_id: john.id
+  user: john
   )
 
 Twitteruser.create(
@@ -299,7 +299,7 @@ df = User.create(
   )
 
 Organization.create(
-  user_id: df.id
+  user: df
   )
 
 Twitteruser.create(
@@ -315,9 +315,9 @@ Twitteruser.create(
  user: df
   )
 
-Candidate.create(
+dfcan = Candidate.create(
   user: df,
-  office_id: ssen.id
+  office: ssen
   )
 
 bb = User.create(
@@ -326,7 +326,7 @@ bb = User.create(
   )
 
 Organization.create(
-  user_id: bb.id
+  user: bb
   )
 
 Twitteruser.create(
@@ -342,9 +342,9 @@ Twitteruser.create(
  user: bb
   )
 
-Candidate.create(
+bbcan = Candidate.create(
   user: bb,
-  office_id: jsen.id
+  office: jsen
   )
 
 
@@ -355,7 +355,7 @@ cf = User.create(
   )
 
 Organization.create(
-  user_id: cf.id
+  user: cf
   )
 
 Twitteruser.create(
@@ -373,7 +373,7 @@ Twitteruser.create(
 
 Candidate.create(
   user: cf,
-  office_id: jsen.id
+  office: jsen
   )
 
 
@@ -383,7 +383,7 @@ as = User.create(
   )
 
 Organization.create(
-  user_id: as.id
+  user: as
   )
 
 Twitteruser.create(
@@ -401,7 +401,7 @@ Twitteruser.create(
 
 Candidate.create(
   user: as,
-  office_id: ssen.id
+  office: ssen
   )
 
 # ----------------
@@ -414,7 +414,7 @@ nra = User.create(
   )
 
 Organization.create(
-  user_id: nra.id
+  user: nra
   )
 
 Twitteruser.create(
@@ -436,8 +436,8 @@ Twitteruser.create(
   district: usa
   )
 
-Organization.create(
-  user_id: srclub.id
+srcluborg = Organization.create(
+  user: srclub
   )
 
 Twitteruser.create(
@@ -454,38 +454,38 @@ Twitteruser.create(
   )
 
 Endorsement.create(
-  candidate_id: bb.id,
-  user_id: parenthood.id
+  candidate: bbcan,
+  user: parenthood
   )
 
 Endorsement.create(
-  candidate_id: df.id,
-  user_id: srclub.id
+  candidate: dfcan,
+  user: srclub
   )
 
 Endorsement.create(
-  candidate_id: jb.id,
-  user_id: nra.id
+  candidate: jbcan,
+  user: nra
   )
 
 Watching.create(
-  user_id: john.id,
-  organization_id: parenthood.id
+  user: john,
+  organization: parenthoodorg
   )
 
 Watching.create(
-  user_id: bobby.id,
-  organization_id: srclub.id
+  user: bobby,
+  organization: srcluborg
   )
 
 Watching.create(
-  user_id: anna.id,
-  organization_id: srclub.id
+  user: anna,
+  organization: srcluborg
   )
 
 Watching.create(
-  user_id: anna.id,
-  organization_id: parenthood.id
+  user: anna,
+  organization: parenthoodorg
   )
 
 
@@ -497,7 +497,7 @@ Watching.create(
 
 # Office.create(
 #   title: "President",
-#   district_id: 1
+#   district: 1
 # )
 
 # Candidate.create(

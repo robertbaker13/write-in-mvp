@@ -16,6 +16,16 @@ class UsersController < ApplicationController
     redirect_to show_path(@user)
   end
 
+  def unwatch
+    @user_to_unwatch = User.find(params[:id])
+    @user_to_unwatch.unwatch(current_user)
+    if request.xhr?
+      render json: true
+    else
+      redirect_to show_path(current_user)
+    end
+  end
+
   # GET /users
   # GET /users.json
 
