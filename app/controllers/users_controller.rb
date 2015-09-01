@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     redirect_to show_path(@user)
   end
 
+  def unwatch
+  end
+
   # GET /users
   # GET /users.json
 

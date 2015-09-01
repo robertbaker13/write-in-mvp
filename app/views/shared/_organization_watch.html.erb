@@ -15,6 +15,8 @@
                       <li>Is endorsing: <%= endorsed_twitteruser.name %></li>
                     <% end %>
                   </li>
+                  <br>
+                  <li><%= button_to "Unwatch", unwatch_path(1),:class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :put %></li>
                 </ul>
 
                 <!-- <ul>

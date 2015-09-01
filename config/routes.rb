@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get 'deauth/twitter' => "sessions#destroy"
     post 'users/:id/watch' => "users#watch", as: 'watch'
     put 'users/:user_id/district' => 'districts#update', as: :update_district
+    put 'users/:user_id/unwatch' => 'users#unwatch', as: :unwatch
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
