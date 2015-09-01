@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   # Example of regular route:
     get 'users/:user_id/report_card' => 'users#report_card', as: :report
     get 'users/:user_id' => 'users#show', as: 'show'
-    get 'auth/:provider/callback' => 'sessions#create'
+    get 'auth/:provider/callback' => 'sessions#create', as: :callback
     get 'deauth/twitter' => "sessions#destroy"
     post 'users/:id/watch' => "users#watch", as: 'watch'
     put 'users/:user_id/district' => 'districts#update', as: :update_district
