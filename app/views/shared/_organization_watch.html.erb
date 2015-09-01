@@ -7,7 +7,7 @@
 
         <div class='col-md-9 mg p-s debug'>
 
-              <a href="#"><strong><%= twitteruser.name %></strong></a href="#">
+              <a href="<%= show_path(twitteruser) %>"><strong><%= twitteruser.name %></strong></a href="#">
                 <ul class='mg-l'>
                   <li><%= twitteruser.description %></li>
                   <li>Test: NUMBER OF ENDORSEMENTS:<%= @watched_user_endorsements[index].length %>
