@@ -31,8 +31,7 @@ var unwatchListener = function () {
     e.preventDefault();
     console.log("submitted!")
     var url = this.action;
-    var target = this.parentElement.parentElement.parentElement.parentElement;
-    debugger
+    var target = this.parentElement.parentElement
     unwatch(url, target);
   });
 
