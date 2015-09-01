@@ -692,24 +692,294 @@ Watching.create(
   organization: catholic_vote_org
   )
 
+# San Jose USE CASES
+jose = District.find(2)
 
+# San Jose Office
+council = Office.create(
+  title: "City Council",
+  election_date: '09/1/2016'
+  )
 
+# San Jose Users
+allen_u = User.create(
+  uid: "1111111111",
+  district: jose
+  )
+lan_u = User.create(
+  uid: "2222222222",
+  district: jose
+  )
+alex_u = User.create(
+  uid: "3333333333",
+  district: jose
+  )
 
+# San Jose Candidates
+allen_c = Candidate.create(
+  user: allen_u,
+  office: council,
+  )
 
+lan_c = Candidate.create(
+  user: lan_u,
+  office: council,
+  )
 
+alex_c = Candidate.create(
+  user: alex_u,
+  office: council,
+  )
 
+# San Jose Twitter Users
+allen_t = Twitteruser.create(
+  uid: "11111111",
+  nickname: "Allen MC",
+  name: "Allen Ming Chiu",
+  location: "San Jose",
+  email: "AMC@gmail.com",
+  image:
+   "http://www.usanz2015.com/media/pics/site/imagecache/C/5/C54A46D1952EC1ADFC6CBFCD93EC3F1E.jpg",
+  description:
+   "As a San Jose District 4 homeowner of 12 years, a single father of
+two boys, and extensive local community and business experience spanning
+25 years, I am ready to lead and provide effective leadership. ",
+  website: "https://www.sanjoseca.gov/DocumentCenter/View/39445",
+  twitter: "https://twitter.com/",
+  token: "11111111111-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+  user: allen_u,
+  )
 
+lan_t = Twitteruser.create(
+  uid: "222222222",
+  nickname: "LanDiep",
+  name: "Lan Diep",
+  location: "San Jose",
+  email: "LP@gmail.com",
+  image:
+   "http://files.equaljusticeworks.org/images/lan-diep.jpg",
+  description:
+   "I know that failure builds character and lays the groundwork for eventual success. But that does not make it any easier to fail so publicly and by such a thin margin of just 13 votes.",
+  website: "http://lanforsanjose.com/",
+  twitter: "https://twitter.com/",
+  token: "22222222-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+  user: lan_u,
+  )
 
+alex_t = Twitteruser.create(
+  uid: "3333333333",
+  nickname: "AlexTorres",
+  name: "Alex Torres",
+  location: "San Jose",
+  email: "AT@gmail.com",
+  image:
+   "https://i.vimeocdn.com/video/512191722_640.jpg",
+  description:
+   "My campaign for D4 is moving forward with much support and success from our neighbors and local businesses.",
+  website: "http://www.alextorresford4.com/",
+  twitter: "https://twitter.com/alextorresford4",
+  token: "3333333333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+  user: alex_u,
+  )
 
+# San Jose Organizations
 
+bng_u = User.create(
+  uid: "55555555",
+  district: jose
+  )
 
+bng_o = Organization.create(
+  user: bng_u
+  )
 
+bng_t = Twitteruser.create(
+  uid: "55555555",
+  nickname: "Berryessa",
+  name: "Berryessa Neighborhood Group",
+  location: "San Jose",
+  email: "BNG@gmail.com",
+  image:
+   "https://i.vimeocdn.com/video/512191722_640.jpg",
+  description:
+   "The purpose of this group is to give our community a place to meet and communicate on topics relating to our neighborhood. This is an open forum for neighborhood issues, complaints, alerts, information sharing, event information, school information, etc.",
+  website: "https://groups.yahoo.com/neo/groups/berryessa_neighbors/info?referrer=AlumRockTalks",
+  twitter: "https://twitter.com",
+  token: "55555555-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+  user: bng_u,
+  )
 
+lrrt_u = User.create(
+  uid: "66666666",
+  district: jose
+  )
 
+lrrt_o = Organization.create(
+  user: lrrt_u
+  )
 
+lrrt_t = Twitteruser.create(
+  uid: "66666666",
+  nickname: "La Raza",
+  name: "La Raza Round Table",
+  location: "San Jose",
+  email: "LRRT@gmail.com",
+  image:
+   "http://democracy.com/App_Uploads/DarcieGreen-post-image-large-635470871719170000.jpg",
+  description:
+   "La Raza Roundtable brings together community organizations, community leaders, elected officials, private and public sector representatives in leadership capacities that can impact positive change for La Raza.",
+  website: "https://www.facebook.com/LaRazaRoundtable/info?tab=overview",
+  twitter: "https://twitter.com",
+  token: "66666666-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+  user: lrrt_u,
+  )
 
+afas_u = User.create(
+  uid: "9999999",
+  district: jose
+  )
 
+afas_o = Organization.create(
+  user: afas_u
+  )
 
+afas_t = Twitteruser.create(
+  uid: "9999999",
+  nickname: "American Filipino Association of Seniors",
+  name: "American Filipino Association of Seniors",
+  location: "San Jose",
+  email: "AFAS@gmail.com",
+  image:
+   "https://scontent.xx.fbcdn.net/hphotos-xpf1/t31.0-8/964775_473469459392695_1290162327_o.jpg",
+  description:
+   "FILIPINO-AMERICAN SENIOR CITIZENS ASSOCIATION OF SAN DIEGO NORTH COUNTY, CA, INC.",
+  website: "https://www.facebook.com/MiraMesaFASCA",
+  twitter: "https://twitter.com",
+  token: "9999999-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+  user: afas_u,
+  )
+
+uso_u = User.create(
+  uid: "33334444",
+  district: jose
+  )
+
+uso_o = Organization.create(
+  user: uso_u
+  )
+
+uso_t = Twitteruser.create(
+  uid: "33334444",
+  nickname: "USO",
+  name: "USO SAN JOSE",
+  location: "San Jose",
+  email: "USO@gmail.com",
+  image:
+   "http://www.sleepinginairports.net/images/lounges/uso.jpg",
+  description:
+   "Make a gift ‘in honor of’ or ‘in memory of’ a family member or other loved one – made during your lifetime or in your will – and show your support and commitment to our brave men and women in uniform.",
+  website: "http://www.uso.org/",
+  twitter: "https://twitter.com",
+  token: "33334444-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+  user: uso_u,
+  )
+
+# San Jose endoresements
+Endorsement.create(
+  candidate: alex_c,
+  user: uso_u
+  )
+
+Endorsement.create(
+  candidate: alex_c,
+  user: afas_u
+  )
+
+Endorsement.create(
+  candidate: lan_c,
+  user: lrrt_u
+  )
+
+Endorsement.create(
+  candidate: allen_c,
+  user: bng_u
+  )
+
+Endorsement.create(
+  candidate: allen_c,
+  user: afas_u
+  )
+
+Endorsement.create(
+  candidate: allen_c,
+  user: lrrt_u
+  )
+
+# San Jose citizens
+first = User.create(
+  uid: "828383283",
+  district: jose
+  )
+
+second = User.create(
+  uid: "234342342",
+  district: jose
+  )
+
+first_t = Twitteruser.create(
+  uid: "3333333333",
+  nickname: "Amy",
+  name: "Amy C",
+  location: "San Jose",
+  email: "AT@gmail.com",
+  image:
+   "http://journalism.missouri.edu/wp-content/uploads/2011/10/amy-simons-20131-682x1024.jpg",
+  description:
+   "I'm the princess of san jose",
+  token: "3333333333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+  user: first
+  )
+
+second_t = Twitteruser.create(
+  uid: "3333333333",
+  nickname: "Allison",
+  name: "Allison C",
+  location: "San Jose",
+  email: "AT@gmail.com",
+  image:
+   "http://images1.wikia.nocookie.net/__cb20111122231648/sonic/images/7/74/Amy_Rose.png",
+  description:
+   "CHEEEEEEEEEEEEESE",
+  token: "3333333333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+  user: second
+  )
+
+# San Jose watches
+
+Watching.create(
+  user: first,
+  organization: lrrt_o
+  )
+
+Watching.create(
+  user: first,
+  organization: bng_o
+  )
+
+Watching.create(
+  user: first,
+  organization: uso_o
+  )
+
+Watching.create(
+  user: second,
+  organization: lrrt_o
+  )
+
+Watching.create(
+  user: second,
+  organization: uso_o
+  )
 
 #--------------------------------------
 # District.create(
