@@ -28,6 +28,9 @@ class UsersController < ApplicationController
     @twitter_profile_name = current_user.twitteruser.name
     @twitter_handle = current_user.twitteruser.nickname
     @twitter_profile_image = current_user.twitteruser.larger_image
+
+    @endorsed_candidates = current_user.profile_endorsed_candidates
+    # @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| twitteruser.user.  "which organizations are watching this user"  }
   end
 
 

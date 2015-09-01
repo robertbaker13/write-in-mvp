@@ -13,6 +13,8 @@ class WelcomeController < ApplicationController
       @twitter_profile_image = current_user.twitteruser.image
       @current_user_path = "/users/#{@current_user.id}"
 
+      @organizations_to_watch = current_user
+
     else
       @current_user_path = "#"
     end
