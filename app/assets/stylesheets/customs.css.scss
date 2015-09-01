@@ -138,3 +138,12 @@ ul, menu, dir {
     -webkit-margin-end: 0px;
     -webkit-padding-start: 0px;
 }
+
+/* Fix Overflows */
+
+.of {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
