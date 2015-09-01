@@ -5,7 +5,10 @@
       <ul class='d-i debug'>
         <li class='fs-xl mg-t p-l'><%= @twitter_profile_name %></li>
         <li class='fs-m p-l'><%= @twitter_handle %></li>
+        <% p session[:current_user_id] %>
+        <% if session[:current_user_id] == @user.id %>
           <%= render 'shared/district_form' %>
+        <% end %>
       </ul>
     </div>
     <div class="p-s rcorners bg-w mg-t mg-r">
