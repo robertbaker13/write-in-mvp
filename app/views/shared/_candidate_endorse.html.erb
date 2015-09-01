@@ -1,14 +1,13 @@
 <% @endorsed_candidates.each_with_index do |twitteruser, index| %>
-
-<div class=<%= twitteruser.image %> id="endorse">
-      <img src="http://placehold.it/48x48" alt="" class='mg p-s col-md-2'>
-      <div class='col-md-9 mg p-s debug'>
-      <a href="<%= show_path(twitteruser) %>"><strong><%= twitteruser.name %></strong></a href="#">
-      <ul class='mg-l'>
-        <li><%= twitteruser.description %></li>
-        <li>Endorsed by: Sierra Club</li>
-        <li>Endorsed by: Planned Parenthood</li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+<div class=<%= twitteruser.image %>>
+  <img src="http://placehold.it/48x48" alt="" class='mg p-s col-md-2'>
+  <div class='col-md-9 mg p-s debug'>
+  <a href="<%= show_path(twitteruser) %>"><strong><%= twitteruser.name %></strong></a href="#">
+  <ul class='mg-l'>
+    <li><%= twitteruser.description %></li>
+    <li>Endorsed by: Sierra Club</li>
+    <li>Endorsed by: Planned Parenthood</li>
+    <% end %>
+  </ul>
+</div>
+</div>
