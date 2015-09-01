@@ -28,7 +28,6 @@ var unwatchListener = function () {
     console.log("submitted!")
     var url = this.action;
     var target = this.parentElement.parentElement.parentElement.parentElement;
-    debugger
     unwatch(url, target);
   });
 
@@ -39,7 +38,7 @@ var unwatchListener = function () {
       method: "post",
       dataType: "json"
     }).done(function() {
-      $(target).hide();
+      $(target).toggle("fast");
     }).fail(function(){
       console.log("fail");
     });

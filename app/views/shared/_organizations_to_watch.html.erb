@@ -14,9 +14,10 @@
             <td><%= twitteruser.name %></td>
           <% if @logged_in %>
           <td><%= button_to "Watch", watch_path(organization.user_id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
+          <td><%= button_to "Unwatch", watch_path(organization.user_id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :style => "visibility: hidden"  %></td>
           <% else %>
           <!-- this below button logins in but does not redirect to the right page -->
-          <td><%= button_to "Watch", "/auth/twitter", :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></td>
+          <td><%= button_to "Watch", "/auth/twitter", :class => "btn-success btn-xs watch-button", :"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></td>
         </tr>
         <% end %>
       <% end %>
@@ -24,3 +25,31 @@
   </div>
 </div>
 <% end %>
+
+<script>
+$(document).ready(function() {
+  watchListener();
+
+});
+
+var watchListener = function () {
+  $(".button_to").on("submit", function(e) {
+    e.preventDefault();
+    var url = this.action;
+    var $watchButton = $(this).parent().parent();
+    watch(url, $watchButton);
+  });
+
+  var watch = function(url, $watchButton){
+    console.log(url);
+    $.ajax({
+      url: url,
+      method: "post"
+    }).done(function() {
+      $watchButton.toggle("slow");
+    }).fail(function(){
+      console.log("fail");
+    });
+  }
+}
+</script>
