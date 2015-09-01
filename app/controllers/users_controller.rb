@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.watch(current_user)
     if request.xhr?
+      render json: true
     else
       redirect_to show_path(@user)
     end
