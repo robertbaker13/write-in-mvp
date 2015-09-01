@@ -175,7 +175,7 @@ class User < ActiveRecord::Base
   def specific_watched_users
     watched_organizations = self.watchings.map { |watching| watching.organization }
     watched_users = watched_organizations.compact.map { |organization| organization.user }
-    #sorts users according to users score
+    #sorts users according to organization score
     watched_users_sorted = watched_users.sort_by {|user| user.org_score}
     watched_users_twitter = watched_users_sorted.compact.map { |user| user.twitteruser }
     watched_users_twitter.compact
@@ -187,20 +187,12 @@ class User < ActiveRecord::Base
     endorsed_users = self.endorsements.map { |endorsement| endorsement }
     endorsed_candidates = endorsed_users.map { |endorsement| endorsement.candidate }
     endorsed_candidate_users = endorsed_candidates.compact.map { |candidate| candidate.user }
-    endorsed_users_twitter = endorsed_candidate_users.map { |user| user.twitteruser }
-    #not sorted yet, nor any limit
+    #sorts candidates according to organization score (should be candidate score)
+    endorsed_candidate_users_sorted = endorsed_candidate_users.sort_by {|user| user.org_score}
+    endorsed_users_twitter = endorsed_candidate_users_sorted.map { |user| user.twitteruser }
+    # cut_off_twitteruser_array = endorsed_users_twitter[0..10]
   end
 
-  # def profile_users_endorsing_specific_candidates
-  #   candidate_id = self.id
-  #   users_endorsements = users.map { |user| user.endorsements}
-  #   endorsing_orgs = users.each_with_index do {|user, index|
-  #     }
-  #   # users_endorsed_candidates = users_endorsements.map { |endorsement|
-  #   #                               if endorsement.candidate_id
-
-  #   #                      }
-  # end
 
 #Report card page:
 #--------------------------

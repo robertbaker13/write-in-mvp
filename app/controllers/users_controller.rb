@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @current_user = current_user
     @user = User.find(params[:id])
     @watched_users = @user.specific_watched_users
-    @watched_user_endorsements = @watched_users.map { |twitteruser| twitteruser.user.specfic_endorsed_candidates }
+    @watched_user_endorsements = @watched_users.map { |twitteruser| twitteruser.user.specific_endorsed_candidates }
 
     @twitter_profile_name = @user.twitteruser.name
     @twitter_handle = @user.twitteruser.nickname
@@ -44,7 +44,6 @@ class UsersController < ApplicationController
 
     @endorsed_candidates = @user.specific_endorsed_candidates
     # @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| twitteruser.user.  "which organizations are watching this user"  }
-
   end
 
 
