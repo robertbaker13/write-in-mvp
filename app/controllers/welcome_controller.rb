@@ -4,9 +4,10 @@ class WelcomeController < ApplicationController
     @logged_in = logged_in?
     @home = true # this hides the white status bar from the home page
 
-    @organizations = current_user.home_login_users_to_watch # this is NOT what we actually want displayed, just for testin
 
-    @candidates = current_user.home_login_candidates_to_endorse
+    user = current_user || User.new
+    @candidates = user.home_login_candidates_to_endorse
+    @organizations = user.home_login_users_to_watch
 
     if @logged_in
       @twitter_profile_name = current_user.twitteruser.name

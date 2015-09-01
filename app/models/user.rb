@@ -91,8 +91,13 @@ class User < ActiveRecord::Base
 
   #check that all information is district specific
   def user_specific_districts
-    districts = self.district.add_parents
-    districts_array = districts.map {|district| district.id}
+    if self.district
+      districts = self.district.add_parents
+      districts_array = districts.map {|district| district.id}
+    else
+      districts = District.all
+      districts_array = districts.map {|district| district.id}
+    end
   end
 
   #returns all users
