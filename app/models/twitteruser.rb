@@ -1,6 +1,8 @@
 class Twitteruser < ActiveRecord::Base
   belongs_to :user
 
+  fuzzily_searchable :name
+
   def self.create_or_update(auth)
     twitteruser = Twitteruser.find_by(uid: auth["uid"]) || Twitteruser.new(uid: auth["uid"])
     twitteruser.nickname = auth["info"]["nickname"]
