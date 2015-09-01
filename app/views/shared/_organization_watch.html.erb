@@ -2,17 +2,21 @@
 <div class='rcorners bg-w row txt-c'>
   <img src=<%= twitteruser.image %> alt="" class='mg p-s col-md-2'>
   <div class='col-md-9 mg p-s debug'>
-  <a href="#"><strong><%= twitteruser.name %></strong></a href="#">
-  <ul class='mg-l'>
-    <li><%= twitteruser.description %></li>
-    <li><%= @watched_user_endorsements[index].length %> Endorsements
-      <% @watched_user_endorsements[index].each_with_index do |endorsed_twitteruser, index| %>
-      <li>Is endorsing: <%= endorsed_twitteruser.name %></li>
-      <% end %>
-    </li>
-    <br>
-    <li><%= button_to "Unwatch", unwatch_path(twitteruser),:class => "btn-success btn-xs",:"aria-hidden"=> "true", :id => "organization-#{twitteruser.id}", :method => :put %></li>
-  </ul>
+  <a href="#"><strong><%= twitteruser.name %></strong></a>
+  <p><%= twitteruser.description %></p>
+  <details>
+    <summary>
+      <%= @watched_user_endorsements[index].length %> Endorsements
+    </summary>
+      <ul>
+        <% @watched_user_endorsements[index].each_with_index do |endorsed_twitteruser, index| %>
+          <li>
+            <%= endorsed_twitteruser.name %>
+          </li>
+        <% end %>
+      </ul>
+  </details></br>
+  <%= button_to "Unwatch", unwatch_path(twitteruser),:class => "btn-success btn-xs",:"aria-hidden"=> "true", :id => "organization-#{twitteruser.id}", :method => :put %>
 </div>
 </div>
 <% end %>
