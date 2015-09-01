@@ -3,19 +3,22 @@
   <img src=<%= organization.image %> alt="" class='mg p-s col-md-2'>
   <div class='col-md-9 mg p-s debug'>
     <table class='debug w txt-c'>
+      <thead>
       <tr class='debug'>
-        <td><a href="<%= show_path(organization) %>"><%= organization.name %></a></td>
-        <ul>
-              <% @candidates_endorsed_by_orgs[index].each do |twitteruser| %>
-                      <li>Endorsing: <%= twitteruser.name %></li>
-                    <% end %>
-        </ul>
-        <% if @logged_in %>
-        <td><%= button_to "Watch", watch_path(organization.user_id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
-        <% else %>
-        <!-- this below button logins in but does not redirect to the right page -->
-        <td><%= button_to "Watch", "/auth/twitter", :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></td>
-      </tr>
+        <th class='txt-c fs-m'><a href="<%= show_path(organization) %>">
+          <%= organization.name %></a></td>
+        </th>
+      </thead>
+          <% @candidates_endorsed_by_orgs[index].each do |twitteruser| %>
+        <tr>
+            <td><%= twitteruser.name %></td>
+          <% if @logged_in %>
+          <td><%= button_to "Watch", watch_path(organization.user_id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
+          <% else %>
+          <!-- this below button logins in but does not redirect to the right page -->
+          <td><%= button_to "Watch", "/auth/twitter", :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></td>
+        </tr>
+        <% end %>
       <% end %>
     </table>
   </div>
