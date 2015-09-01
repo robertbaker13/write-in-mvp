@@ -60,18 +60,18 @@
   <ul class='nav nav-tabs bg-w row txt-c'>
     <li class="active of">
       <a href="#watching" data-toggle="tab">
-        <span title="People <%= @current_user == @user ? "I Watch" : "#{@user.name} Watches" %>">
+        <span title="Organizations <%= @current_user == @user ? "I Watch" : "#{@user.name} watches" %>">
           <strong>
-          People <%= @current_user == @user ? "I Watch" : "#{@user.name} Watches" %>
+            Watches
           </strong>
         </span>
       </a>
     </li>
     <li>
       <a href="#endorse" data-toggle='tab' class='of'>
-        <span title="People <%= @current_user == @user ? "I Endorse" : "#{@user.name} Endorses" %>">
+        <span title="Candidates <%= @current_user == @user ? "I Endorse" : "#{@user.name} endorses" %>">
         <strong>
-          People <%= @current_user == @user ? "I Endorse" : "#{@user.name} Endorses" %>
+          Endorses
         </strong>
       </span>
       </a>
