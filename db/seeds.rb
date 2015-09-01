@@ -332,7 +332,7 @@ Organization.create(
 Twitteruser.create(
  uid: "44444444",
  nickname: "Babs",
- name: "BARBARA BOXER",
+ name: "Barbara Boxer",
  location: "San Francisco County",
  email: "bb@gmail.com",
  image: "http://cdn-media.leanin.org/wp-content/uploads/2013/03/BarbaraBoxer_290.jpg",
