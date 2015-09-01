@@ -2,15 +2,17 @@
   <div class="col-md-3">
     <div class="mg-r">
       <img src=<%= @twitter_profile_image %> class='debug img-thumbnail' height="200" width="200">
-      <ul class='d-i debug'>
+      <ul class='debug'>
         <li class='fs-xl mg-t p-l'><%= @twitter_profile_name %></li>
         <li class='fs-m p-l'><%= @twitter_handle %></li>
+        <% if @current_user == @user %>
           <%= render 'shared/district_form' %>
+        <% end %>
       </ul>
     </div>
     <div class="p-s rcorners bg-w mg-t mg-r">
-      <a href="<%= @current_user ? report_path(@current_user) : "#" %>"><p class="txt-c fs-l">Compatibility Report</p></a>
-      <p class='fs-xm txt-c'>Which candidates share my values?</p>
+      <a href="<%= @current_user ? report_path(@user) : "#" %>"><p class="txt-c fs-l">Compatibility Report</p></a>
+      <p class='fs-xm txt-c'>Which candidates share <%= @current_user == @user ? "my values?" : @user.name + "'s values?" %></p>
       <table class='w mg'>
         <tr>
           <th colspan="2" class='txt-c p-t'>President</th>
@@ -60,8 +62,8 @@
         </li>
       </ul>
     <ul class='nav nav-tabs bg-w row txt-c'>
-      <li class="active"><a href="#watching" data-toggle="tab"><strong>People I Watch</strong></a></li>
-      <li><a href="#endorse" data-toggle='tab'><strong>People I Endorse</strong></a></li>
+      <li class="active"><a href="#watching" data-toggle="tab"><strong>People <%= @current_user == @user ? "I Watch" : "#{@user.name} Watches" %></strong></a></li>
+      <li><a href="#endorse" data-toggle='tab'><strong>People <%= @current_user == @user ? "I Endorse" : "#{@user.name} Endorses" %> Endorse</strong></a></li>
     </ul>
     <div class='tab-content'>
       <div class='tab-pane active' id='watching'>

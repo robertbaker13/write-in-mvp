@@ -2,11 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def report_card
-    @reports = current_user.report_card
-    @watched_users = current_user.profile_watched_users
-    @twitter_profile_name = current_user.twitteruser.name
-    @twitter_handle = current_user.twitteruser.nickname
-    @twitter_profile_image = current_user.twitteruser.larger_image
+    @user = User.find(params[:user_id])
+    # @reports = current_user.report_card
+    # @watched_users = current_user.profile_watched_users
+    @twitter_profile_name = @user.twitteruser.name
+    @twitter_handle = @user.twitteruser.nickname
+    @twitter_profile_image = @user.twitteruser.larger_image
   end
 
   def watch
@@ -40,6 +41,10 @@ class UsersController < ApplicationController
     @twitter_profile_name = @user.twitteruser.name
     @twitter_handle = @user.twitteruser.nickname
     @twitter_profile_image = @user.twitteruser.larger_image
+
+    @endorsed_candidates = current_user.profile_endorsed_candidates
+    # @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| twitteruser.user.  "which organizations are watching this user"  }
+
   end
 
 

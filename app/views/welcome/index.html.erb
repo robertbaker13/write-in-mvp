@@ -1,5 +1,6 @@
 <div class='row'>
   <div class="col-md-3 debug mg">
+    <% if @current_user %>
     <div class='row mg p bg-w'>
       <img src=<%= @twitter_profile_image %> class='debug img-thumbnail col-md-3'>
       <div class='col-md-9'>
@@ -28,7 +29,9 @@
       </li>
     </ul>
     </div>
-    <div class='debug bg-w mg mg-t p'>
+    <% end %>
+
+      <div class='debug bg-w mg mg-t p'>
       <h4 class='fw-t txt-c'>How This Works</h4>
       <p>
         <strong>Purpose: </strong> Help users discover shared values through following organizational endorsements.<br/>
@@ -51,10 +54,11 @@
       <li><a href="#candidates" data-toggle='tab'><strong>Candidates To Endorse</strong></a></li>
     </ul>
     <div class='tab-content'>
-    <div class='rcorners bg-w row txt-c tab-pane active' id='organizations'>
-      <%= render "shared/organizations_to_watch" %>
-    </div>
-    <div class='rcorners bg-w row txt-c tab-pane' id='candidates'>
+      <div class='tab-pane active' id='organizations'>
+        <%= render "shared/organizations_to_watch" %>
+      </div>
+
+      <div class='txt-c tab-pane' id='candidates'>
       <%= render "shared/candidates_to_watch" %>
     </div>
 

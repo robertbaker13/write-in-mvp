@@ -67,12 +67,13 @@ class User < ActiveRecord::Base
 
   #top users to watch in user specific district calculation
   def users_score
-    if self.twitteruser == nil || self.twitteruser.followers == nil || self.twitteruser.followers == [] || self.endorsements == [] #FL double checked these. However are there more eventualities?
+    if self.twitteruser == nil || self.endorsements == []
+      #|| self.twitteruser.followers == nil || self.twitteruser.followers == []
       sum_score = 1
     else
       endorsements = self.endorsements.map { |endorsement| endorsement }
-      followers = self.twitteruser.followers.map { |follower| follower }
-      sum_score = endorsements.compact.count + followers.compact.count
+      # followers = self.twitteruser.followers.map { |follower| follower }
+      sum_score = endorsements.compact.count #+ followers.compact.count
     end
   end
 
@@ -108,6 +109,7 @@ class User < ActiveRecord::Base
       unless already_watched_users.include?(user.id)
         user
       end }
+    twitterusers = filtered_district_and_watched_user_array.map { |user| user.twitteruser }
     # cut_off_users_array = filtered_district_and_watched_user_array[0..10]
   end
 
@@ -126,6 +128,7 @@ class User < ActiveRecord::Base
       unless already_watched_users.include?(candidate.id)
         candidate
       end }
+      twitterusers = filtered_district_and_watched_candidate_array.map {|candidate| candidate.twitteruser}
     # cut_off_candidate_array = filtered_district_and_watched_candidate_array[0..10]
   end
 
@@ -150,8 +153,19 @@ class User < ActiveRecord::Base
     endorsed_candidates = endorsed_users.map { |endorsement| endorsement.candidate }
     endorsed_candidate_users = endorsed_candidates.compact.map { |candidate| candidate.user }
     endorsed_users_twitter = endorsed_candidate_users.map { |user| user.twitteruser }
-    #not sorted yet, nor any imit
+    #not sorted yet, nor any limit
   end
+
+  # def profile_users_endorsing_specific_candidates
+  #   candidate_id = self.id
+  #   users_endorsements = users.map { |user| user.endorsements}
+  #   endorsing_orgs = users.each_with_index do {|user, index|
+  #     }
+  #   # users_endorsed_candidates = users_endorsements.map { |endorsement|
+  #   #                               if endorsement.candidate_id
+
+  #   #                      }
+  # end
 
 #Report card page:
 #--------------------------

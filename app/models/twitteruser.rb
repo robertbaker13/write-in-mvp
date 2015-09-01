@@ -15,7 +15,7 @@ class Twitteruser < ActiveRecord::Base
     twitteruser
   end
 
-  def endorsements
+  def endorsements #Fl: do not think that we need this method!
     self.user.endorsements
   end
 
