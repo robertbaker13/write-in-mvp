@@ -62,7 +62,9 @@ class User < ActiveRecord::Base
     Endorsement.create(args)
   end
 
-  def unendorse
+  def unendorse(candidate)
+    endorsement_to_destroy = Endorsement.find_by(candidate: candidate, user: self)
+    endorsement_to_destroy && endorsement_to_destroy.destroy
   end
 
   def self.create_or_update(twitter_user)

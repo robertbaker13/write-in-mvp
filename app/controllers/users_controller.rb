@@ -40,6 +40,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def unendorse
+    @candidate_to_unendorse = Candidate.find(params[:id])
+    current_user.unendorse(@candidate_to_unendorse)
+    if request.xhr?
+      render json: true
+    else
+      redirect_to show_path(current_user)
+    end
+  end
+
   # GET /users
   # GET /users.json
 
