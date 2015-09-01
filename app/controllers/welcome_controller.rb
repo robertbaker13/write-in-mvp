@@ -9,10 +9,10 @@ class WelcomeController < ApplicationController
     @candidates = user.home_login_candidates_to_endorse
     @organizations = user.home_login_users_to_watch
 
-    @candidates = user.home_login_candidates_to_endorse
     @orgs_endorsing_candidates = @candidates.map { |twitteruser| twitteruser.user.home_login_users_to_watch }
 
-
+    @candidates_endorsed_by_orgs = @organizations.map { |twitteruser| twitteruser.user.home_login_candidates_to_endorse
+    }
 
     if @logged_in
       @twitter_profile_name = current_user.twitteruser.name
