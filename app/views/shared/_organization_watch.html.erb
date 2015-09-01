@@ -1,59 +1,45 @@
 <% @watched_users.each_with_index do |twitteruser, index| %>
-
-
-      <div class='rcorners bg-w row txt-c organization-<%= twitteruser.id %>'>
-
-        <img src=<%= twitteruser.image %> alt="" class='mg p-s col-md-2'>
-
-        <div class='col-md-9 mg p-s debug'>
-
-              <a href="#"><strong><%= twitteruser.name %></strong></a href="#">
-                <ul class='mg-l'>
-                  <li><%= twitteruser.description %></li>
-                  <li>Test: NUMBER OF ENDORSEMENTS:<%= @watched_user_endorsements[index].length %>
-                    <% @watched_user_endorsements[index].each_with_index do |endorsed_twitteruser, index| %>
-                      <li>Is endorsing: <%= endorsed_twitteruser.name %></li>
-                    <% end %>
-                  </li>
-
-                  <br>
-                  <li><%= button_to "Unwatch", unwatch_path(twitteruser),:class => "btn-success btn-xs",:"aria-hidden"=> "true", :id => "organization-#{twitteruser.id}", :method => :put %></li>
-
-
-                </ul>
-        </div>
-
-      </div>
-
-
+<div class='rcorners bg-w row txt-c'>
+  <img src=<%= twitteruser.image %> alt="" class='mg p-s col-md-2'>
+  <div class='col-md-9 mg p-s debug'>
+  <a href="#"><strong><%= twitteruser.name %></strong></a href="#">
+  <ul class='mg-l'>
+    <li><%= twitteruser.description %></li>
+    <li><%= @watched_user_endorsements[index].length %> Endorsements
+      <% @watched_user_endorsements[index].each_with_index do |endorsed_twitteruser, index| %>
+      <li>Is endorsing: <%= endorsed_twitteruser.name %></li>
+      <% end %>
+    </li>
+    <br>
+    <li><%= button_to "Unwatch", unwatch_path(twitteruser),:class => "btn-success btn-xs",:"aria-hidden"=> "true", :id => "organization-#{twitteruser.id}", :method => :put %></li>
+  </ul>
+</div>
+</div>
 <% end %>
 <script>
 $(document).ready(function() {
-  unwatchListener();
-  console.log("ready");
+unwatchListener();
+console.log("ready");
 });
-
 var unwatchListener = function () {
-  console.log("listener running");
-  $(".button_to").on("submit", function(e) {
-    e.preventDefault();
-    var url = this.action;
-    var target = "." + this.children[1].id;
-
-    unwatch(url, target);
-  });
-
-  var unwatch = function(url, target){
-    console.log(url);
-    $.ajax({
-      url: url,
-      method: "post",
-      dataType: "json"
-    }).done(function() {
-      $(target).hide();
-    }).fail(function(){
-      console.log("fail");
-    });
-  }
+console.log("listener running");
+$(".button_to").on("submit", function(e) {
+e.preventDefault();
+var url = this.action;
+var target = "." + this.children[1].id;
+unwatch(url, target);
+});
+var unwatch = function(url, target){
+console.log(url);
+$.ajax({
+url: url,
+method: "post",
+dataType: "json"
+}).done(function() {
+$(target).hide();
+}).fail(function(){
+console.log("fail");
+});
+}
 }
 </script>
