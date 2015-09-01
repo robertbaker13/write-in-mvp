@@ -553,28 +553,7 @@ Twitteruser.create(
  token: "7744152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: nrlc
   )
-#----------------
-#--------
-smg = User.create(
-  uid: "7744157777",
-  district: usa
-  )
 
-smg_org = Organization.create(
-  user: smg
-  )
-
-Twitteruser.create(
- uid: "7744157777",
- nickname: "SMG",
- name: "The Scotts Miracle-Gro Company",
- location: "USA",
- image: "https://upload.wikimedia.org/wikipedia/en/f/f8/Scotts-miracle-gro_logo.png",
- description: "News & insights from The Scotts Miracle-Gro Company. Follow us to see how we are helping people of all ages express themselves on their own piece of the Earth.",
- token: "7744157777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: smg
-  )
-#----------------
 #--------
 smg = User.create(
   uid: "7744157777",
@@ -611,7 +590,7 @@ Twitteruser.create(
  nickname: "Lechy",
  name: "Lech Walesa",
  location: "Poland",
- image: "https://upload.wikimedia.org/wikipedia/en/f/f8/Scotts-miracle-gro_logo.png",
+ image: "https://upload.wikimedia.org/wikipedia/commons/8/87/Lech_Walesa_-_2009.jpg",
  description: "Former president of Poland",
  token: "7744157777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: lwal )
@@ -670,6 +649,11 @@ Twitteruser.create(
 
 Endorsement.create(
   candidate: dt_can,
+  user: smg
+  )
+
+Endorsement.create(
+  candidate: dt_can,
   user: dr
   )
 
@@ -680,7 +664,7 @@ Endorsement.create(
 
 Endorsement.create(
   candidate: jbcan,
-  user: go_proud
+  user: smg
   )
 
 Endorsement.create(
