@@ -8,8 +8,8 @@
         <% if @logged_in %>
         <td><%= button_to "Watch", watch_path(organization.user_id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
         <% else %>
-        <!-- this below button doesnt work for now -->
-        <td><%= button_to "Watch", login_and_watch_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></td>
+        <!-- this below button logins in but does not redirect to the right page -->
+        <td><%= button_to "Watch", "/auth/twitter", :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></td>
       </tr>
       <% end %>
     </table>
