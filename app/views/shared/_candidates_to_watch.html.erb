@@ -6,18 +6,17 @@
       <thead>
         <tr class='debug'>
           <th class='txt-c fs-m th-w'><a href="<%= show_path(candidate) %>">
-          <%= candidate.name %></a></td>
+          <%= candidate.name %></a></th>
+          <th><%= candidate.description %></th>
         </th>
-      </thead>
-      <tr>
-        <td><%= candidate.description %></td>
         <% if @logged_in %>
-        <td><%= button_to "Watch", watch_path(candidate.user.id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
+        <th><%= button_to "Endorse", endorse_path(candidate.user.id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></th>
         <% else %>
         <!-- this below button logins in but does not redirect to the right page -->
-        <td><%= button_to "Watch", login_and_watch_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => candidate.user }  %></td>
-      </tr>
-      <% end %>
+        <th><%= button_to "Endorse", login_and_endorse_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => candidate.user }  %></th>
+        <% end %>
+      </thead>
+      <tr>
     </table>
   </div>
 </div>
