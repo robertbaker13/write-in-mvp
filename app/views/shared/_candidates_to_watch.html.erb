@@ -1,5 +1,5 @@
 
-<% @candidates.each do |candidate| %>
+<% @candidates.each_with_index do |candidate, index| %>
 
 <div class='rcorners bg-w row'>
 <img src=<%= candidate.image %> alt="" class='mg p-s col-md-2'>
@@ -7,6 +7,11 @@
       <table class='debug w txt-c'>
             <tr class='debug'>
               <td><%= candidate.name %></td>
+              <ul>
+              <% @orgs_endorsing_candidates[index].each do |twitteruser| %>
+                      <li>Endorsed by: <%= twitteruser.name %></li>
+                    <% end %>
+              </ul>
             <% if @logged_in %>
               <td><%= button_to "Watch", watch_path(candidate.user.id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
             <% else %>
