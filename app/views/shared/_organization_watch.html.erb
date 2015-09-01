@@ -27,33 +27,4 @@
 
 
 <% end %>
-<script>
-$(document).ready(function() {
-  unwatchListener();
-  console.log("ready");
-});
 
-var unwatchListener = function () {
-  console.log("listener running");
-  $(".button_to").on("submit", function(e) {
-    e.preventDefault();
-    var url = this.action;
-    var target = "." + this.children[1].id;
-
-    unwatch(url, target);
-  });
-
-  var unwatch = function(url, target){
-    console.log(url);
-    $.ajax({
-      url: url,
-      method: "post",
-      dataType: "json"
-    }).done(function() {
-      $(target).hide();
-    }).fail(function(){
-      console.log("fail");
-    });
-  }
-}
-</script>
