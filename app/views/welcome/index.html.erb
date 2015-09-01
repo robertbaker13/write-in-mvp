@@ -51,10 +51,11 @@
       <li><a href="#candidates" data-toggle='tab'><strong>Candidates To Endorse</strong></a></li>
     </ul>
     <div class='tab-content'>
-    <div class='rcorners bg-w row txt-c tab-pane active' id='organizations'>
-      <%= render "shared/organizations_to_watch" %>
-    </div>
-    <div class='rcorners bg-w row txt-c tab-pane' id='candidates'>
+      <div class='tab-pane active' id='organizations'>
+        <%= render "shared/organizations_to_watch" %>
+      </div>
+
+      <div class='txt-c tab-pane' id='candidates'>
       <%= render "shared/candidates_to_watch" %>
     </div>
 
