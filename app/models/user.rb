@@ -50,6 +50,11 @@ class User < ActiveRecord::Base
     Watching.find_or_create(args)
   end
 
+  def unwatch(current_user)
+    watching_to_destroy = Watching.find_by(organization: self.organization)
+    watching_to_destroy && watching_to_destroy.destroy
+  end
+
   def self.create_or_update(twitter_user)
     user = User.find_by(uid: twitter_user.uid) || User.new(uid: twitter_user.uid, district_id: 1)
     user.save

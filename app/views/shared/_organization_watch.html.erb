@@ -1,7 +1,7 @@
 <% @watched_users.each_with_index do |twitteruser, index| %>
 
 
-      <div class='rcorners bg-w row txt-c'>
+      <div class='rcorners bg-w row txt-c organization-<%= twitteruser.id %>'>
 
         <img src=<%= twitteruser.image %> alt="" class='mg p-s col-md-2'>
 
@@ -15,6 +15,11 @@
                       <li>Is endorsing: <%= endorsed_twitteruser.name %></li>
                     <% end %>
                   </li>
+
+                  <br>
+                  <li><%= button_to "Unwatch", unwatch_path(twitteruser),:class => "btn-success btn-xs",:"aria-hidden"=> "true", :id => "organization-#{twitteruser.id}", :method => :put %></li>
+
+
                 </ul>
         </div>
 
@@ -22,3 +27,33 @@
 
 
 <% end %>
+<script>
+$(document).ready(function() {
+  unwatchListener();
+  console.log("ready");
+});
+
+var unwatchListener = function () {
+  console.log("listener running");
+  $(".button_to").on("submit", function(e) {
+    e.preventDefault();
+    var url = this.action;
+    var target = "." + this.children[1].id;
+
+    unwatch(url, target);
+  });
+
+  var unwatch = function(url, target){
+    console.log(url);
+    $.ajax({
+      url: url,
+      method: "post",
+      dataType: "json"
+    }).done(function() {
+      $(target).hide();
+    }).fail(function(){
+      console.log("fail");
+    });
+  }
+}
+</script>
