@@ -21,16 +21,19 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @logged_in = logged_in?
     @current_user = current_user
-    @watched_users = current_user.profile_watched_users
+    @user = User.find(params[:id])
+    @watched_users = @user.profile_watched_users
     @watched_user_endorsements = @watched_users.map { |twitteruser| twitteruser.user.profile_endorsed_candidates }
 
-    @twitter_profile_name = current_user.twitteruser.name
-    @twitter_handle = current_user.twitteruser.nickname
-    @twitter_profile_image = current_user.twitteruser.larger_image
+    @twitter_profile_name = @user.twitteruser.name
+    @twitter_handle = @user.twitteruser.nickname
+    @twitter_profile_image = @user.twitteruser.larger_image
 
     @endorsed_candidates = current_user.profile_endorsed_candidates
     # @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| twitteruser.user.  "which organizations are watching this user"  }
+
   end
 
 
