@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def report_card
     @user = User.find(params[:user_id])
     # @reports = current_user.report_card
-    # @watched_users = current_user.profile_watched_users
+    # @watched_users = current_user.specific_watched_users
     @twitter_profile_name = @user.twitteruser.name
     @twitter_handle = @user.twitteruser.nickname
     @twitter_profile_image = @user.twitteruser.larger_image
@@ -35,18 +35,16 @@ class UsersController < ApplicationController
     @logged_in = logged_in?
     @current_user = current_user
     @user = User.find(params[:id])
-    @watched_users = @user.profile_watched_users
-    @watched_user_endorsements = @watched_users.map { |twitteruser| twitteruser.user.profile_endorsed_candidates }
+    @watched_users = @user.specific_watched_users
+    @watched_user_endorsements = @watched_users.map { |twitteruser| twitteruser.user.specific_endorsed_candidates }
 
     @twitter_profile_name = @user.twitteruser.name
     @twitter_handle = @user.twitteruser.nickname
     @twitter_profile_image = @user.twitteruser.larger_image
 
-    @endorsed_candidates = @user.profile_endorsed_candidates
+    @endorsed_candidates = @user.specific_endorsed_candidates
     # @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| twitteruser.user.  "which organizations are watching this user"  }
-
   end
-
 
   # GET /users/new
   def new
