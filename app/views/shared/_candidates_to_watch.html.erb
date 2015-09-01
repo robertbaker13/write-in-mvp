@@ -6,7 +6,8 @@
       <thead>
         <tr class='debug'>
           <th class='txt-c fs-m th-w'><a href="<%= show_path(candidate) %>">
-          <%= candidate.name %></a></td>
+          <%= candidate.name %></a></th>
+          <th><%= candidate.description %></th>
         </th>
         <% if @logged_in %>
         <th><%= button_to "Endorse", endorse_path(candidate.user.id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></th>
@@ -15,11 +16,7 @@
         <th><%= button_to "Endorse", login_and_endorse_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => candidate.user }  %></th>
         <% end %>
       </thead>
-      <% @orgs_endorsing_candidates[index].each do |twitteruser| %>
       <tr>
-        <td><%= twitteruser.name %></td>
-      </tr>
-      <% end %>
     </table>
   </div>
 </div>
