@@ -55,6 +55,16 @@ class User < ActiveRecord::Base
     watching_to_destroy && watching_to_destroy.destroy
   end
 
+  def endorse(current_user)
+    args = {}
+    args[:user] = current_user
+    args[:candidate] = Candidate.find_by(user: self)
+    Endorsement.create(args)
+  end
+
+  def unendorse
+  end
+
   def self.create_or_update(twitter_user)
     user = User.find_by(uid: twitter_user.uid) || User.new(uid: twitter_user.uid, district_id: 1)
     user.save
