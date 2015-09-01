@@ -63,13 +63,15 @@
       </ul>
     <ul class='nav nav-tabs bg-w row txt-c'>
       <li class="active"><a href="#watching" data-toggle="tab"><strong>People <%= @current_user == @user ? "I Watch" : "#{@user.name} Watches" %></strong></a></li>
-      <li><a href="#endorse" data-toggle='tab'><strong>People <%= @current_user == @user ? "I Endorse" : "#{@user.name} Endorses" %> Endorse</strong></a></li>
+      <li><a href="#endorse" data-toggle='tab'><strong>People <%= @current_user == @user ? "I Endorse" : "#{@user.name} Endorses" %></strong></a></li>
     </ul>
     <div class='tab-content'>
       <div class='tab-pane active' id='watching'>
         <%= render "shared/organization_watch" %>
     </div>
+    <div class='tab-pane' id='endorse'>
         <%= render "/shared/candidate_endorse" %>
+      </div>
 </div>
 </div>
 </div>
