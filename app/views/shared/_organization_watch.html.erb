@@ -16,7 +16,7 @@
         <% end %>
       </ul>
   </details></br>
-  <%= button_to "Unwatch", unwatch_path(twitteruser),:class => "btn-success btn-xs",:"aria-hidden"=> "true", :id => "organization-#{twitteruser.id}", :method => :put %>
+  <%= button_to "Unwatch", unwatch_path(twitteruser),:class => "btn-danger btn-xs",:"aria-hidden"=> "true", :id => "organization-#{twitteruser.id}", :method => :put %>
 </div>
 </div>
 <% end %>

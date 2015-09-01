@@ -10,9 +10,10 @@
   <ul class='mg-l'>
     <li><%= twitteruser.description %></li>
     <li>
-      <p> TO TOM: Please add endorsement button </p>
+      <%= button_to "Unendorse", unendorse_path, :class => "btn-danger btn-xs unendorse-button" %>
     </li>
   </ul>
 </div>
 </div>
 <% end %>
+
