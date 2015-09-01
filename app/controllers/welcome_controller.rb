@@ -7,11 +7,10 @@ class WelcomeController < ApplicationController
 
     user = current_user || User.new
     @candidates = user.home_login_candidates_to_endorse
-    @organizations = user.home_login_users_to_watch
-
     @orgs_endorsing_candidates = @candidates.map { |twitteruser| twitteruser.user.home_login_users_to_watch }
 
-    @candidates_endorsed_by_orgs = @organizations.map { |twitteruser| twitteruser.user.home_login_candidates_to_endorse
+    @organizations = user.home_login_users_to_watch
+    @candidates_endorsed_by_orgs = @organizations.map { |twitteruser| twitteruser.user.profile_endorsed_candidates
     }
 
     if @logged_in
