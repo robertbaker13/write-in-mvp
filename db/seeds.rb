@@ -165,9 +165,9 @@ Twitteruser.create(
  location: "Washington DC",
  email: "hc@gmail.com",
  image: "http://a4.files.biography.com/image/upload/c_fill,cs_srgb,dpr_1.0,g_face,h_300,q_80,w_300/MTE4MDAzNDEwMDU4NTc3NDIy.jpg",
- description: "Democrat - Running for President:)", #notsure?
+ description: "Wife, mom, grandma, women+kids advocate, FLOTUS, Senator, SecState, hair icon, pantsuit aficionado, 2016 presidential candidate. Tweets from Hillary signed –H",
  website: "https://www.hillaryclinton.com/",
- twitter: "https://twitter.com/hc", #take real one?
+ twitter: "https://twitter.com/hc",
  token: "3388540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: hc
   )
@@ -193,7 +193,7 @@ Twitteruser.create(
  location: "Washington DC",
  email: "jb@gmail.com",
  image: "http://www.adweek.com/files/imagecache/node-blog/blogs/jeb-bush-logo-hed-2015.jpg",
- description: "Republican - Running for President:)", #notsure?
+ description: "43rd Governor of the State of Florida", #notsure?
  twitter: "https://twitter.com/jb", #take real one?
  token: "33877777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: jb
@@ -226,7 +226,7 @@ Twitteruser.create(
  location: "USA",
  email: "plp@gmail.com",
  image: "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Planned_Parenthood_logo.svg/1280px-Planned_Parenthood_logo.svg.png",
- description: "Care. No matter what",
+ description: "Hi! We’re America’s most trusted provider of reproductive health care, and we think we look pretty good for nearly 100 years old.",
  website: "http://www.plannedparenthood.org/",
  twitter: "https://twitter.com/plp",
  token: "3388540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
@@ -305,11 +305,11 @@ Organization.create(
 Twitteruser.create(
  uid: "33333333",
  nickname: "DianneF",
- name: "DIANNE FEINSTEIN",
+ name: "Dianne Feinstein",
  location: "San Francisco Location",
  email: "df@gmail.com",
  image: "https://upload.wikimedia.org/wikipedia/commons/0/01/DianneFeinstein.jpg",
- description: "Democrat - Running for Senior Senator!",
+ description: "United States Senator from California",
  twitter: "https://twitter.com/df", #take real one?
  token: "33333333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: df
@@ -336,7 +336,7 @@ Twitteruser.create(
  location: "San Francisco County",
  email: "bb@gmail.com",
  image: "http://cdn-media.leanin.org/wp-content/uploads/2013/03/BarbaraBoxer_290.jpg",
- description: "Democrat - Running for Junior Senator!",
+ description: "Democratic U.S. Senator from California",
  twitter: "https://twitter.com/df", #take real one?
  token: "44444444-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: bb
@@ -365,7 +365,7 @@ Twitteruser.create(
  location: "San Francisco County",
  email: "cf@gmail.com",
  image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Carly_fiorina_speaking.jpg/220px-Carly_fiorina_speaking.jpg",
- description: "Republican - Running for Junior Senator!",
+ description: "Businesswoman, wife, mother, & grandmother. A conservative who believes in unlocking human potential & holding govt accountable.",
  twitter: "https://twitter.com/df", #take real one?
  token: "44444333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: cf
@@ -393,7 +393,7 @@ Twitteruser.create(
  location: "San Francisco County",
  email: "cf@gmail.com",
  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8baTC74OAzAICdMGrSavHQZC6DnmCZUl8gTBZDi0K0U4B0wD4",
- description: "Republican - Running for Senior Senator!",
+ description: "Representing California's 28th Congressional District and Ranking Member of the House Intelligence Committee.",
  twitter: "https://twitter.com/as", #take real one?
  token: "446666333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: as
@@ -424,7 +424,7 @@ Twitteruser.create(
  location: "San Francisco",
  email: "nra@gmail.com",
  image: "https://upload.wikimedia.org/wikipedia/en/thumb/7/73/National_Rifle_Association.svg/1024px-National_Rifle_Association.svg.png",
- description: "A gun for everybody!",
+ description: "A house and a gun for every American",
  twitter: "https://twitter.com/nra",
  token: "999952223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: nra
@@ -447,7 +447,7 @@ Twitteruser.create(
  location: "USA",
  email: "srclub@gmail.com",
  image: "http://www.stevestenger.com/wp-content/uploads/2014/10/sierraclub-logo.png",
- description: "EXPLORE, ENJOY, AND PROTECT THE PLANET",
+ description: "Since 1892, the Sierra Club has been working to protect communities, wild places, and the planet itself.",
  twitter: "https://twitter.com/srclub",
  token: "222252223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: srclub
@@ -489,8 +489,245 @@ Watching.create(
   )
 
 
+#------------------------------------------------
+
+catholic_vote = User.create(
+  uid: "888852223",
+  district: usa
+  )
+
+catholic_vote_org = Organization.create(
+  user: catholic_vote
+  )
+
+Twitteruser.create(
+ uid: "888852223",
+ nickname: "CatholicVote.org",
+ name: "CatholicVote",
+ location: "USA",
+ image: "https://upload.wikimedia.org/wikipedia/en/3/30/Catholicvote.org_logo.jpg",
+ description: "CatholicVote.org is a community of patriotic Americans who believe our nation’s founding principles are good and true, and worth fighting for.",
+ token: "888852223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+ user: catholic_vote
+  )
+
+#--------
+go_proud = User.create(
+  uid: "7777152223",
+  district: usa
+  )
+
+go_proud_org = Organization.create(
+  user: go_proud
+  )
+
+Twitteruser.create(
+ uid: "7777152223",
+ nickname: "GOProud",
+ name: "GOProud",
+ location: "USA",
+ image: "https://upload.wikimedia.org/wikipedia/en/9/91/GOProud_logo.png",
+ description: "An organization for gay conservatives and their allies.",
+ token: "7777152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+ user: go_proud
+  )
+#----------------
+
+#--------
+nrlc = User.create(
+  uid: "7744152223",
+  district: usa
+  )
+
+nrlc_org = Organization.create(
+  user: nrlc
+  )
+
+Twitteruser.create(
+ uid: "7744152223",
+ nickname: "NRLC",
+ name: "National Right to Life Committee",
+ location: "USA",
+ image: "http://nrlc.org/site/wp-content/uploads/header0114.png",
+ description: "National Right to Life, the federation of 50 state right-to-life affiliates & more than 3,000 local chapters, is the nation’s oldest & largest #prolife org.",
+ token: "7744152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+ user: nrlc
+  )
+#----------------
+#--------
+smg = User.create(
+  uid: "7744157777",
+  district: usa
+  )
+
+smg_org = Organization.create(
+  user: smg
+  )
+
+Twitteruser.create(
+ uid: "7744157777",
+ nickname: "SMG",
+ name: "The Scotts Miracle-Gro Company",
+ location: "USA",
+ image: "https://upload.wikimedia.org/wikipedia/en/f/f8/Scotts-miracle-gro_logo.png",
+ description: "News & insights from The Scotts Miracle-Gro Company. Follow us to see how we are helping people of all ages express themselves on their own piece of the Earth.",
+ token: "7744157777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+ user: smg
+  )
+#----------------
+#--------
+smg = User.create(
+  uid: "7744157777",
+  district: usa
+  )
+
+smg_org = Organization.create(
+  user: smg
+  )
+
+Twitteruser.create(
+ uid: "7744157777",
+ nickname: "SMG",
+ name: "The Scotts Miracle-Gro Company",
+ location: "USA",
+ image: "https://upload.wikimedia.org/wikipedia/en/f/f8/Scotts-miracle-gro_logo.png",
+ description: "News & insights from The Scotts Miracle-Gro Company. Follow us to see how we are helping people of all ages express themselves on their own piece of the Earth.",
+ token: "7744157777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+ user: smg
+  )
+#----------------
+#--------
+lwal = User.create(
+  uid: "7744157777",
+  district: usa
+  )
+
+lwal_org = Organization.create(
+  user: lwal
+  )
+
+Twitteruser.create(
+ uid: "7744157777",
+ nickname: "Lechy",
+ name: "Lech Walesa",
+ location: "Poland",
+ image: "https://upload.wikimedia.org/wikipedia/en/f/f8/Scotts-miracle-gro_logo.png",
+ description: "Former president of Poland",
+ token: "7744157777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+ user: lwal )
+
+#----------------------
+
+dt = User.create(
+  uid: "66666333",
+  district: ca
+  )
+
+dt_org = Organization.create(
+  user: dt
+  )
+
+Twitteruser.create(
+ uid: "66666333",
+ nickname: "Donald",
+ name: "Donald Trump",
+ location: "USA",
+ image: "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_400x400.jpg",
+ description: "MAKE AMERICA GREAT AGAIN!",
+ token: "66666333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+ user: dt
+  )
+
+dt_can = Candidate.create(
+  user: dt,
+  office: president
+  )
 
 
+#--------
+dr = User.create(
+  uid: "7744153333",
+  district: usa
+  )
+
+dr_org = Organization.create(
+  user: dr
+  )
+
+Twitteruser.create(
+ uid: "7744153333",
+ nickname: "Dennis",
+ name: "Dennis Rodman",
+ location: "USA",
+ image: "https://upload.wikimedia.org/wikipedia/commons/9/96/Rodman_Lipofsky.jpg",
+ description: "Five-time NBA champion",
+ token: "7744153333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+ user: dr
+)
+ #--------
+
+ #--------
+
+Endorsement.create(
+  candidate: dt_can,
+  user: dr
+  )
+
+Endorsement.create(
+  candidate: dt_can,
+  user: nra
+  )
+
+Endorsement.create(
+  candidate: jbcan,
+  user: go_proud
+  )
+
+Endorsement.create(
+  candidate: jbcan,
+  user: catholic_vote
+  )
+
+Endorsement.create(
+  candidate: jbcan,
+  user: nrlc
+  )
+
+Endorsement.create(
+  candidate: jbcan,
+  user: lwal
+  )
+
+Watching.create(
+  user: dr,
+  organization: go_proud_org
+  )
+
+Watching.create(
+  user: lwal,
+  organization: catholic_vote_org
+  )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#--------------------------------------
 # District.create(
 #   name: "USA"
 #   )

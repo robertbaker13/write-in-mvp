@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   def users_score
     if self.twitteruser == nil || self.endorsements == []
       #|| self.twitteruser.followers == nil || self.twitteruser.followers == []
-      sum_score = 1
+      sum_score = 0
     else
       endorsements = self.endorsements.map { |endorsement| endorsement }
       # followers = self.twitteruser.followers.map { |follower| follower }
@@ -108,7 +108,8 @@ class User < ActiveRecord::Base
   #top watch users suggestions for a specific user
   def home_login_users_to_watch
     users_array = users.map {|user| user}
-    users_array_sort = users_array.sort_by {|user| user.users_score}
+    users_endorsing = users_array.select {|user| user.endorsements.count > 1}
+    users_array_sort = users_endorsing.sort_by {|user| user.users_score}
     filtered_district_user_array = users_array_sort.select {|user| user_specific_districts.include?(user.district_id)}
     filtered_district_and_watched_user_array = filtered_district_user_array.select{|user|
       unless already_watched_users.include?(user.id)
