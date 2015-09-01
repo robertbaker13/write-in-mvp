@@ -1,28 +1,26 @@
 <% @candidates.each_with_index do |candidate, index| %>
-
 <div class='rcorners bg-w row'>
-<img src=<%= candidate.image %> alt="" class='mg p-s col-md-2'>
-      <div class='col-md-9 mg p-s debug'>
-      <table class='debug w txt-c'>
+  <img src=<%= candidate.image %> alt="" class='mg p-s col-md-2 img-responsive'>
+  <div class='col-md-9 mg p-s debug'>
+    <table class='debug w txt-c'>
       <thead>
-      <tr class='debug'>
-        <th class='txt-c fs-m'><a href="<%= show_path(candidate) %>">
+        <tr class='debug'>
+          <th class='txt-c fs-m th-w'><a href="<%= show_path(candidate) %>">
           <%= candidate.name %></a></td>
         </th>
       </thead>
-         <% @orgs_endorsing_candidates[index].each do |twitteruser| %>
-        <tr>
-            <td><%= twitteruser.name %></td>
-          <% if @logged_in %>
-          <td class='td-w'><%= button_to "Watch", watch_path(candidate.user.id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
-          <% else %>
-          <!-- this below button logins in but does not redirect to the right page -->
-          <td class='td-w'><%= button_to "Watch", login_and_watch_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => candidate.user }  %></td>
-        </tr>
-        <% end %>
+      <% @orgs_endorsing_candidates[index].each do |twitteruser| %>
+      <tr>
+        <td><%= twitteruser.name %></td>
+        <% if @logged_in %>
+        <td><%= button_to "Watch", watch_path(candidate.user.id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
+        <% else %>
+        <!-- this below button logins in but does not redirect to the right page -->
+        <td><%= button_to "Watch", login_and_watch_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => candidate.user }  %></td>
+      </tr>
+      <% end %>
       <% end %>
     </table>
-    </div>
+  </div>
 </div>
 <% end %>
-

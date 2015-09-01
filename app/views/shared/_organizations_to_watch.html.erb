@@ -1,11 +1,11 @@
 <% @organizations.each_with_index do |organization, index| %>
 <div class='rcorners bg-w row txt-c'>
-  <img src=<%= organization.image %> alt="" class='mg p-s col-md-2'>
+  <img src=<%= organization.image %> alt="" class='mg p-s col-md-2 img-responsive'>
   <div class='col-md-9 mg p-s debug'>
     <table class='debug w txt-c'>
       <thead>
       <tr class='debug'>
-        <th class='txt-c fs-m'><a href="<%= show_path(organization) %>">
+        <th class='txt-c fs-m th-w'><a href="<%= show_path(organization) %>">
           <%= organization.name %></a></td>
         </th>
       </thead>
@@ -13,10 +13,10 @@
         <tr>
             <td><%= twitteruser.name %></td>
           <% if @logged_in %>
-          <td class='td-w'><%= button_to "Watch", watch_path(organization.user_id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
+          <td><%= button_to "Watch", watch_path(organization.user_id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></td>
           <% else %>
           <!-- this below button logins in but does not redirect to the right page -->
-          <td class='td-w'><%= button_to "Watch", "/auth/twitter", :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></td>
+          <td><%= button_to "Watch", "/auth/twitter", :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></td>
         </tr>
         <% end %>
       <% end %>
