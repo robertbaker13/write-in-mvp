@@ -145,8 +145,19 @@ class User < ActiveRecord::Base
     endorsed_candidates = endorsed_users.map { |endorsement| endorsement.candidate }
     endorsed_candidate_users = endorsed_candidates.compact.map { |candidate| candidate.user }
     endorsed_users_twitter = endorsed_candidate_users.map { |user| user.twitteruser }
-    #not sorted yet, nor any imit
+    #not sorted yet, nor any limit
   end
+
+  # def profile_users_endorsing_specific_candidates
+  #   candidate_id = self.id
+  #   users_endorsements = users.map { |user| user.endorsements}
+  #   endorsing_orgs = users.each_with_index do {|user, index|
+  #     }
+  #   # users_endorsed_candidates = users_endorsements.map { |endorsement|
+  #   #                               if endorsement.candidate_id
+
+  #   #                      }
+  # end
 
 #Report card page:
 #--------------------------
