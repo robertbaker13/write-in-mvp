@@ -24,7 +24,6 @@
 $(document).ready(function() {
   unwatchListener();
 });
-
 var unwatchListener = function () {
   console.log("listener running");
   $(".button_to").on("submit", function(e) {
@@ -34,7 +33,6 @@ var unwatchListener = function () {
     var target = this.parentElement.parentElement
     unwatch(url, target);
   });
-
   var unwatch = function(url, target){
     console.log(url);
     $.ajax({
