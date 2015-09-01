@@ -1,5 +1,5 @@
 <% @watched_users.each_with_index do |twitteruser, index| %>
-<div class='rcorners bg-w row txt-c'>
+<div class='rcorners bg-w row txt-c' %>
   <img src=<%= twitteruser.image %> alt="" class='mg p-s col-md-2'>
   <div class='col-md-9 mg p-s debug'>
   <a href="<%= show_path(twitteruser) %>"><strong><%= twitteruser.name %></strong></a>
@@ -22,28 +22,31 @@
 <% end %>
 <script>
 $(document).ready(function() {
-unwatchListener();
-console.log("ready");
+  unwatchListener();
 });
+
 var unwatchListener = function () {
-console.log("listener running");
-$(".button_to").on("submit", function(e) {
-e.preventDefault();
-var url = this.action;
-var target = "." + this.children[1].id;
-unwatch(url, target);
-});
-var unwatch = function(url, target){
-console.log(url);
-$.ajax({
-url: url,
-method: "post",
-dataType: "json"
-}).done(function() {
-$(target).hide();
-}).fail(function(){
-console.log("fail");
-});
-}
+  console.log("listener running");
+  $(".button_to").on("submit", function(e) {
+    e.preventDefault();
+    console.log("submitted!")
+    var url = this.action;
+    var target = this.parentElement.parentElement.parentElement.parentElement;
+    debugger
+    unwatch(url, target);
+  });
+
+  var unwatch = function(url, target){
+    console.log(url);
+    $.ajax({
+      url: url,
+      method: "post",
+      dataType: "json"
+    }).done(function() {
+      $(target).hide();
+    }).fail(function(){
+      console.log("fail");
+    });
+  }
 }
 </script>
