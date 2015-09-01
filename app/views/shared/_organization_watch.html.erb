@@ -2,7 +2,7 @@
 <div class='rcorners bg-w row txt-c'>
   <img src=<%= twitteruser.image %> alt="" class='mg p-s col-md-2'>
   <div class='col-md-9 mg p-s debug'>
-  <a href="#"><strong><%= twitteruser.name %></strong></a>
+  <a href="<%= show_path(twitteruser) %>"><strong><%= twitteruser.name %></strong></a>
   <p><%= twitteruser.description %></p>
   <details>
     <summary>
