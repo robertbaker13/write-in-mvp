@@ -16,7 +16,9 @@
         <% end %>
       </ul>
   </details></br>
+  <% if session[:current_user_id].to_s == params[:id]  %>
   <%= button_to "Unwatch", unwatch_path(twitteruser),:class => "btn-danger btn-xs",:"aria-hidden"=> "true", :id => "organization-#{twitteruser.id}", :method => :put %>
+  <% end %>
 </div>
 </div>
 <% end %>
