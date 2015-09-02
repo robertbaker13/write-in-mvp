@@ -152,6 +152,13 @@ class User < ActiveRecord::Base
      end
   end
 
+  #which orgs are endorsing a specific candidate
+  def organizations_endorsing_a_candidate
+    endorsements = Endorsement.all
+      endorsements_array_user_id = endorsements.map { |endorsement| endorsement.user }
+      endorsements_filtered = endorsements_array_user_id.select {|user| user.id ==  self.id}
+  end
+
   #check that all information is district specific
   def user_specific_districts
     if self.district
