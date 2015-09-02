@@ -1,50 +1,15 @@
-<% @results.each_with_index do |twitteruser, index| %>
+<% @tusers.each do |tuser| %>
 <div class='rcorners bg-w row txt-c'>
-  <img src=<%= organization.image %> alt="" class='mg p-s col-md-2 img-responsive'>
+  <img src="<%= tuser.image %>" alt="" class='mg p-s col-md-2'>
   <div class='col-md-9 mg p-s debug'>
-    <table class='debug w txt-c'>
-      <thead>
-        <tr class='debug'>
-          <th class='txt-c fs-m th-w'><a href="<%= show_path(organization) %>">
-            <%= organization.name %></a></td>
-          </th>
-          <% if @logged_in %>
-          <th><%= button_to " Watch ", watch_path(organization.user_id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></th>
-          <% else %>
-          <!-- this below button logins in but does not redirect to the right page -->
-          <th><%= button_to " Watch ", "/auth/twitter", :class => "btn-success btn-xs watch-button", :"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></th>
-          <% end %>
-        </thead>
-        <% @candidates_endorsed_by_orgs[index].each do |twitteruser| %>
-        <tr>
-          <td><%= twitteruser.name %></td>
-        </tr>
-        <% end %>
-      </table>
-    </div>
-  </div>
-  <% end %>
-<script>
-  $(document).ready(function() {
-    watchListener();
-  });
-  var watchListener = function () {
-    $(".button_to").one("submit", function(e) {
-      e.preventDefault();
-      var url = this.action;
-      var $watchedCandidate = $(this).closest(".rcorners.bg-w.row")
-      watch(url, $watchedCandidate);
-    });
-    var watch = function(url, $watchedCandidate){
-      console.log(url);
-      $.ajax({
-        url: url,
-        method: "post"
-      }).done(function() {
-        $watchedCandidate.toggle("fast");
-      }).fail(function(){
-        console.log("fail");
-      });
-    }
-  }
-</script>
+  <a href="<%= show_path(tuser) %>">
+    <strong>
+      <%= tuser.name %>
+    </strong>
+  </a>
+  <ul class='mg-l'>
+    <li><%= tuser.description %></li>
+  </ul>
+</div>
+</div>
+<% end %>

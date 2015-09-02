@@ -1,9 +1,11 @@
 class TwitterusersController < ApplicationController
 
   def search
-    @results = Twitteruser.search_db(params[:search_input])
+    @tusers = Twitteruser.search_db(params[:search_input])
+    p '*'*100
+    puts @tusers
 
-    render @results
+    render @tusers.first
   end
 
 end
