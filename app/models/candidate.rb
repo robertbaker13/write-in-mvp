@@ -21,16 +21,12 @@ class Candidate < ActiveRecord::Base
   end
 
   def score
+
   end
 
   def self.list_of_cand_endorsed_by_org (current_user= nil)
     user = current_user || User.all
     user.specific_endorsed_candidates
-  end
-
-  def self.list_of_watched_orgs(current_user= nil)
-    user = current_user || User.all
-    user.specific_watched_users
   end
 
 end

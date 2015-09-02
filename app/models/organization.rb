@@ -29,5 +29,4 @@ class Organization < ActiveRecord::Base
     user = current_user || User.all
     user.specific_watched_users
   end
-
 end

@@ -69,14 +69,14 @@ class UsersController < ApplicationController
 
     @watched_users = Organization.list_of_watched_orgs(@user)
 
-    @watched_user_endorsements = @watched_users.map { |twitteruser| twitteruser.user.specific_endorsed_candidates }
+    @watched_user_endorsements = @watched_users.map { |twitteruser| Candidate.list_of_cand_endorsed_by_org(twitteruser.user) }
 
     @twitter_profile_name = @user.twitteruser.name
     @twitter_handle = @user.twitteruser.nickname
     @twitter_profile_image = @user.twitteruser.larger_image
 
-    @endorsed_candidates = @user.specific_endorsed_candidates
-    # @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| twitteruser.user.  "which organizations are watching this user"  }
+    @endorsed_candidates = Candidate.list_of_cand_endorsed_by_org(@user)
+    @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| Organization.list_of_orgs_endorsing_candidates(twitteruser.user) }
   end
 
   # GET /users/new
