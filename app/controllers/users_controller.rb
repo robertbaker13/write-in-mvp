@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if request.xhr?
       render json: true
     else
-      redirect_to show_path(@user)
+      redirect_to show_path(current_user)
     end
   end
 
