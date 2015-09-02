@@ -1,7 +1,19 @@
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.
-$(function() {
-    var availableTags = [
+
+$(document).ready(function(){
+  unendorseListener();
+  endorseListener();
+  unwatchListener();
+  watchOrganizationListener();
+
+  autoCompleteListener();
+})
+
+// autoCompleteListener
+var autoCompleteListener = function(){
+
+  var availableTags = [
       "Alameda, CA",
       "Contra Costa, CA",
       "San Jose, CA",
@@ -15,16 +27,13 @@ $(function() {
       "Solano, CA",
       "Sonoma, CA"
     ];
-    $( "#setDistrict" ).autocomplete({
-      source: availableTags
+
+  $("#setDistrict").autocomplete({
+      source:availableTags
     });
-  });
-$(document).ready(function(){
-  unendorseListener();
-  endorseListener();
-  unwatchListener();
-  watchOrganizationListener();
-})
+}
+
+// unendorseListener
 var unendorseListener = function(){
   $("input.btn-danger.btn-xs.unendorse-button").on("click", function(e){
     e.preventDefault();
@@ -33,11 +42,11 @@ var unendorseListener = function(){
     unendorse(url, $target);
   })
 
-var unendorse = function(url, $target) {
-  $.ajax({
-    url: url,
-    method: "post"
-  }).done(function(){
+  var unendorse = function(url, $target) {
+    $.ajax({
+      url: url,
+      method: "post"
+    }).done(function(){
       $target.toggle("fast");
     }).fail(function(){
       console.log("fail");
@@ -45,6 +54,7 @@ var unendorse = function(url, $target) {
   }
 }
 
+// endorseListener
 var endorseListener = function(){
   $("input.btn-success.btn-xs.endorse-button").on("click", function(e){
     e.preventDefault();
@@ -65,6 +75,7 @@ var endorseListener = function(){
   }
 }
 
+// unwatchListener
 var unwatchListener = function () {
   $(".unwatch-button").on("submit", function(e) {
     e.preventDefault();
@@ -88,6 +99,7 @@ var unwatchListener = function () {
   }
 }
 
+// watchOrganizationListener
 var watchOrganizationListener = function() {
   $(".watch-button").on("submit", function(e){
     console.log("submitted!");
