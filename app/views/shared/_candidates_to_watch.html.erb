@@ -1,41 +1,8 @@
-<% @candidates.each_with_index do |candidate, index| %>
-<div class='rcorners bg-w row'>
-  <img src=<%= candidate.image %> alt="" class='mg p-s col-md-2 img-responsive'>
-  <div class='col-md-9 mg p-s debug'>
-    <table class='debug w txt-c'>
-      <thead>
-        <tr class='debug'>
-          <th class='txt-c fs-m th-w'>
-            <a href="<%= show_path(candidate) %>">
-              <%= candidate.name %>
-            </a>
-          </th>
-        </tr>
-      </thead>
-          <tr>
-            <td>
-              <%= candidate.description %>
-            </td>
-          </tr>
-          <% if @logged_in %>
-            <tr>
-              <td>
-                <%= button_to "Endorse", endorse_path(candidate.user.id), :class => "btn-success btn-xs endorse-button",:"aria-hidden"=> "true", :method => :post  %>
-              </td>
-            </tr>
-          <% else %>
-          <!-- this below button logins in but does not redirect to the right page -->
-            <tr>
-            <td>
-              <%= button_to "Endorse", login_path, :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post, :headers => { :organization => candidate.user }  %>
-            </td>
-          </tr>
-          <% end %>
-    </table>
-  </div>
-</div>
+<% @candidates.each_with_index do |can, index| %>
+  <% @can = can %>
+  <% @index = index %>
+  <%= render "shared/candidate", object: @can, object: @index  %>
 <% end %>
-
 
 <script>
 $(document).ready(function(){

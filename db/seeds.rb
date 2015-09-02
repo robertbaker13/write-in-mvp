@@ -612,7 +612,7 @@ Twitteruser.create(
  name: "Donald Trump",
  location: "USA",
  image: "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_400x400.jpg",
- description: "MAKE AMERICA GREAT AGAIN!",
+ description: "Make America great again!",
  token: "66666333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: dt
   )
