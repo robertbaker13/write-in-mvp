@@ -16,7 +16,7 @@ var bindSearchBySubmit = function(){
 }
 
 var bindSearchByButton = function(){
-  $('form.navbar-form').on('.glyphicon-search', function(event){
+  $('form.navbar-form').on('click','.glyphicon-search', function(event){
     event.preventDefault();
     var data = $("#peopleSearchBar").val();
     searchServer(data);
