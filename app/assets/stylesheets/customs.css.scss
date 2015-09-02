@@ -2,14 +2,14 @@
 @import "bootstrap";
 
 .debug {
-  border: 0px solid red;
+  border: 1px solid red;
 }
 
 .small {
     height: 80px;
     overflow:hidden;
 
-    tbody {
+    tbody, .stats {
       display: none;
     }
 }

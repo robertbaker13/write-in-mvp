@@ -13,7 +13,7 @@
             <% if @logged_in %>
             <th>
               <%= button_to "Endorse", endorse_path(@can.user.id), :class => "btn-success btn-xs endorse-button",:"aria-hidden"=> "true", :method => :post  %>
-            </th>x
+            </th>
             <% else %>
             <!-- this below button logins in but does not redirect to the right page -->
             <th>
@@ -30,6 +30,7 @@
           </tr>
         </tbody>
       </table>
+      <%= render 'shared/stats' %>
     </div>
   </div>
 </div>
