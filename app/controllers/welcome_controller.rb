@@ -7,9 +7,7 @@ class WelcomeController < ApplicationController
     user = current_user || User.new
 
     @candidates = user.home_candidates_to_endorse
-    # p "***********************"
-    # p @orgs_endorsing_candidates = @candidates.map { |twitteruser| twitteruser.user.specific_watched_users }
-    #FL: I have a feeling the schema could be an issue in the deactivated code above
+    @orgs_endorsing_candidates = @candidates.map { |candidate| candidate.user.organizations_endorsing_a_candidate }
 
     @organizations = user.home_users_to_watch
     @candidates_endorsed_by_orgs = @organizations.map { |twitteruser| twitteruser.user.specific_endorsed_candidates
