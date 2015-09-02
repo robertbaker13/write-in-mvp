@@ -64,6 +64,13 @@ class User < ActiveRecord::Base
 
   def unendorse(candidate)
     endorsement_to_destroy = Endorsement.find_by(candidate: candidate, user: self)
+    p endorsement_to_destroy
+    p "*" * 100
+    p candidate
+    p "*" * 100
+    p self
+    p "*" * 100
+    p endorsement_to_destroy
     endorsement_to_destroy && endorsement_to_destroy.destroy
   end
 

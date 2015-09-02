@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def unendorse
-    @candidate_to_unendorse = Candidate.find(params[:id])
+    @candidate_to_unendorse = Candidate.find_by(user: User.find(params[:id]))
     current_user.unendorse(@candidate_to_unendorse)
     if request.xhr?
       render json: true
