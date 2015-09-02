@@ -66,7 +66,9 @@ class UsersController < ApplicationController
     @logged_in = logged_in?
     @current_user = current_user
     @user = User.find(params[:id])
-    @watched_users = @user.specific_watched_users
+
+    @watched_users = Organization.list_of_watched_orgs(@user)
+
     @watched_user_endorsements = @watched_users.map { |twitteruser| twitteruser.user.specific_endorsed_candidates }
 
     @twitter_profile_name = @user.twitteruser.name
