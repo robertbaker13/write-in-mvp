@@ -5,6 +5,18 @@
   border: 0px solid red;
 }
 
+.small {
+    height: 80px;
+    overflow:hidden;
+
+    tbody {
+      display: none;
+    }
+}
+.big {
+    height: auto;
+}
+
 a:active { color: grey !important; }
 
 a:link { color: #008B3C !important; }
