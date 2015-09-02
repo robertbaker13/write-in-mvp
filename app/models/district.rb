@@ -6,6 +6,8 @@ class District < ActiveRecord::Base
   has_many :users
   has_many :offices
 
+  fuzzily_searchable :name
+
   #adds all the parent districts
   def add_parents
     if self.parent == nil
