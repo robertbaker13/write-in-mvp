@@ -9,7 +9,7 @@ $(document).ready(function(){
 
 
 var bindSearch = function(){
-  $('form.navbar-form').on('click','submit, .glyphicon-search', function(event){
+  $('form.index-search').on('click','submit, .glyphicon-search', function(event){
     event.preventDefault();
     var data = $("#peopleSearchBar").val();
     searchServer(data);
