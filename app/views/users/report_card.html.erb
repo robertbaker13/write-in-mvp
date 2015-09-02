@@ -1,3 +1,4 @@
+
 <div class='row'>
   <div class="col-md-2">
     <div class="mg-r">
@@ -37,8 +38,11 @@
             <th colspan="2" class='txt-c p-t'>President</th>
           </tr>
         </thead>
-        <tr>
+        <tr><% @user_districts.each_with_index do |district, index| %>
+          <td><%= district.name %></td>
           <td>Hillary Clinton</td>
+          <td><%= @user_districts_offices %></td>
+          <% end %>
           <td>
             <details>
               <summary>48%</summary>
