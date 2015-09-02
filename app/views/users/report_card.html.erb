@@ -28,67 +28,22 @@
         </a>
       </li>
     </ul>
+
+  <% @user_districts.each_with_index do |district, index| %>
     <div class="p-s rcorners bg-w mg-t mg-r">
       <p class="txt-c fs-l c-g">Compatibility Report</p>
       <p class='fs-xm txt-c'>Which candidates share my values?</p>
       <h4 class='m-a w-m p-t'>National Election 2016:</h4>
       <table class='table table-hover m-a w-m'>
         <thead>
+           <h4><%= district.name %></h4>
           <tr>
-            <th colspan="2" class='txt-c p-t'>President</th>
-          </tr>
-        </thead>
-        <tr><% @user_districts.each_with_index do |district, index| %>
-          <td><%= district.name %></td>
-          <td>Hillary Clinton</td>
-          <td><%= @user_districts_offices %></td>
-          <% end %>
-          <td>
-            <details>
-              <summary>48%</summary>
-              <ul>
-                <li>Organization 1</li>
-                <li>Organization 2</li>
-                <li>Organization 3</li>
-                <li>Organization 4</li>
-                <li>Organization 5</li>
-              </ul>
-            </details>
-          </td>
-        </tr>
-        <tr>
-          <td>Donald Trump</td>
-          <td>
-           <details>
-              <summary>13%</summary>
-              <ul>
-                <li>Organization 1</li>
-              </ul>
-            </details>
-          </td>
-        </tr>
-        <tr>
-          <td>Undecided</td>
-          <td>
-            <details>
-              <summary>30%</summary>
-              <ul>
-                <li>Organization 1</li>
-                <li>Organization 2</li>
-                <li>Organization 3</li>
-              </ul>
-            </details>
-          </td>
-        </tr>
-      </table>
-      <table class='table table-hover m-a w-m'>
-        <thead>
-          <tr>
-            <th colspan="2" class='txt-c p-t'>President</th>
+            <th colspan="2" class='txt-c p-t'><%= @user_districts_offices[index].title %></th>
           </tr>
         </thead>
         <tr>
-          <td>Hillary Clinton</td>
+          <td><%= @user_districts_offices_candidates_users[index].name %></td>
+          <td></td>
           <td>
             <details>
               <summary>48%</summary>
@@ -128,5 +83,6 @@
         </tr>
       </table>
     </div>
+     <% end %>
   </div>
 </div>

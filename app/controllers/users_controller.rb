@@ -8,9 +8,9 @@ class UsersController < ApplicationController
     # @candidates_endorsed_by_orgs = @organizations.map { |twitteruser| twitteruser.user.specific_endorsed_candidates
 
      @user_districts = @user.district.add_parents.map {|district| district}
-     @user_districts_offices = @user_districts.compact.map {|district| district.offices}
-     #@user_districts_offices_candidates = @user_districts_offices.compact.map {|office| office.candidates}
-     # @user_districts_offices_candidates_users = @user_districts_offices_candidates.compact.map {|candidate| candidate.user}
+     @user_districts_offices = @user_districts.compact.map {|district| district.offices}.flatten
+     @user_districts_offices_candidates = @user_districts_offices.compact.map {|office| office.candidates}.flatten
+     @user_districts_offices_candidates_users = @user_districts_offices_candidates.compact.map {|candidate| candidate.user.twitteruser}.flatten
 
      #this would show all the offices and all the candidates
 
