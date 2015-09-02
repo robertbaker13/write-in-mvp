@@ -13,6 +13,7 @@ class WelcomeController < ApplicationController
     @candidates_endorsed_by_orgs = @organizations.map { |twitteruser| Candidate.list_of_cand_endorsed_by_org(twitteruser.user)
     }
 
+
     if @logged_in
       @twitter_profile_name = current_user.twitteruser.name
       @twitter_handle = current_user.twitteruser.nickname
