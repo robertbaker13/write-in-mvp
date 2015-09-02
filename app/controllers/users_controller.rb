@@ -13,12 +13,36 @@ class UsersController < ApplicationController
   def watch
     @user = User.find(params[:id])
     @user.watch(current_user)
-    redirect_to show_path(@user)
+    if request.xhr?
+      render json: true
+    else
+      redirect_to show_path(@user)
+    end
   end
 
   def unwatch
     @user_to_unwatch = User.find(params[:id])
     @user_to_unwatch.unwatch(current_user)
+    if request.xhr?
+      render json: true
+    else
+      redirect_to show_path(current_user)
+    end
+  end
+
+  def endorse
+    @user = User.find(params[:id])
+    @user.endorse(current_user)
+    if request.xhr?
+      render json: true
+    else
+      redirect_to show_path(@user)
+    end
+  end
+
+  def unendorse
+    @candidate_to_unendorse = Candidate.find_by(user: User.find(params[:id]))
+    current_user.unendorse(@candidate_to_unendorse)
     if request.xhr?
       render json: true
     else
@@ -87,6 +111,7 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
