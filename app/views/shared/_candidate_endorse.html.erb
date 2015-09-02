@@ -8,11 +8,12 @@
     </strong>
   </a>
   <ul class='mg-l'>
-    <li><%= twitteruser.description %></li>
-    <li>
+    <% @orgs_endorsing_a_candidate[index].each_with_index do |org_twitteruser, index| %>
+    <li><%= org_twitteruser.name %></li>
+    <% end %>
       <% if session[:current_user_id].to_s == params[:id] %>
         <%= button_to "Unendorse", unendorse_path(twitteruser.user), :class => "btn-danger btn-xs unendorse-button" %>
-      <% end %>
+    <% end %>
     </li>
   </ul>
 </div>

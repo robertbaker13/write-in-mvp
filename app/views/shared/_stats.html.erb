@@ -1,6 +1,6 @@
-<div class='stats'>
-  <span class='d-i'>
-    <ul class='p-s mg-b'>
+<div class='stats clearfix'>
+  <span class='d-i pull-left debug b-t b-b'>
+    <ul class='p-s mg-r b-r'>
       <li class="d-i debug">
         <a href="#">
           <span class='fs-xs'>WATCHED<span class='d-b txt-c fs-m'>100</span></span>
@@ -13,7 +13,10 @@
       </li>
     </ul>
   </span>
-  <span class='avatar'>
-    <%= render 'shared/avatar', object: @can %>
+  <span class='avatar pull-left debug mg-b b-t b-b sp-height'>
+    <% @orgs_endorsing_a_candidate[@index].each do |twitteruser| %>
+      <img src=<%= twitteruser.image %> class='debug img-thumbnail d-i sm-avatar txt-c'>
+    <% end %>
   </span>
 </div>
+

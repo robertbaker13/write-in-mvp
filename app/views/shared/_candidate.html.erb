@@ -24,13 +24,11 @@
         </thead>
         <tbody>
           <tr>
-            <td>
-              <%= @can.description %>
-            </td>
+            <td><%= @can.description %></td>
           </tr>
         </tbody>
       </table>
-      <%= render 'shared/stats', object: @can %>
+        <%= render 'shared/stats' %>
     </div>
   </div>
 </div>

@@ -17,7 +17,7 @@
       </ul>
   </details></br>
   <% if session[:current_user_id].to_s == params[:id]  %>
-  <%= button_to "Unwatch", unwatch_path(twitteruser),:class => "btn-danger btn-xs",:"aria-hidden"=> "true", :id => "organization-#{twitteruser.id}", :method => :put %>
+  <%= button_to "Unwatch", unwatch_path(twitteruser),form_class: "unwatch-button" ,:class => "btn-danger btn-xs",:"aria-hidden"=> "true", :id => "organization-#{twitteruser.id}", :method => :put %>
   <% end %>
 </div>
 </div>
@@ -25,16 +25,17 @@
 <script>
 $(document).ready(function() {
   unwatchListener();
+  watchOrganizationListener();
 });
 var unwatchListener = function () {
-  console.log("listener running");
-  $(".button_to").on("submit", function(e) {
+  $(".unwatch-button").on("submit", function(e) {
     e.preventDefault();
     console.log("submitted!")
     var url = this.action;
     var target = this.parentElement.parentElement
     unwatch(url, target);
   });
+
   var unwatch = function(url, target){
     console.log(url);
     $.ajax({
@@ -48,4 +49,31 @@ var unwatchListener = function () {
     });
   }
 }
+
+var watchOrganizationListener = function() {
+  $(".watch-button").on("submit", function(e){
+    console.log("submitted!");
+    e.preventDefault();
+    var url = this.action;
+    var $watchButton = $(this)
+    watchOrganization(url, $watchButton);
+  })
+
+  var watchOrganization = function(url, $watchButton){
+    var request = $.ajax({
+      url: url,
+      method: "post",
+    })
+
+    request.done(function() {
+      console.log("success");
+      // $watchButton.css("visibility", "hidden");
+      $watchButton.html("<li class='btn btn-success btn-large home-right-button disabled debug'>Currently Watching</li>")
+    });
+
+    request.fail(function() {
+      console.log("fail");
+    })
+  }
+};
 </script>
