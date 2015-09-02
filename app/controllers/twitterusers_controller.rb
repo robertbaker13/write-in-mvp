@@ -1,0 +1,2 @@
+class TwitterusersController < ApplicationController
+end
