@@ -77,6 +77,7 @@ class UsersController < ApplicationController
 
     @endorsed_candidates = Candidate.list_of_cand_endorsed_by_org(@user)
     @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| Organization.list_of_orgs_endorsing_candidates(twitteruser.user) }
+    @current_watching = Watching.find_by(user: current_user, organization: params[:id])
   end
 
   # GET /users/new
