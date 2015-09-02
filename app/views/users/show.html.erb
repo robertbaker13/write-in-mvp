@@ -13,7 +13,7 @@
               <%= button_to "Watch this Organization", watch_path(params[:id].to_i), form_class: "watch-button",:class => "btn btn-success btn-large home-right-button debug", :method => :post %>
             </li>
           <% else %>
-            <li class='fs-xl mg-t p-l center-button debug'><span class="btn btn-success btn-large debug">Currently Watching</span></li>
+            <li class='fs-xl mg-t p-l center-button debug'><span class="btn btn-success btn-large disabled debug">Currently Watching</span></li>
           <% end %>
         <% end %>
       </ul>
