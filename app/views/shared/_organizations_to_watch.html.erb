@@ -9,7 +9,7 @@
             <%= organization.name %></a></td>
           </th>
           <% if @logged_in %>
-          <th><%= button_to " Watch ", watch_path(organization.user_id), :class => "btn-success btn-xs",:"aria-hidden"=> "true", :method => :post  %></th>
+          <th><%= button_to " Watch ", watch_path(organization.user_id), :class => "btn-success btn-xs watch-button",:"aria-hidden"=> "true", :method => :post  %></th>
           <% else %>
           <!-- this below button logins in but does not redirect to the right page -->
           <th><%= button_to " Watch ", "/auth/twitter", :class => "btn-success btn-xs watch-button", :"aria-hidden"=> "true", :method => :post, :headers => { :organization => organization.user }  %></th>
@@ -29,14 +29,13 @@
     watchListener();
   });
   var watchListener = function () {
-    $(".button_to").one("submit", function(e) {
+    $("input.btn-success.btn-xs.watch-button").on("click", function(e) {
       e.preventDefault();
-      var url = this.action;
+      var url = this.parentElement.action;
       var $watchedCandidate = $(this).closest(".rcorners.bg-w.row")
       watch(url, $watchedCandidate);
     });
     var watch = function(url, $watchedCandidate){
-      console.log(url);
       $.ajax({
         url: url,
         method: "post"

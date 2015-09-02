@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def report_card
     @user = User.find(params[:user_id])
     # @reports = current_user.report_card
-    # @watched_users = current_user.profile_watched_users
+    # @watched_users = current_user.specific_watched_users
     @twitter_profile_name = @user.twitteruser.name
     @twitter_handle = @user.twitteruser.nickname
     @twitter_profile_image = @user.twitteruser.larger_image
@@ -13,12 +13,36 @@ class UsersController < ApplicationController
   def watch
     @user = User.find(params[:id])
     @user.watch(current_user)
-    redirect_to show_path(@user)
+    if request.xhr?
+      render json: true
+    else
+      redirect_to show_path(@user)
+    end
   end
 
   def unwatch
     @user_to_unwatch = User.find(params[:id])
     @user_to_unwatch.unwatch(current_user)
+    if request.xhr?
+      render json: true
+    else
+      redirect_to show_path(current_user)
+    end
+  end
+
+  def endorse
+    @user = User.find(params[:id])
+    @user.endorse(current_user)
+    if request.xhr?
+      render json: true
+    else
+      redirect_to show_path(@user)
+    end
+  end
+
+  def unendorse
+    @candidate_to_unendorse = Candidate.find_by(user: User.find(params[:id]))
+    current_user.unendorse(@candidate_to_unendorse)
     if request.xhr?
       render json: true
     else
@@ -35,18 +59,16 @@ class UsersController < ApplicationController
     @logged_in = logged_in?
     @current_user = current_user
     @user = User.find(params[:id])
-    @watched_users = @user.profile_watched_users
-    @watched_user_endorsements = @watched_users.map { |twitteruser| twitteruser.user.profile_endorsed_candidates }
+    @watched_users = @user.specific_watched_users
+    @watched_user_endorsements = @watched_users.map { |twitteruser| twitteruser.user.specific_endorsed_candidates }
 
     @twitter_profile_name = @user.twitteruser.name
     @twitter_handle = @user.twitteruser.nickname
     @twitter_profile_image = @user.twitteruser.larger_image
 
-    @endorsed_candidates = @user.profile_endorsed_candidates
+    @endorsed_candidates = @user.specific_endorsed_candidates
     # @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| twitteruser.user.  "which organizations are watching this user"  }
-
   end
-
 
   # GET /users/new
   def new
@@ -89,6 +111,7 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
