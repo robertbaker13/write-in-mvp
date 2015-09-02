@@ -1,5 +1,21 @@
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.
+$(document).ready(function(){
+  bindSearch();
+})
+
+var bindSearch = function(){
+  $('.search-bar').on('click', '.glyphicon', function(event){
+    $.ajax({
+      url:
+    })
+  // search($(event.target).parent().next().val());
+})
+}
+
+var search = function(input){
+}
+
 
 
 $(function() {

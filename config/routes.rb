@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post 'login_and_watch' => 'sessions#create_then_watch', as: 'login_and_watch'
   delete 'logout' => 'sessions#destroy', as: 'logout'
 
+  post 'search' => 'twitteruser#search', as: 'search'
+
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

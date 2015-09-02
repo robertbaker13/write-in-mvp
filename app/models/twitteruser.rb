@@ -25,5 +25,9 @@ class Twitteruser < ActiveRecord::Base
     self.image.gsub(/_normal/,"")
   end
 
+  def self.search_db(input)
+      find_by_fuzzy_name(input, :limit => 5)
+  end
+
 
 end
