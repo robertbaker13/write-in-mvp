@@ -4,29 +4,4 @@
   <%= render "shared/candidate", object: @can, object: @index  %>
 <% end %>
 
-<script>
-$(document).ready(function(){
-  endorseListener();
-});
 
-var endorseListener = function(){
-  $("input.btn-success.btn-xs.endorse-button").on("click", function(e){
-    e.preventDefault();
-    var url = this.parentElement.action;
-    var $target = $(this).closest(".rcorners.bg-w.row")
-    endorse(url, $target);
-  })
-
-  var endorse = function(url, $target) {
-    $.ajax({
-      url: url,
-      method: "post"
-    }).done(function(){
-      $target.toggle("fast");
-    }).fail(function(){
-      console.log("fail");
-    })
-  }
-}
-
-</script>

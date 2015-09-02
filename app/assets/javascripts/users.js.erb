@@ -19,7 +19,12 @@ $(function() {
       source: availableTags
     });
   });
-
+$(document).ready(function(){
+  unendorseListener();
+  endorseListener();
+  unwatchListener();
+  watchOrganizationListener();
+})
 var unendorseListener = function(){
   $("input.btn-danger.btn-xs.unendorse-button").on("click", function(e){
     e.preventDefault();
@@ -39,3 +44,73 @@ var unendorse = function(url, $target) {
     })
   }
 }
+
+var endorseListener = function(){
+  $("input.btn-success.btn-xs.endorse-button").on("click", function(e){
+    e.preventDefault();
+    var url = this.parentElement.action;
+    var $target = $(this).closest(".rcorners.bg-w.row")
+    endorse(url, $target);
+  })
+
+  var endorse = function(url, $target) {
+    $.ajax({
+      url: url,
+      method: "post"
+    }).done(function(){
+      $target.toggle("fast");
+    }).fail(function(){
+      console.log("fail");
+    })
+  }
+}
+
+var unwatchListener = function () {
+  $(".unwatch-button").on("submit", function(e) {
+    e.preventDefault();
+    console.log("submitted!")
+    var url = this.action;
+    var target = this.parentElement.parentElement
+    unwatch(url, target);
+  });
+
+  var unwatch = function(url, target){
+    console.log(url);
+    $.ajax({
+      url: url,
+      method: "post",
+      dataType: "json"
+    }).done(function() {
+      $(target).toggle("fast");
+    }).fail(function(){
+      console.log("fail");
+    });
+  }
+}
+
+var watchOrganizationListener = function() {
+  $(".watch-button").on("submit", function(e){
+    console.log("submitted!");
+    e.preventDefault();
+    var url = this.action;
+    var $watchButton = $(this)
+    watchOrganization(url, $watchButton);
+  })
+
+  var watchOrganization = function(url, $watchButton){
+    var request = $.ajax({
+      url: url,
+      method: "post",
+    })
+
+    request.done(function() {
+      console.log("success");
+      // $watchButton.css("visibility", "hidden");
+      $watchButton.html("<li class='btn btn-success btn-large home-right-button disabled debug'>Currently Watching</li>")
+    });
+
+    request.fail(function() {
+      console.log("fail");
+    })
+  }
+};
