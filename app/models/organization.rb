@@ -9,7 +9,7 @@ class Organization < ActiveRecord::Base
   def self.relevant_data (current_user = nil) #class method or not?
   end
 
-  def self.list_of_organizations (current_user= nil)
+  def self.list_of_organizations (current_user= nil) #all organizations
     user = current_user || User.all
     user.home_users_to_watch #currently does all the sorting and scoring
   end
@@ -28,5 +28,10 @@ class Organization < ActiveRecord::Base
   def self.list_of_watched_orgs(current_user= nil)
     user = current_user || User.all
     user.specific_watched_users
+  end
+
+  def self.list_of_candidate_endorsing_organizations(current_user= nil)
+    user = current_user || User.all
+    user.specific_endorsing_orgs
   end
 end
