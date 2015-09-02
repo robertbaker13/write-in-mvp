@@ -124,6 +124,7 @@ class User < ActiveRecord::Base
     sum_score = endorsements_count + watchings_count
   end
 
+
   #checks that the listed users to watch are only those users that are not already watched by the viewer
   def already_watched_users
     watched_organizations = self.watchings.map { |watching| watching.organization }
@@ -175,7 +176,7 @@ class User < ActiveRecord::Base
     users_collection = User.all
   end
 
-  #top watch users suggestions for a specific user
+  #top watch user suggestions for a specific user
   def home_users_to_watch
     #takes all users
     users_array = users.map {|user| user}
