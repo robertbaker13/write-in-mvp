@@ -43,6 +43,9 @@ gem 'omniauth-twitter'
 # gem to extract twitter user info
 gem 'twitter'
 
+# fuzzy search
+gem 'fuzzily'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
