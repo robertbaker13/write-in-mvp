@@ -7,12 +7,12 @@ class WelcomeController < ApplicationController
     user = current_user || User.new
 
     @candidates = Candidate.list_of_candidates(user)
-    @orgs_endorsing_candidates = @candidates.map { |candidate| Organization.list_of_orgs_endorsing_candidates(candidate.user) }
+    p "************"
+    p @orgs_endorsing_a_candidate = @candidates.map { |twitteruser| Organization.list_of_candidate_endorsing_organizations(twitteruser.user) }
 
     @organizations = Organization.list_of_organizations(user)
-    @candidates_endorsed_by_orgs = @organizations.map { |twitteruser| Candidate.list_of_cand_endorsed_by_org(twitteruser.user)
+    @candidates_endorsed_by_a_org = @organizations.map { |twitteruser| Candidate.list_of_cand_endorsed_by_org(twitteruser.user)
     }
-
 
     if @logged_in
       @twitter_profile_name = current_user.twitteruser.name
