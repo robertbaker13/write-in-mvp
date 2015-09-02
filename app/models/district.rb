@@ -26,4 +26,9 @@ class District < ActiveRecord::Base
       }
     end
   end
+
+  def self.search_db(input)
+      find_by_fuzzy_name(input, :limit => 20)
+  end
+
 end

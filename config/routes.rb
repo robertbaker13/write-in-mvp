@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     post 'users/:id/unwatch' => 'users#unwatch', as: :unwatch
     post 'users/:id/endorse' => "users#endorse", as: :endorse
     post 'users/:id/unendorse' => 'users#unendorse', as: :unendorse
+    get 'users/district' => "users#district"
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
