@@ -4,9 +4,17 @@
       <img src=<%= @twitter_profile_image %> class='debug img-thumbnail' style="min-height: 200px; min-width: 200px">
       <ul class='debug'>
         <li class='fs-xl mg-t p-l'><%= @twitter_profile_name %></li>
-        <li class='fs-m p-l'><%= @twitter_handle %></li>
+        <li class='fs-m p-l'><%= "@"+@twitter_handle %></li>
         <% if @current_user == @user %>
-        <%= render 'shared/district_form' %>
+          <%= render 'shared/district_form' %>
+        <% else %>
+          <% if @current_watching == nil %>
+            <li class='fs-xl mg-t p-l center-button debug'>
+              <%= button_to "Watch this Organization", watch_path(params[:id].to_i), form_class: "watch-button",:class => "btn btn-success btn-large home-right-button debug", :method => :post %>
+            </li>
+          <% else %>
+            <li class='fs-xl mg-t p-l center-button debug'><span class="btn btn-success btn-large debug">Currently Watching</span></li>
+          <% end %>
         <% end %>
       </ul>
     </div>
