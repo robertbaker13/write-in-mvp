@@ -5,10 +5,11 @@
 $(document).ready(function(){
   bindSearchBySubmit();
   bindSearchByButton();
+  // bindSearchInNav();
 })
 
 var bindSearchBySubmit = function(){
-  $('form.navbar-form').on('submit', function(event){
+  $('form.index-search').on('submit', function(event){
     event.preventDefault();
     var data = $("#peopleSearchBar").val();
     searchServer(data);
@@ -22,6 +23,16 @@ var bindSearchByButton = function(){
     searchServer(data);
   })
 }
+
+var bindSearchInNav = function(){
+  $('form.nav-search').on('submit',function(event){
+    event.preventDefault();
+    debugger
+    // var data = $().val();
+    // searchServer(data);
+  })
+}
+
 
 var searchServer = function(data){
       $.ajax({
