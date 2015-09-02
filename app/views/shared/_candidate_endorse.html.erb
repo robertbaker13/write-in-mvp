@@ -10,7 +10,9 @@
   <ul class='mg-l'>
     <li><%= twitteruser.description %></li>
     <li>
-      <%= button_to "Unendorse", unendorse_path(twitteruser.user), :class => "btn-danger btn-xs unendorse-button" %>
+      <% if session[:current_user_id].to_s == params[:id] %>
+        <%= button_to "Unendorse", unendorse_path(twitteruser.user), :class => "btn-danger btn-xs unendorse-button" %>
+      <% end %>
     </li>
   </ul>
 </div>
