@@ -12,11 +12,13 @@
           </th>
         </tr>
       </thead>
+         <% @orgs_endorsing_a_candidate[@index].each do |twitteruser| %>
           <tr>
             <td>
-              <%= @can.description %>
+              <%= twitteruser.name %>
             </td>
           </tr>
+          <% end %>
           <% if @logged_in %>
             <tr>
               <td>

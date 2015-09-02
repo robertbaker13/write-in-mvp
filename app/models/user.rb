@@ -248,6 +248,14 @@ class User < ActiveRecord::Base
     # cut_off_twitteruser_array = endorsed_users_twitter[0..10]
   end
 
+  #endorsing orgs for a specific candidate
+  def specific_endorsing_orgs
+    candidate = Candidate.find_by(user: self)
+    endorsements = Endorsement.where(candidate: candidate)
+    twitterusers = endorsements.map { |endorsement| endorsement.user.twitteruser
+    }
+  end
+
 
 #Report card page:
 #--------------------------
