@@ -2,7 +2,12 @@
 @import "bootstrap";
 
 .debug {
-  border: 1px solid red;
+  border: 0px solid red;
+}
+
+sm-avatar {
+  height: 24px,
+  width: 24px
 }
 
 .small {
