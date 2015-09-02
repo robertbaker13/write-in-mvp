@@ -3,20 +3,13 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function(){
-  bindSearchBySubmit();
-  bindSearchByButton();
+  // bindSearchBySubmit();
+  bindSearch();
 })
 
-var bindSearchBySubmit = function(){
-  $('form.navbar-form').on('submit', function(event){
-    event.preventDefault();
-    var data = $("#peopleSearchBar").val();
-    searchServer(data);
-  })
-}
 
-var bindSearchByButton = function(){
-  $('form.navbar-form').on('click','.glyphicon-search', function(event){
+var bindSearch = function(){
+  $('form.navbar-form').on('click','submit, .glyphicon-search', function(event){
     event.preventDefault();
     var data = $("#peopleSearchBar").val();
     searchServer(data);
