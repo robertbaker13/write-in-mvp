@@ -15,19 +15,31 @@ $(document).ready(function(){
 var autoCompleteListener = function(){
 
   var availableTags = [
+      "USA",
+      "California",
+      "San Francisco County",
       "San Francisco",
+      "Alameda County",
+      "Alameda",
       "Oakland",
       "Berkeley",
-      "Alameda",
+      "Santa Clara County",
       "San Jose",
+      "Contra Costa County",
       "Hercules",
+      "Lake County",
+      "Marin County",
       "Marin",
+      "Napa County",
       "Napa",
+      "Mendocino County",
       "Ukiah",
+      "San Mateo County",
       "Mountain View",
       "Redwood City",
+      "Solano County",
+      "Sonoma County",
       "Sonoma"
-
     ];
 
   $("#setDistrict").autocomplete({
