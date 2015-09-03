@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @twitter_handle = @user.twitteruser.nickname
     @twitter_profile_image = @user.twitteruser.larger_image
 
-    @report_card = ReportCard.new(@user)
+
   end
 
   def watch
@@ -65,6 +65,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @report_card = ReportCard.new(@user)
     @logged_in = logged_in?
     @current_user = current_user
     @user = User.find(params[:id])
