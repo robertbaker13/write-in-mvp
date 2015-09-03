@@ -15,18 +15,19 @@ $(document).ready(function(){
 var autoCompleteListener = function(){
 
   var availableTags = [
-      "Alameda, CA",
-      "Contra Costa, CA",
-      "San Jose, CA",
-      "Del Norte, CA",
-      "Lake, CA",
-      "Marin, CA",
-      "Napa, CA",
-      "Mendocino, CA",
-      "San Mateo, CA",
-      "San Francisco, CA",
-      "Solano, CA",
-      "Sonoma, CA"
+      "San Francisco",
+      "Oakland",
+      "Berkeley",
+      "Alameda",
+      "San Jose",
+      "Hercules",
+      "Marin",
+      "Napa",
+      "Ukiah",
+      "Mountain View",
+      "Redwood City",
+      "Sonoma"
+
     ];
 
   $("#setDistrict").autocomplete({
