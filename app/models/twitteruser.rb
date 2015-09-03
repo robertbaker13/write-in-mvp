@@ -4,6 +4,7 @@ class Twitteruser < ActiveRecord::Base
   fuzzily_searchable :name
 
   def self.create_or_update(auth)
+    # raise auth.to_yaml
     twitteruser = Twitteruser.find_by(uid: auth["uid"]) || Twitteruser.new(uid: auth["uid"])
     twitteruser.nickname = auth["info"]["nickname"]
     twitteruser.name = auth["info"]["name"]
