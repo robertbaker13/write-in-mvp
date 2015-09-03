@@ -15,9 +15,13 @@ class WelcomeController < ApplicationController
     end
 
     @current_user_watches_org = @organizations.map do |org|
-      watchings = @current_user.watchings
-      twitter_users = watchings.map { |w| w.organization.user.twitteruser }
-      twitter_users.include?(org)
+      if @current_user
+        watchings = @current_user.watchings
+        twitter_users = watchings.map { |w| w.organization.user.twitteruser }
+        twitter_users.include?(org)
+      else
+        nil
+      end
     end
 
     @candidates_endorsed_by_a_org = @organizations.map { |twitteruser| Candidate.list_of_cand_endorsed_by_org(twitteruser.user)

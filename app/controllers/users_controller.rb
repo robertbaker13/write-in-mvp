@@ -69,14 +69,20 @@ class UsersController < ApplicationController
     }
 
     @current_user_watches_org = @organizations.map do |org|
-      watchings = @current_user.watchings
-      twitter_users = watchings.map { |w| w.organization.user.twitteruser }
-      twitter_users.include?(org)
-
-      @org_ids = @organizations.map do |tu|
-        tu.user.organization.id
+      if @current_user
+        watchings = @current_user.watchings
+        twitter_users = watchings.map { |w| w.organization.user.twitteruser }
+        twitter_users.include?(org)
+      else
+        nil
       end
     end
+
+
+    @org_ids = @organizations.map do |tu|
+      tu.user.organization.id
+    end
+
 
 
   end

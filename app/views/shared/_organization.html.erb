@@ -11,7 +11,7 @@
               </a>
             </th>
 
-          <% if !@current_user_watches_org[@index] %>
+          <% if !@logged_in || !@current_user_watches_org[@index] %>
             <th><%= button_to " Watch ", watch_path(@org_ids[@index]), :form_class => "watch-index-button",:class => "btn-success btn-xs watch-index-button",:"aria-hidden"=> "true", :method => :post  %></th>
           <% else %>
           <!-- this below button logins in but does not redirect to the right page -->
