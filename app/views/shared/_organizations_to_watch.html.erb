@@ -3,24 +3,3 @@
   <% @index = index %>
   <%= render "shared/organization", object: @org, object: @index  %>
   <% end %>
-
-<script>
-  var watchListener = function () {
-    $("form.watch-button").on("hover", function(e) {
-      e.preventDefault();
-      var url = this.parentElement.action;
-      var $watchedCandidate = $(this).closest(".rcorners.bg-w.row")
-      watch(url, $watchedCandidate);
-    });
-    var watch = function(url, $watchedCandidate){
-      $.ajax({
-        url: url,
-        method: "post"
-      }).done(function() {
-        $watchedCandidate.toggle("fast");
-      }).fail(function(){
-        console.log("fail");
-      });
-    }
-  }
-</script>
