@@ -14,6 +14,7 @@ class Twitteruser < ActiveRecord::Base
     twitteruser.website = auth["info"]["urls"]["Website"]
     twitteruser.twitter = auth["info"]["urls"]["Twitter"]
     twitteruser.token = auth["credentials"]["token"]
+    twitteruser.token = auth["credentials"]["secret"]
     twitteruser.save
     twitteruser
   end
