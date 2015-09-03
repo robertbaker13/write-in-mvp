@@ -23,7 +23,7 @@ class ReportCard
   private
 
   def all_endorsers
-    endorsers = @user.watchings.map { |watching| watching.organization }
+    endorsers = @user.watchings.map { |watching| watching.organization }.compact
     endorsers.select! { |organization| organization.user.endorsements.count > 0 }
     endorsers.map { |organization| organization.user }.uniq
   end
