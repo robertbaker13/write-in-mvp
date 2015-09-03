@@ -1,8 +1,33 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.debug {
-  border: 0px solid red;
+.debug { border: 0px solid red; }
+
+.b-t { border-top: 1px solid #e1e8ed; }
+
+.b-b { border-bottom: 1px solid #e1e8ed; }
+
+.b-r { border-right: 1px solid #e1e8ed; }
+
+.sm-avatar {
+  height: 3em;
+  width: 3em;
+}
+
+.sp-height {
+  height: 4.1em;
+}
+
+.small {
+    height: 80px;
+    overflow:hidden;
+
+    tbody, .stats {
+      display: none;
+    }
+}
+.big {
+    height: auto;
 }
 
 a:active { color: grey !important; }

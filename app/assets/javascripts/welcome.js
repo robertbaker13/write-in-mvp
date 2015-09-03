@@ -6,7 +6,14 @@ $(document).ready(function(){
   bindSearchBySubmit();
   bindSearchByButton();
   // bindSearchInNav();
+  expandPanel();
 })
+
+var expandPanel = function(){
+  $('.wrapper').click(function(){
+    $(this).closest('.wrapper').find('.small, .big').toggleClass('small big');
+  })
+};
 
 var bindSearchBySubmit = function(){
   $('form.index-search').on('submit', function(event){
