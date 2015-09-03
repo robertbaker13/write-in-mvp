@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 ###################################################################### districts:
 
 USA = District.create( name: "USA" )
@@ -84,44 +85,153 @@ USA = District.create( name: "USA" )
 
       snm = District.create( name: "Sonoma", parent: snc )
 
-###################################################################### user-users:
-
-bobby = User.create( uid: "3399540193", district: sf ); Organization.create( user: bobby )
-
-Twitteruser.create( uid: "3399540193", nickname: "Bobby", name: "Bob Smith", location: "San Francisco", email: "bob@gmail.com",
-                    image: "http://abs.twimg.com/sticky/default_profile_images/default_profile_0_normal.png", description: "A happy farmer",
-                    twitter: "https://twitter.com/bobby", token: "3399540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: bobby )
 
 
-john = User.create( uid: "3399511193", district: sf ); Organization.create( user: john )
 
-Twitteruser.create(
- uid: "3399511193",
- nickname: "John",
- name: "John Miller",
- location: "San Francisco",
- email: "jm@gmail.com",
- image: "http://abs.twimg.com/sticky/default_profile_images/default_profile_0_normal.png",
- description: "A hard working dude",
- twitter: "https://twitter.com/john",
- token: "3399511193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: john
-  )
 
-anna = User.create( uid: "339952223", district: sf ); Organization.create( user: john )
+###################################################################### organizations:
 
-Twitteruser.create(
- uid: "339952223",
- nickname: "Anna",
- name: "Anna Miller",
- location: "San Francisco",
- email: "jm@gmail.com",
- image: "http://abs.twimg.com/sticky/default_profile_images/default_profile_0_normal.png",
- description: "A hard working dude",
- twitter: "https://twitter.com/anna",
- token: "339952223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: anna
-  )
+parenthood = User.create( uid: "3388550193", district: USA )
+
+parenthood_org = Organization.create( user: parenthood )
+
+Twitteruser.create( uid: "3388540193", nickname: "pl-parenthood",
+                    name: "Planned Parenthood Federation of America", location: "USA", email: "plp@gmail.com",
+                    image: "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Planned_Parenthood_logo.svg/1280px-Planned_Parenthood_logo.svg.png",
+                    description: "Hi! We’re America’s most trusted provider of reproductive health care, and we think we look pretty good for nearly 100 years  d.",
+                    website: "http://www.plannedparenthood.org/",
+                    twitter: "https://twitter.com/plp", token: "3388540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: parenthood )
+
+
+catholic_vote = User.create( uid: "888852223", district: USA )
+
+catholic_vote_org = Organization.create(user: catholic_vote )
+
+Twitteruser.create( uid: "888852223", nickname: "CatholicVote.org", name: "CatholicVote", location: "USA",
+                    image: "https://upload.wikimedia.org/wikipedia/en/3/30/Catholicvote.org_logo.jpg",
+                    description: "CatholicVote.org is a community of patriotic Americans who believe our nation’s founding principles are good and true, and worth fighting for.", token: "888852223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: catholic_vote )
+
+
+
+move_on = User.create( uid: "188852223", district: USA )
+
+move_on_org = Organization.create(user: move_on )
+
+Twitteruser.create( uid: "188852223", nickname: "MoveOn.org", name: "MoveOn", location: "USA",
+                    image: "https://pbs.twimg.com/profile_images/634350026786013185/06gso-dN_400x400.png",
+                    description: "America's largest independent online political group, with millions of members fighting to make our voices heard in our democracy and win progressive change.", token: "188852223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: move_on )
+
+
+
+pflag = User.create( uid: "7272152223", district: USA )
+
+pflag_org = Organization.create( user: pflag )
+
+Twitteruser.create( uid: "7272152223", nickname: "PFLAG", name: "Parents & Friends of Lesbians & Gays", location: "USA",
+                    image: "https://pbs.twimg.com/profile_images/606863876701814784/dOoF7KKZ_400x400.jpg",
+                    description: "Parents, families, friends, and allies united with LGBTQ people to move equality forward!", token: "7272152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: pflag )
+
+
+go_proud = User.create( uid: "7777152223", district: USA )
+
+go_proud_org = Organization.create( user: go_proud )
+
+Twitteruser.create( uid: "7777152223", nickname: "GOProud", name: "GOProud", location: "USA",
+                    image: "https://upload.wikimedia.org/wikipedia/en/9/91/GOProud_logo.png",
+                    description: "An organization for gay conservatives and their allies.", token: "7777152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: go_proud )
+
+
+ca_teachers_assoc = User.create( uid: "7777152223", district: USA )
+
+ca_teachers_assoc_org = Organization.create( user: ca_teachers_assoc )
+
+Twitteruser.create( uid: "123123578", nickname: "CTA", name: "California Teachers' Association", location: "USA",
+                    image: "https://pbs.twimg.com/profile_images/428215080627339264/qIpPBrlK_400x400.jpeg",
+                    description: "CTA represents more than 325,000 teachers, counselors, librarians, psychologists, nurses, community college and CSU faculty, and education support professionals", token: "123123578-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: ca_teachers_assoc )
+
+
+nrlc = User.create( uid: "7744152223", district: USA )
+
+nrlc_org = Organization.create( user: nrlc )
+
+Twitteruser.create( uid: "7744152223", nickname: "NRLC", name: "National Right to Life Committee", location: "USA",
+                    image: "http://nrlc.org/site/wp-content/uploads/header0114.png",
+                    description: "National Right to Life, the federation of 50 state right-to-life affiliates & more than 3,000 local chapters, is the nation’s oldest & largest #prolife org.", token: "7744152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",user: nrlc )
+
+smg = User.create( uid: "7744157777", district: USA )
+
+smg_org = Organization.create( user: smg )
+
+Twitteruser.create( uid: "7744157777", nickname: "SMG", name: "The Scotts Miracle-Gro Company", location: "USA",
+                    image: "https://upload.wikimedia.org/wikipedia/en/f/f8/Scotts-miracle-gro_logo.png",
+                    description: "News & insights from The Scotts Miracle-Gro Company. Follow us to see how we are helping people of all ages express themselves on their own piece of the Earth.", token: "7744157777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: smg )
+
+
+tprvw = User.create( uid: "1724347576", district: USA )
+
+tprvw_org = Organization.create( user: tprvw )
+
+Twitteruser.create( uid: "1724347576", nickname: "TPR", name: "The Paris Review", location: "USA",
+                    image: "https://pbs.twimg.com/profile_images/554754592249249793/0Di_ohBs_400x400.jpeg",
+                    description: "Quarterly literary magazine founded in 1953.", token: "1724347576-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: tprvw )
+
+
+nea = User.create( uid: "1724399999", district: USA )
+
+nea_org = Organization.create( user: nea )
+
+Twitteruser.create( uid: "1724399999", nickname: "NEA", name: "National Education Association", location: "USA",
+                    image: "https://pbs.twimg.com/profile_images/598125301772767232/07y8BIoE_400x400.jpg",
+                    description: "The National Education Association, the nation's largest professional employee organization, is committed to advancing the cause of public education.", token: "1724399999-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: nea )
+
+
+dwob = User.create( uid: "7744144447", district: USA )
+
+dwob_org = Organization.create( user: dwob )
+
+Twitteruser.create( uid: "7744144447", nickname: "MSF", name: "Doctors Without Borders", location: "USA",
+                    image: "https://pbs.twimg.com/profile_images/2767072246/a86211e851acafb19a5abc92b540d379_400x400.png",
+                    description: "Providing medical aid where it's needed most.", token: "7744144447-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: dwob )
+
+
+aclu = User.create( uid: "1714151717", district: USA )
+
+aclu_org = Organization.create( user: aclu )
+
+Twitteruser.create( uid: "1714151717", nickname: "ACLU", name: "American Civil Liberties Union", location: "Washington, DC",
+                    image: "https://pbs.twimg.com/profile_images/618476695910100992/F95c5zW3_400x400.jpg",
+                    description: "The ACLU is a nonprofit, nonpartisan, public interest law firm and advocacy organization devoted to protecting the basic civil liberties of everyone in America.", token: "1714151717-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: aclu )
+
+
+nra = User.create( uid: "999952223", district: USA )
+
+nra_org = Organization.create( user: nra )
+
+Twitteruser.create( uid: "999952223", nickname: "NRA", name: "National Rifle Association", location: "San Francisco", email: "nra@gmail.com",
+                    image: "https://upload.wikimedia.org/wikipedia/en/thumb/7/73/National_Rifle_Association.svg/1024px-National_Rifle_Association.svg.png",
+                    description: "A house and a gun for every American", twitter: "https://twitter.com/nra", token: "999952223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: nra )
+
+
+srclub = User.create( uid: "222252223", district: USA )
+
+srclub_org = Organization.create( user: srclub )
+
+Twitteruser.create( uid: "222252223", nickname: "SierraC", name: "SierraClub", location: "USA", email: "srclub@gmail.com",
+                    image: "http://www.stevestenger.com/wp-content/uploads/2014/10/sierraclub-logo.png",
+                    description: "Since 1892, the Sierra Club has been working to protect communities, wild places, and the planet itself.",
+                    twitter: "https://twitter.com/srclub", token: "222252223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: srclub )
+
+
+aufscs = User.create( uid: "292857223", district: USA )
+
+aufscs_org = Organization.create( user: aufscs )
+
+Twitteruser.create( uid: "292857223", nickname: "Americans United", name: "Americans United for Separation of Church & State", location: "Washington, DC", email: "aufscs@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/418778923225186304/oZ41vsiq_400x400.jpeg",
+                    description: "Americans United for Separation of Church and State is a national religious liberty watchdog group. We've been protecting the wall of separation since 1947!",
+                    twitter: "https://twitter.com/americansunited", token: "292857223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: aufscs )
+
+
 
 ###################################################################### user-candidates:
 
@@ -325,119 +435,11 @@ Twitteruser.create( uid: "2346515355", nickname: "Jose", name: "Jose Cisneros", 
 
 ###################################################################### user-organizations:
 
-parenthood = User.create( uid: "3388550193", district: USA )
-
-parenthood_org = Organization.create( user: parenthood )
-
-Twitteruser.create( uid: "3388540193", nickname: "pl-parenthood",
-                    name: "Planned Parenthood Federation of America", location: "USA", email: "plp@gmail.com",
-                    image: "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Planned_Parenthood_logo.svg/1280px-Planned_Parenthood_logo.svg.png",
-                    description: "Hi! We’re America’s most trusted provider of reproductive health care, and we think we look pretty good for nearly 100 years  d.",
-                    website: "http://www.plannedparenthood.org/",
-                    twitter: "https://twitter.com/plp", token: "3388540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: parenthood )
-
-
-catholic_vote = User.create( uid: "888852223", district: USA )
-
-catholic_vote_org = Organization.create(user: catholic_vote )
-
-Twitteruser.create( uid: "888852223", nickname: "CatholicVote.org", name: "CatholicVote", location: "USA",
-                    image: "https://upload.wikimedia.org/wikipedia/en/3/30/Catholicvote.org_logo.jpg",
-                    description: "CatholicVote.org is a community of patriotic Americans who believe our nation’s founding principles are good and true, and worth fighting for.", token: "888852223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: catholic_vote )
-
-
-go_proud = User.create( uid: "7777152223", district: USA )
-
-go_proud_org = Organization.create( user: go_proud )
-
-Twitteruser.create( uid: "7777152223", nickname: "GOProud", name: "GOProud", location: "USA",
-                    image: "https://upload.wikimedia.org/wikipedia/en/9/91/GOProud_logo.png",
-                    description: "An organization for gay conservatives and their allies.", token: "7777152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: go_proud )
-
-
-nrlc = User.create( uid: "7744152223", district: USA )
-
-nrlc_org = Organization.create( user: nrlc )
-
-Twitteruser.create( uid: "7744152223", nickname: "NRLC", name: "National Right to Life Committee", location: "USA",
-                    image: "http://nrlc.org/site/wp-content/uploads/header0114.png",
-                    description: "National Right to Life, the federation of 50 state right-to-life affiliates & more than 3,000 local chapters, is the nation’s oldest & largest #prolife org.", token: "7744152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",user: nrlc )
-
-smg = User.create( uid: "7744157777", district: USA )
-
-smg_org = Organization.create( user: smg )
-
-Twitteruser.create( uid: "7744157777", nickname: "SMG", name: "The Scotts Miracle-Gro Company", location: "USA",
-                    image: "https://upload.wikimedia.org/wikipedia/en/f/f8/Scotts-miracle-gro_logo.png",
-                    description: "News & insights from The Scotts Miracle-Gro Company. Follow us to see how we are helping people of all ages express themselves on their own piece of the Earth.", token: "7744157777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: smg )
-
-
-nra = User.create( uid: "999952223", district: USA )
-
-nra_org = Organization.create( user: nra )
-
-Twitteruser.create( uid: "999952223", nickname: "NRA", name: "National Rifle Association", location: "San Francisco", email: "nra@gmail.com",
-                    image: "https://upload.wikimedia.org/wikipedia/en/thumb/7/73/National_Rifle_Association.svg/1024px-National_Rifle_Association.svg.png",
-                    description: "A house and a gun for every American", twitter: "https://twitter.com/nra", token: "999952223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: nra )
-
-
-srclub = User.create( uid: "222252223", district: USA )
-
-srclub_org = Organization.create( user: srclub )
-
-Twitteruser.create( uid: "222252223", nickname: "SierraC", name: "SierraClub", location: "USA", email: "srclub@gmail.com",
-                    image: "http://www.stevestenger.com/wp-content/uploads/2014/10/sierraclub-logo.png",
-                    description: "Since 1892, the Sierra Club has been working to protect communities, wild places, and the planet itself.",
-                    twitter: "https://twitter.com/srclub", token: "222252223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: srclub )
 
 
 
 
 
-Endorsement.create(
-  candidate: bbcan,
-  user: parenthood
-  )
-
-Endorsement.create(
-  candidate: dfcan,
-  user: srclub
-  )
-
-Endorsement.create(
-  candidate: jbcan,
-  user: nra
-  )
-
-Endorsement.create(
-  candidate: hcan,
-  user: parenthood
-  )
-
-Watching.create(
-  user: john,
-  organization: parenthood_org
-  )
-
-Watching.create(
-  user: bobby,
-  organization: srclub_org
-  )
-
-Watching.create(
-  user: anna,
-  organization: srclub_org
-  )
-
-Watching.create(
-  user: anna,
-  organization: parenthood_org
-  )
-
-Watching.create(
-  user: bobby,
-  organization: parenthood_org
-  )
 
 #------------------------------------------------
 
@@ -640,6 +642,7 @@ alex_t = Twitteruser.create(
   location: "San Jose",
   email: "AT@gmail.com",
   image:
+
    "https://i.vimeocdn.com/video/512191722_640.jpg",
   description:
    "My campaign for D4 is moving forward with much support and success from our neighbors and local businesses.",
@@ -1071,3 +1074,89 @@ Watching.create(
 #   followers: Array.new(22){Faker::Name.name},
 #   following: Array.new(33){Faker::Name.name}
 #   )
+###################################################################### user-users:
+
+bobby = User.create( uid: "3399540193", district: sf ); Organization.create( user: bobby )
+
+Twitteruser.create( uid: "3399540193", nickname: "Bobby", name: "Bob Smith", location: "San Francisco", email: "bob@gmail.com",
+                    image: "http://abs.twimg.com/sticky/default_profile_images/default_profile_0_normal.png", description: "A happy farmer",
+                    twitter: "https://twitter.com/bobby", token: "3399540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: bobby )
+
+
+john = User.create( uid: "3399511193", district: sf ); Organization.create( user: john )
+
+Twitteruser.create(
+ uid: "3399511193",
+ nickname: "John",
+ name: "John Miller",
+ location: "San Francisco",
+ email: "jm@gmail.com",
+ image: "http://abs.twimg.com/sticky/default_profile_images/default_profile_0_normal.png",
+ description: "A hard working dude",
+ twitter: "https://twitter.com/john",
+ token: "3399511193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+ user: john
+  )
+
+anna = User.create( uid: "339952223", district: sf ); Organization.create( user: john )
+
+Twitteruser.create(
+ uid: "339952223",
+ nickname: "Anna",
+ name: "Anna Miller",
+ location: "San Francisco",
+ email: "jm@gmail.com",
+ image: "http://abs.twimg.com/sticky/default_profile_images/default_profile_0_normal.png",
+ description: "A hard working dude",
+ twitter: "https://twitter.com/anna",
+ token: "339952223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+ user: anna
+  )
+
+
+
+
+Endorsement.create(
+  candidate: bbcan,
+  user: parenthood
+  )
+
+Endorsement.create(
+  candidate: dfcan,
+  user: srclub
+  )
+
+Endorsement.create(
+  candidate: jbcan,
+  user: nra
+  )
+
+Endorsement.create(
+  candidate: hcan,
+  user: parenthood
+  )
+
+Watching.create(
+  user: john,
+  organization: parenthood_org
+  )
+
+Watching.create(
+  user: bobby,
+  organization: srclub_org
+  )
+
+Watching.create(
+  user: anna,
+  organization: srclub_org
+  )
+
+Watching.create(
+  user: anna,
+  organization: parenthood_org
+  )
+
+Watching.create(
+  user: bobby,
+  organization: parenthood_org
+  )
