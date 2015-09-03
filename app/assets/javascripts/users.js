@@ -93,12 +93,10 @@ var watchIndexListener = function () {
 
     request.success(function(data) {
       console.log("done");
-      debugger
         $watchedCandidate.toggle("fast");
       })
 
     request.fail(function(){
-      debugger
         console.log("fail");
       });
     }
