@@ -15,18 +15,31 @@ $(document).ready(function(){
 var autoCompleteListener = function(){
 
   var availableTags = [
-      "Alameda, CA",
-      "Contra Costa, CA",
-      "San Jose, CA",
-      "Del Norte, CA",
-      "Lake, CA",
-      "Marin, CA",
-      "Napa, CA",
-      "Mendocino, CA",
-      "San Mateo, CA",
-      "San Francisco, CA",
-      "Solano, CA",
-      "Sonoma, CA"
+      "USA",
+      "California",
+      "San Francisco County",
+      "San Francisco",
+      "Alameda County",
+      "Alameda",
+      "Oakland",
+      "Berkeley",
+      "Santa Clara County",
+      "San Jose",
+      "Contra Costa County",
+      "Hercules",
+      "Lake County",
+      "Marin County",
+      "Marin",
+      "Napa County",
+      "Napa",
+      "Mendocino County",
+      "Ukiah",
+      "San Mateo County",
+      "Mountain View",
+      "Redwood City",
+      "Solano County",
+      "Sonoma County",
+      "Sonoma"
     ];
 
   $("#setDistrict").autocomplete({
