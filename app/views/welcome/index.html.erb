@@ -86,12 +86,14 @@
     </dl>
   </div>
   <% if @logged_in %>
-  <div>
+  <div id="trending-tweet">
     <h4 class='fw-t txt-c'>#Election2016</h4>
     <dl class='p-l-m'>
-      <% current_user.twitteruser.twitter.search("#Election2016", result_type: "recent").take(5).collect do |tweet| %>
-      <dt><%= tweet.text %></dt>
-      <dd class='c-gy'>by <%= tweet.user.screen_name %></dd>
+      <% cache "trending-tweet#{Date.today}" do %>
+        <% current_user.twitteruser.twitter.search("#Election2016", result_type: "trending").take(5).collect do |tweet| %>
+          <dt><%= tweet.text %></dt>
+          <dd class='c-gy'>by <%= tweet.user.screen_name %></dd>
+        <% end %>
       <% end %>
     </dl>
 
