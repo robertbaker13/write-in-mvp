@@ -4,17 +4,19 @@ class UsersController < ApplicationController
   def report_card
     @user = User.find(params[:user_id])
 
-     #this would show all the offices and all the candidates
-     @user_districts = @user.district.add_parents.map {|district| district}
-     @user_districts_offices = @user_districts.compact.map {|district| district.offices}.flatten
-     @user_districts_offices_candidates = @user_districts_offices.compact.map {|office| office.candidates}.flatten
-     @user_districts_offices_candidates_users = @user_districts_offices_candidates.compact.map {|candidate| candidate.user.twitteruser}.flatten
+    #  #this would show all the offices and all the candidates
+    #  @user_districts = @user.district.add_parents.map {|district| district}
+    #  @user_districts_offices = @user_districts.compact.map {|district| district.offices}.flatten
+    #  @user_districts_offices_candidates = @user_districts_offices.compact.map {|office| office.candidates}.flatten
+    #  @user_districts_offices_candidates_users = @user_districts_offices_candidates.compact.map {|candidate| candidate.user.twitteruser}.flatten
 
-    # @reports = current_user.report_card
-    # @watched_users = current_user.specific_watched_users
+    # # @reports = current_user.report_card
+    # # @watched_users = current_user.specific_watched_users
     @twitter_profile_name = @user.twitteruser.name
     @twitter_handle = @user.twitteruser.nickname
     @twitter_profile_image = @user.twitteruser.larger_image
+
+    @report_card = ReportCard.new(@user)
   end
 
   def watch
@@ -23,7 +25,7 @@ class UsersController < ApplicationController
     if request.xhr?
       render json: true
     else
-      redirect_to show_path(@user)
+      redirect_to show_path(current_user)
     end
   end
 
@@ -68,7 +70,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @watched_users = Organization.list_of_watched_orgs(@user)
-
     @watched_user_endorsements = @watched_users.map { |twitteruser| Candidate.list_of_cand_endorsed_by_org(twitteruser.user) }
 
     @twitter_profile_name = @user.twitteruser.name
@@ -76,7 +77,12 @@ class UsersController < ApplicationController
     @twitter_profile_image = @user.twitteruser.larger_image
 
     @endorsed_candidates = Candidate.list_of_cand_endorsed_by_org(@user)
-    @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| Organization.list_of_orgs_endorsing_candidates(twitteruser.user) }
+    @orgs_endorsing_a_candidate = @endorsed_candidates.map { |twitteruser| Organization.list_of_candidate_endorsing_organizations(twitteruser.user) }
+
+    # @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| Organization.list_of_orgs_endorsing_candidates(twitteruser.user) }
+
+    @current_watching = Watching.find_by(user: current_user, organization: params[:id])
+
   end
 
   # GET /users/new
