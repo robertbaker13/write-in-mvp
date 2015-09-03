@@ -1,0 +1,33 @@
+     <table class='table table-hover m-a w-m'>
+          <% @report_card.offices.each do |office| %>
+              <thead>
+                  <tr>
+                      <th colspan="2" class='txt-c p-t'><%= office[:name] %></th>
+                  </tr>
+              </thead>
+                <% if office[:candidates] %>
+                  <% office[:candidates].each do |candidate| %>
+                      <tr>
+                          <td><%= candidate[:name] %></td>
+                          <td>
+                              <details>
+                                  <summary><%= candidate[:endorser_count] %></summary>
+                                  <ul>
+                                      <% candidate[:endorsers].each do |endorser| %>
+                                      <li><%= endorser.name %></li>
+                                      <% end %>
+                                  </ul>
+                              </details>
+                          </td>
+                      </tr>
+                      <% end %>
+                    <% else %>
+                    <tr>
+                        <td>No Candidates Endorsed!</td>
+                        <td>
+                        </td>
+                    </tr>
+                      <tr></tr>
+                    <% end %>
+          <% end %>
+      </table>

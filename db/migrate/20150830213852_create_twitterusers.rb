@@ -11,6 +11,7 @@ class CreateTwitterusers < ActiveRecord::Migration
       t.string :website
       t.string :twitter
       t.string :token
+      t.string :secret
       t.references :user
       # t.string :followers, array: true
       # t.string :following, array: true
