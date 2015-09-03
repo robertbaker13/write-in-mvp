@@ -48,11 +48,11 @@
                           <td><%= candidate[:name] %></td>
                           <td>
                               <details>
-                                  <summary>48%</summary>
+                                  <summary><%= candidate[:endorser_count] %></summary>
                                   <ul>
                                       <% candidate[:endorsers].each do |endorser| %>
                                       <li><%= endorser.name %></li>
-                                    <% end %>
+                                      <% end %>
                                   </ul>
                               </details>
                           </td>
