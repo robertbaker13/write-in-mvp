@@ -5,11 +5,8 @@
   <% end %>
 
 <script>
-  $(document).ready(function() {
-    watchListener();
-  });
   var watchListener = function () {
-    $("input.btn-success.btn-xs.watch-button").on("click", function(e) {
+    $("form.watch-button").on("hover", function(e) {
       e.preventDefault();
       var url = this.parentElement.action;
       var $watchedCandidate = $(this).closest(".rcorners.bg-w.row")

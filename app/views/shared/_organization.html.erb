@@ -1,24 +1,30 @@
-<div class='rcorners bg-w row txt-c'>
-  <img src=<%= @org.image %> alt="" class='mg p-s col-md-2 img-responsive'>
-  <div class='col-md-9 mg p-s debug'>
-    <table class='debug w txt-c'>
-      <thead>
-        <tr class='debug'>
-          <th class='txt-c fs-m th-w'><a href="<%= show_path(@org) %>">
-            <%= @org.name %></a></td>
-          </th>
-          <% if @logged_in %>
-          <th><%= button_to " Watch ", watch_path(@org.user_id), :class => "btn-success btn-xs watch-button",:"aria-hidden"=> "true", :method => :post  %></th>
+<div class='rcorners bg-w row wrapper'>
+  <div class='small'>
+    <img src=<%= @org.image %> alt="" class='mg p-s col-md-2 img-responsive'>
+    <div class='col-md-9 mg p-s debug body'>
+      <table class='debug w txt-c'>
+        <thead>
+          <tr class='debug'>
+            <th class='txt-c fs-m th-w'>
+              <a href="<%= show_path(@org) %>">
+                <%= @org.name %>
+              </a>
+            </th>
+            <% if @logged_in %>
+            <th><%= button_to " Watch ", watch_path(@org.user_id), :form_class => "watch-index-button",:class => "btn-success btn-xs watch-index-button",:"aria-hidden"=> "true", :method => :post  %></th>
           <% else %>
           <!-- this below button logins in but does not redirect to the right page -->
-          <th><%= button_to " Watch ", "/auth/twitter", :class => "btn-success btn-xs watch-button", :"aria-hidden"=> "true", :method => :post, :headers => { :organization => @org.user }  %></th>
+          <th><%= button_to " Watch ", "/auth/twitter", :class => "btn-success btn-xs", :"aria-hidden"=> "true", :method => :post, :headers => { :organization => @org.user }  %></th>
+          </tr>
           <% end %>
         </thead>
-        <% @candidates_endorsed_by_a_org[@index].each do |twitteruser| %>
-        <tr>
-          <td><%= twitteruser.name %></td>
-        </tr>
-        <% end %>
+        <tbody>
+          <tr>
+            <td><%= @org.description %></td>
+          </tr>
+        </tbody>
       </table>
+        <%= render 'shared/org_stats' %>
     </div>
   </div>
+</div>

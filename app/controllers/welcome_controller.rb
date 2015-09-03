@@ -7,8 +7,7 @@ class WelcomeController < ApplicationController
     user = current_user || User.new
 
     @candidates = Candidate.list_of_candidates(user)
-    p "************"
-    p @orgs_endorsing_a_candidate = @candidates.map { |twitteruser| Organization.list_of_candidate_endorsing_organizations(twitteruser.user) }
+    @orgs_endorsing_a_candidate = @candidates.map { |twitteruser| Organization.list_of_candidate_endorsing_organizations(twitteruser.user) }
 
     @organizations = Organization.list_of_organizations(user)
     @candidates_endorsed_by_a_org = @organizations.map { |twitteruser| Candidate.list_of_cand_endorsed_by_org(twitteruser.user)
