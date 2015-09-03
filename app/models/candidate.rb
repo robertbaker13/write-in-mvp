@@ -3,6 +3,7 @@ class Candidate < ActiveRecord::Base
   belongs_to :user
   has_many :endorsements
 
+
   #checks user for a specific candidate
   def rc_user(active_user)
     p "self: #{self}"
@@ -20,8 +21,17 @@ class Candidate < ActiveRecord::Base
   def self.sorted_list (current_user= nil)
   end
 
-  def score
+  def rc_endorsers(current_user)
+    result = self.endorsements
+    result.map { |endorsement| endorsement.user.twitteruser }.compact
+    # sort this later!
+  end
 
+  def rc_score(current_user) #this represents the number of accounts I watch who endorse this candidate
+    watchings = Watching.where(user: current_user).select do |watching|
+      watching.organization.user.endorsements.includes?(self)
+    end
+    watchings.length
   end
 
   def self.list_of_cand_endorsed_by_org (current_user= nil)

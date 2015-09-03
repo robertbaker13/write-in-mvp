@@ -9,11 +9,11 @@ class Office < ActiveRecord::Base
     result.select { |record| record[:user] }
   end
 
-  # def candidates_for_specific_user(user)
-  #   watched_organizations = user.watchings.map { |watching| watching.organization }
-  #   watched_users = watched_organizations.map { |organization| organization.user }
-  #   watched_endorsements = watched_users.map { |user| user.endorsements }.flatten
-  #   watched_candidates = watched_endorsements.map { |endorsement| endorsement.candidate }
-  #   candidates.select { |candidate| watched_candidates.include?(candidate) }
+  def rc_candidates(current_user)
+    result = self.candidates.map { |candidate| [candidate, candidate.rc_endorsers, candidate.rc_score(current_user)] }
+    result.select { |x| x[2] > 0 }.sort.reverse
+  end
+
+
 
 end
