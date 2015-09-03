@@ -1,7 +1,7 @@
 ## DBC Final Project Schema - WriteIn
 
 - Schema
-![](wireframe-schema-asset/schema-second-change.png)
+![](wireframe-schema-asset/Schema-2015-09-03.png)
 
 
 
