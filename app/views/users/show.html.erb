@@ -21,8 +21,8 @@
     <div class="p-s rcorners bg-w mg-t mg-r">
       <a href="<%= @current_user ? report_path(@user) : "#" %>"><p class="txt-c fs-l">Compatibility Report</p></a>
       <p class='fs-xm txt-c'>Which candidates share <%= @current_user == @user ? "my values?" : @user.name + "'s values?" %></p>
-      <% if @report_card %>
-        <%= render "shared/report_card" , object: @report_card %>
+      <% if @current_user == @user %>
+        <%= render "shared/report_card" %>
       <% end %>
   </div>
 </div>

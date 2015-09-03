@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @twitter_profile_name = @user.twitteruser.name
     @twitter_handle = @user.twitteruser.nickname
     @twitter_profile_image = @user.twitteruser.larger_image
-
+    @report_card = ReportCard.new(@user)
 
   end
 
