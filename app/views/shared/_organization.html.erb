@@ -10,13 +10,17 @@
                 <%= @org.name %>
               </a>
             </th>
-            <% if @logged_in %>
-            <th><%= button_to " Watch ", watch_path(@org.user_id), :form_class => "watch-index-button",:class => "btn-success btn-xs watch-index-button",:"aria-hidden"=> "true", :method => :post  %></th>
+          <% if @current_user != @user %>
+          <% else %>
+          <% if !@current_user_watches_org[@index] %>
+            <th><%= button_to " Watch ", watch_path(@org_ids[@index]), :form_class => "watch-index-button",:class => "btn-success btn-xs watch-index-button",:"aria-hidden"=> "true", :method => :post  %></th>
           <% else %>
           <!-- this below button logins in but does not redirect to the right page -->
-          <th><%= button_to " Watch ", "/auth/twitter", :class => "btn-success btn-xs", :"aria-hidden"=> "true", :method => :post, :headers => { :organization => @org.user }  %></th>
+            <th> <%= button_to "Unwatch", unwatch_path(@org_ids[@index]),form_class: "unwatch-button" ,:class => "btn-danger btn-xs",:"aria-hidden"=> "true", :id => "organization-#{@org.id}", :method => :put %></th>
           </tr>
           <% end %>
+          <% end %>
+
         </thead>
         <tbody>
           <tr>

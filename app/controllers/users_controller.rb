@@ -19,25 +19,7 @@ class UsersController < ApplicationController
 
   end
 
-  def watch
-    @user = User.find(params[:id])
-    @user.watch(current_user)
-    if request.xhr?
-      render json: true
-    else
-      redirect_to show_path(current_user)
-    end
-  end
 
-  def unwatch
-    @user_to_unwatch = User.find(params[:id])
-    @user_to_unwatch.unwatch(current_user)
-    if request.xhr?
-      render json: true
-    else
-      redirect_to show_path(current_user)
-    end
-  end
 
   def endorse
     @user = User.find(params[:id])
@@ -70,8 +52,8 @@ class UsersController < ApplicationController
     @current_user = current_user
     @user = User.find(params[:id])
 
-    @watched_users = Organization.list_of_watched_orgs(@user)
-    @watched_user_endorsements = @watched_users.map { |twitteruser| Candidate.list_of_cand_endorsed_by_org(twitteruser.user) }
+    @organizations = Organization.list_of_watched_orgs(@user)
+    @watched_user_endorsements = @organizations.map { |twitteruser| Candidate.list_of_cand_endorsed_by_org(twitteruser.user) }
 
     @twitter_profile_name = @user.twitteruser.name
     @twitter_handle = @user.twitteruser.nickname
@@ -83,6 +65,25 @@ class UsersController < ApplicationController
     # @endorsed_candidate_endorsers = @endorsed_candidates.map { |twitteruser| Organization.list_of_orgs_endorsing_candidates(twitteruser.user) }
 
     @current_watching = Watching.find_by(user: current_user, organization: params[:id])
+    @candidates_endorsed_by_a_org = @organizations.map { |twitteruser| Candidate.list_of_cand_endorsed_by_org(twitteruser.user)
+    }
+
+    @current_user_watches_org = @organizations.map do |org|
+      if @current_user
+        watchings = @current_user.watchings
+        twitter_users = watchings.map { |w| w.organization.user.twitteruser }
+        twitter_users.include?(org)
+      else
+        nil
+      end
+    end
+
+
+    @org_ids = @organizations.map do |tu|
+      tu.user.organization.id
+    end
+
+
 
   end
 

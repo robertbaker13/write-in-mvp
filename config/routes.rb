@@ -24,9 +24,9 @@ Rails.application.routes.draw do
     get 'users/:user_id' => 'users#show', as: 'show'
     get 'auth/:provider/callback' => 'sessions#create', as: :callback
     get 'deauth/twitter' => "sessions#destroy"
-    post 'users/:id/watch' => "users#watch", as: 'watch'
+    post 'organizations/:id/watch' => "organizations#watch", as: 'watch'
     put 'users/:user_id/district' => 'districts#update', as: :update_district
-    post 'users/:id/unwatch' => 'users#unwatch', as: :unwatch
+    post 'organizations/:id/unwatch' => 'organizations#unwatch', as: :unwatch
     post 'users/:id/endorse' => "users#endorse", as: :endorse
     post 'users/:id/unendorse' => 'users#unendorse', as: :unendorse
     get 'users/district' => "users#district"
