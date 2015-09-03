@@ -6,255 +6,94 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# ----------------
-# 6 districts
-# -------------------
+###################################################################### districts:
 
-usa = District.create(
-  name: "USA"
-  )
+USA = District.create( name: "USA" )
+  president      = Office.create( title: "President", district: USA )
 
-ca = District.create(
-  name: "California",
-  parent: usa
-  )
+  CA = District.create( name: "California", parent: USA )
+    ssen     = Office.create( title: "Senior Senator", district: CA )
+    jsen     = Office.create( title: "Junior Senator", district: CA )
+    governor = Office.create( title: "Governor", district: CA )
 
-sfc = District.create(
-  name: "San Francisco County",
-  parent: ca
-  )
+    sfc = District.create( name: "San Francisco County", parent: CA )
+      usrep = Office.create( title: "US House Representative", district: sfc)
+      sfrep = Office.create( title: "CA State Senator", district: sfc)
 
-sf = District.create(
-  name: "San Francisco, CA",
-  parent: sfc
-  )
+      sf  = District.create( name: "San Francisco", parent: sfc )
+        sfsrep = Office.create( title: "CA State House Representative", district: sf)
+        mayor = Office.create( title: "Mayor", district: sf)
+        sft  = Office.create(title: "Treasurer", district: sf )
 
-District.create(
-  name: "Alameda, CA",
-  parent: ca
-  )
+    alc = District.create( name: "Alameda County", parent: CA )
+      sfcrep = Office.create( title: "US House Representative", district: alc)
+      sfcrep = Office.create( title: "CA State Senator", district: alc)
 
-District.create(
-  name: "San Jose, CA",
-  parent: ca
-  )
+      oak = District.create( name: "Oakland", parent: alc )
+      berk = District.create( name: "Berkeley", parent: alc )
+      alam = District.create( name: "Alameda", parent: alc )
 
-District.create(
-  name: "Del Norte, CA",
-  parent: ca
-  )
+    scc = District.create( name: "Santa Clara County", parent: CA )
+      sfcrep = Office.create( title: "US House Representative", district: scc)
+      sfcrep = Office.create( title: "CA State Senator", district: scc)
 
-District.create(
-  name: "Lake, CA",
-  parent: ca
-  )
+      sj = District.create( name: "San Jose", parent: scc )
 
-District.create(
-  name: "Marin, CA",
-  parent: ca
-  )
+    ccc = District.create( name: "Contra Costa County", parent: CA )
+      sfcrep = Office.create( title: "US House Representative", district: ccc)
+      sfcrep = Office.create( title: "CA State Senator", district: ccc)
 
-District.create(
-  name: "Napa, CA",
-  parent: ca
-  )
+      herc = District.create( name: "Hercules", parent: ccc )
 
-District.create(
-  name: "Mendocino, CA",
-  parent: ca
-  )
+    lc  = District.create( name: "Lake County", parent: CA )
+      sfcrep = Office.create( title: "US House Representative", district: lc)
+      sfcrep = Office.create( title: "CA State Senator", district: lc)
 
-District.create(
-  name: "San Mateo, CA",
-  parent: ca
-  )
+    mrc = District.create( name: "Marin County", parent: CA )
+      sfcrep = Office.create( title: "US House Representative", district: mrc)
+      sfcrep = Office.create( title: "CA State Senator", district: mrc)
 
-District.create(
-  name: "Solano, CA",
-  parent: ca
-  )
+      marin = District.create( name: "Marin", parent: mrc )
 
-District.create(
-  name: "Sonoma, CA",
-  parent: ca
-  )
+    npc = District.create( name: "Napa County", parent: CA )
+      sfcrep = Office.create( title: "US House Representative", district: npc)
+      sfcrep = Office.create( title: "CA State Senator", district: npc)
 
-# 6 offices
+      napa = District.create( name: "Napa", parent: npc )
 
-#1 president per USA
-president = Office.create(
-  title: "President",
-  district: usa
-)
+    mdc = District.create( name: "Mendocino County", parent: CA )
+      sfcrep = Office.create( title: "US House Representative", district: mdc)
+      sfcrep = Office.create( title: "CA State Senator", district: mdc)
 
-#2 senators per california
-ssen = Office.create(
-  title: "Senior Senator",
-  district: ca
-)
+      ukiah = District.create( name: "Ukiah", parent: mdc )
 
-jsen = Office.create(
-  title: "Junior Senator",
-  district: ca
-)
+    smc = District.create( name: "San Mateo County", parent: CA )
+      sfcrep = Office.create( title: "US House Representative", district: smc)
+      sfcrep = Office.create( title: "CA State Senator", district: smc)
 
-#1 representative per district
+      mtv = District.create( name: "Mountain View", parent: smc )
+      rwc = District.create( name: "Redwood City", parent: smc )
 
-sfcrep = Office.create(
-  title: "Representative",
-  district: sfc
-)
+    soc = District.create( name: "Solano County", parent: CA )
+      sfcrep = Office.create( title: "US House Representative", district: soc)
+      sfcrep = Office.create( title: "CA State Senator", district: soc)
 
-sfrep = Office.create(
-  title: "Mayor",
-  district: sf
-)
+    snc = District.create( name: "Sonoma County", parent: CA )
+      sfcrep = Office.create( title: "US House Representative", district: snc)
+      sfcrep = Office.create( title: "CA State Senator", district: snc)
 
-sfpc = Office.create(
-  title: "Police Chief",
-  district: sf
-)
+      snm = District.create( name: "Sonoma", parent: snc )
 
-# -------------------------
-# 9 twitter users
-#   3 users (also organizations)
-#   6 organizations (also users)
-#   3 endorsements (also candidates)
-#   ------
-#   6 watchings
-#   -----------------------
-# 1 user-user:
+###################################################################### user-users:
 
-bobby = User.create(
-  uid: "3399540193",
-  district: sf
-  )
+bobby = User.create( uid: "3399540193", district: sf ); Organization.create( user: bobby )
 
-Organization.create(
-  user: bobby
-  )
-
-Twitteruser.create(
- uid: "3399540193",
- nickname: "Bobby",
- name: "Bob Smith",
- location: "San Francisco",
- email: "bob@gmail.com",
- image: "http://abs.twimg.com/sticky/default_profile_images/default_profile_0_normal.png",
- description: "A happy farmer",
- twitter: "https://twitter.com/bobby",
- token: "3399540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: bobby
-  )
-
-# 1 user-candidate:
-
-hc = User.create(
-  uid: "3388540193",
-  district: usa
-  )
-
-Organization.create(
-  user: hc
-  )
-
-Twitteruser.create(
- uid: "3388540193",
- nickname: "Hillary",
- name: "Hillary Clinton",
- location: "Washington DC",
- email: "hc@gmail.com",
- image: "http://a4.files.biography.com/image/upload/c_fill,cs_srgb,dpr_1.0,g_face,h_300,q_80,w_300/MTE4MDAzNDEwMDU4NTc3NDIy.jpg",
- description: "Wife, mom, grandma, women+kids advocate, FLOTUS, Senator, SecState, hair icon, pantsuit aficionado, 2016 presidential candidate. Tweets from Hillary signed –H",
- website: "https://www.hillaryclinton.com/",
- twitter: "https://twitter.com/hc",
- token: "3388540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: hc
-  )
-
-hcan = Candidate.create(
-  user: hc,
-  office: president
-  )
-
-jb = User.create(
-  uid: "33877777",
-  district: usa
-  )
-
-Organization.create(
-  user: jb
-  )
-
-Twitteruser.create(
- uid: "33877777",
- nickname: "Jeb",
- name: "Jeb Bush",
- location: "Washington DC",
- email: "jb@gmail.com",
- image: "http://www.adweek.com/files/imagecache/node-blog/blogs/jeb-bush-logo-hed-2015.jpg",
- description: "43rd Governor of the State of Florida", #notsure?
- twitter: "https://twitter.com/jb", #take real one?
- token: "33877777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: jb
-  )
-
-jbcan = Candidate.create(
-  user: jb,
-  office: president
-  )
+Twitteruser.create( uid: "3399540193", nickname: "Bobby", name: "Bob Smith", location: "San Francisco", email: "bob@gmail.com",
+                    image: "http://abs.twimg.com/sticky/default_profile_images/default_profile_0_normal.png", description: "A happy farmer",
+                    twitter: "https://twitter.com/bobby", token: "3399540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: bobby )
 
 
-
-
-
-# 1 user-candidate-organization:
-
-parenthood = User.create(
-  uid: "3388550193",
-  district: usa
-  )
-
-parenthoodorg = Organization.create(
-  user: parenthood
-  )
-
-Twitteruser.create(
- uid: "3388540193",
- nickname: "pl-parenthood",
- name: "Planned Parenthood Federation of America",
- location: "USA",
- email: "plp@gmail.com",
- image: "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Planned_Parenthood_logo.svg/1280px-Planned_Parenthood_logo.svg.png",
- description: "Hi! We’re America’s most trusted provider of reproductive health care, and we think we look pretty good for nearly 100 years old.",
- website: "http://www.plannedparenthood.org/",
- twitter: "https://twitter.com/plp",
- token: "3388540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: parenthood
-  )
-
-Endorsement.create(
-  candidate: hcan,
-  user: parenthood
-  )
-
-Watching.create(
-  user: bobby,
-  organization: parenthoodorg
-  )
-
-# ------------------------------------------------
-
-# 2 more user-user:
-
-john = User.create(
-  uid: "3399511193",
-  district: sf
-  )
-
-Organization.create(
-  user: john
-  )
+john = User.create( uid: "3399511193", district: sf ); Organization.create( user: john )
 
 Twitteruser.create(
  uid: "3399511193",
@@ -269,14 +108,7 @@ Twitteruser.create(
  user: john
   )
 
-anna = User.create(
-  uid: "339952223",
-  district: sf
-  )
-
-Organization.create(
-  user: john
-  )
+anna = User.create( uid: "339952223", district: sf ); Organization.create( user: john )
 
 Twitteruser.create(
  uid: "339952223",
@@ -290,168 +122,277 @@ Twitteruser.create(
  token: "339952223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
  user: anna
   )
-# ------------------------
-# 6 user-candidates
-# ----------------------
-df = User.create(
-  uid: "33333333",
-  district: ca
-  )
 
-Organization.create(
-  user: df
-  )
+###################################################################### user-candidates:
 
-Twitteruser.create(
- uid: "33333333",
- nickname: "DianneF",
- name: "Dianne Feinstein",
- location: "San Francisco Location",
- email: "df@gmail.com",
- image: "https://upload.wikimedia.org/wikipedia/commons/0/01/DianneFeinstein.jpg",
- description: "United States Senator from California",
- twitter: "https://twitter.com/df", #take real one?
- token: "33333333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: df
-  )
+hc = User.create( uid: "3388540193", district: USA ); Organization.create( user: hc ); hcan = Candidate.create( user: hc, office: president )
 
-dfcan = Candidate.create(
-  user: df,
-  office: ssen
-  )
-
-bb = User.create(
-  uid: "44444444",
-  district: ca
-  )
-
-Organization.create(
-  user: bb
-  )
-
-Twitteruser.create(
- uid: "44444444",
- nickname: "Babs",
- name: "Barbara Boxer",
- location: "San Francisco County",
- email: "bb@gmail.com",
- image: "http://cdn-media.leanin.org/wp-content/uploads/2013/03/BarbaraBoxer_290.jpg",
- description: "Democratic U.S. Senator from California",
- twitter: "https://twitter.com/df", #take real one?
- token: "44444444-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: bb
-  )
-
-bbcan = Candidate.create(
-  user: bb,
-  office: jsen
-  )
+Twitteruser.create(uid: "3388540193", nickname: "Hillary", name: "Hillary Clinton", location: "Washington DC", email: "hc@gmail.com",
+                   image: "http://a4.files.biography.com/image/upload/c_fill,cs_srgb,dpr_1.0,g_face,h_300,q_80,w_300/MTE4MDAzNDEwMDU4NTc3NDIy.jpg",
+                   description: "Wife, mom, grandma, women+kids advocate, FLOTUS, Senator, SecState, hair icon, pantsuit aficionado, 2016 presidential candidate. Tweets from Hillary signed –H",
+                   website: "https://www.hillaryclinton.com/", twitter: "https://twitter.com/hc", token: "3388540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
+                   user: hc )
 
 
+jb = User.create( uid: "33877777", district: USA); Organization.create( user: jb ); jbcan = Candidate.create(user: jb, office: president )
 
-cf = User.create(
-  uid: "44444333",
-  district: ca
-  )
-
-Organization.create(
-  user: cf
-  )
-
-Twitteruser.create(
- uid: "44444333",
- nickname: "Carly",
- name: "Carly Fiorina",
- location: "San Francisco County",
- email: "cf@gmail.com",
- image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Carly_fiorina_speaking.jpg/220px-Carly_fiorina_speaking.jpg",
- description: "Businesswoman, wife, mother, & grandmother. A conservative who believes in unlocking human potential & holding govt accountable.",
- twitter: "https://twitter.com/df", #take real one?
- token: "44444333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: cf
-  )
-
-Candidate.create(
-  user: cf,
-  office: jsen
-  )
+Twitteruser.create( uid: "33877777", nickname: "Jeb", name: "Jeb Bush", location: "Washington DC", email: "jb@gmail.com",
+                    image: "http://www.adweek.com/files/imagecache/node-blog/blogs/jeb-bush-logo-hed-2015.jpg",
+                    description: "43rd Governor of the State of Florida", #notsure?
+                    twitter: "https://twitter.com/jb", #take real one?
+                    token: "33877777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: jb )
 
 
-as = User.create(
-  uid: "446666333",
-  district: ca
-  )
+dt = User.create( uid: "33887777", district: USA); Organization.create( user: dt ); jbcan = Candidate.create(user: dt, office: president )
 
-Organization.create(
-  user: as
-  )
+Twitteruser.create( uid: "33887777", nickname: "The Don", name: "Donald Trump", location: "Washington DC", email: "dt@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_400x400.jpg",
+                    description: "Billion dollar toupee", #notsure?
+                    twitter: "https://twitter.com/realDonaldTrump", #take real one?
+                    token: "33887777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: dt )
 
-Twitteruser.create(
- uid: "446666333",
- nickname: "Schiffi",
- name: "Adam Schiff",
- location: "San Francisco County",
- email: "cf@gmail.com",
- image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8baTC74OAzAICdMGrSavHQZC6DnmCZUl8gTBZDi0K0U4B0wD4",
- description: "Representing California's 28th Congressional District and Ranking Member of the House Intelligence Committee.",
- twitter: "https://twitter.com/as", #take real one?
- token: "446666333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: as
-  )
+bs = User.create( uid: "33888777", district: USA); Organization.create( user: bs ); jbcan = Candidate.create(user: bs, office: president )
 
-Candidate.create(
-  user: as,
-  office: ssen
-  )
-
-# ----------------
-# 2 more organizations
-# ------------------
-
-nra = User.create(
-  uid: "999952223",
-  district: usa
-  )
-
-Organization.create(
-  user: nra
-  )
-
-Twitteruser.create(
- uid: "999952223",
- nickname: "NRA",
- name: "National Rifle Association",
- location: "San Francisco",
- email: "nra@gmail.com",
- image: "https://upload.wikimedia.org/wikipedia/en/thumb/7/73/National_Rifle_Association.svg/1024px-National_Rifle_Association.svg.png",
- description: "A house and a gun for every American",
- twitter: "https://twitter.com/nra",
- token: "999952223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: nra
-  )
+Twitteruser.create( uid: "33888777", nickname: "Bernie", name: "Bernard Sanders", location: "Burlington VT", email: "bs@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/593768630619414528/NtUnu7BX_400x400.png",
+                    description: "Senator from VT", #notsure?
+                    twitter: "https://twitter.com/berniesanders", #take real one?
+                    token: "33888777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: bs )
 
 
- srclub = User.create(
-  uid: "222252223",
-  district: usa
-  )
+df = User.create( uid: "33333333", district: CA ); Organization.create( user: df ); dfcan = Candidate.create( user: df, office: ssen );
 
-srcluborg = Organization.create(
-  user: srclub
-  )
+Twitteruser.create( uid: "33333333", nickname: "DianneF", name: "Dianne Feinstein", location: "San Francisco Location", email: "df@gmail.com",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/0/01/DianneFeinstein.jpg",
+                    description: "United States Senator from California", twitter: "https://twitter.com/df", #take real one?
+                    token: "33333333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: df )
 
-Twitteruser.create(
- uid: "222252223",
- nickname: "SierraC",
- name: "SierraClub",
- location: "USA",
- email: "srclub@gmail.com",
- image: "http://www.stevestenger.com/wp-content/uploads/2014/10/sierraclub-logo.png",
- description: "Since 1892, the Sierra Club has been working to protect communities, wild places, and the planet itself.",
- twitter: "https://twitter.com/srclub",
- token: "222252223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: srclub
-  )
+
+bb = User.create( uid: "44444444", district: CA ); Organization.create( user: bb ); bbcan = Candidate.create( user: bb, office: jsen );
+
+Twitteruser.create( uid: "44444444", nickname: "Babs", name: "Barbara Boxer", location: "San Francisco County", email: "bb@gmail.com",
+                    image: "http://cdn-media.leanin.org/wp-content/uploads/2013/03/BarbaraBoxer_290.jpg",
+                    description: "Democratic U.S. Senator from California", twitter: "https://twitter.com/df", #take real one?
+                    token: "44444444-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: bb )
+
+
+cf = User.create( uid: "44444333", district: CA ); Organization.create( user: cf ); Candidate.create( user: cf, office: president );
+
+Twitteruser.create( uid: "44444333", nickname: "Carly", name: "Carly Fiorina", location: "San Francisco County", email: "cf@gmail.com",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Carly_fiorina_speaking.jpg/220px-Carly_fiorina_speaking.jpg",
+                    description: "Businesswoman, wife, mother, & grandmother. A conservative who believes in unlocking human potential & holding govt accountable.", twitter: "https://twitter.com/df", #take real one?
+                    token: "44444333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: cf )
+
+
+as = User.create( uid: "446666333", district: CA ); Organization.create( user: as ); Candidate.create( user: as, office: ssen );
+
+Twitteruser.create( uid: "446666333", nickname: "Schiffi", name: "Adam Schiff", location: "San Francisco County", email: "cf@gmail.com",
+                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8baTC74OAzAICdMGrSavHQZC6DnmCZUl8gTBZDi0K0U4B0wD4",
+                    description: "Representing California's 28th Congressional District and Ranking Member of the House Intelligence Committee.", twitter: "https://twitter.com/as", #take real one?
+                    token: "446666333-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: as )
+
+
+aa = User.create( uid: "446666322", district: CA ); Organization.create( user: aa ); Candidate.create( user: aa, office: jsen );
+
+Twitteruser.create( uid: "446666322", nickname: "Aki", name: "Akinyemi Agbede", location: "Northern CA", email: "aa@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/604301001214971904/RZ3h_F2n_400x400.jpg",
+                    description: "Mathematician", twitter: "https://twitter.com/nextcalsenator", #take real one?
+                    token: "446666322-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: aa )
+
+
+kh = User.create( uid: "446666321", district: CA ); Organization.create( user: kh ); Candidate.create( user: kh, office: jsen );
+
+Twitteruser.create( uid: "446666321", nickname: "Kammy", name: "Kamala Harris", location: "California", email: "kh@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/378800000079087220/b61da72e5e92d0e2068038be092053dc_400x400.jpeg",
+                    description: "CA Attorney General & Candidate for US Senate", twitter: "https://twitter.com/KamalaHarris", #take real one?
+                    token: "446666321-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: kh )
+
+
+tm = User.create( uid: "446666329", district: CA ); Organization.create( user: tm ); Candidate.create( user: tm, office: jsen );
+
+Twitteruser.create( uid: "446666329", nickname: "Troy", name: "Troy McComak", location: "Patterson, California", email: "tm@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/2083436298/image_400x400.jpg",
+                    description: "", twitter: "https://twitter.com/mccomak", #take real one?
+                    token: "446666329-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: tm )
+
+
+ls = User.create( uid: "446123329", district: CA ); Organization.create( user: ls ); Candidate.create( user: ls, office: jsen );
+
+Twitteruser.create( uid: "446123329", nickname: "Lorie", name: "Loretta Sanchez", location: "Patterson, California", email: "ls@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/2083436298/image_400x400.jpg",
+                    description: "I proudly represent California's 46th district in Congress. I serve as a Senior Member on both the Armed Services and Homeland Security Committees.", twitter: "https://twitter.com/lorettasanchez", #take real one?
+                    token: "446123329-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: ls )
+
+jb = User.create( uid: "116123329", district: CA ); Organization.create( user: jb ); Candidate.create( user: jb, office: governor );
+
+Twitteruser.create( uid: "116123329", nickname: "Jerry", name: "Edmund Gerald Brown", location: "Sacramento", email: "jb@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/533387964772929536/bzWw-mHV_400x400.jpeg",
+                    description: "On Facebook at: http://facebook.com/jerrybrown", twitter: "https://twitter.com/JerryBrownGov", #take real one?
+                    token: "116123329-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: jb )
+
+nk = User.create( uid: "864223329", district: CA ); Organization.create( user: nk ); Candidate.create( user: nk, office: governor );
+
+Twitteruser.create( uid: "864223329", nickname: "Tush", name: "Neel Tushar Kashkari", location: "Washington, DC", email: "nk@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/425737635571564544/wH10ADaz_400x400.png",
+                    description: "", twitter: "https://twitter.com/neelkashkari", #take real one?
+                    token: "864223329-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: nk )
+
+np = User.create( uid: "764223329", district: CA ); Organization.create( user: np ); Candidate.create( user: np, office: usrep );
+
+Twitteruser.create( uid: "764223329", nickname: "Nancy", name: "Nancy Pelosi", location: "San Francisco", email: "np@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/571313158510223360/wnSl3yXF_400x400.jpeg",
+                    description: "Democratic Leader, focused on strengthening America's middle class and creating jobs; mother, grandmother, dark chocolate connoisseur.", twitter: "https://twitter.com/NancyPelosi", #take real one?
+                    token: "764223329-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: np )
+
+jd = User.create( uid: "864993329", district: CA ); Organization.create( user: jd ); Candidate.create( user: jd, office: usrep );
+
+Twitteruser.create( uid: "864993329", nickname: "JD", name: "John Dennis", location: "California", email: "jd@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/638403424879529984/s456Z_Xr_400x400.jpg",
+                    description: "", twitter: "https://twitter.com/johndennisweei", #take real one?
+                    token: "864993329-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: jd )
+
+
+ml = User.create( uid: "823991129", district: CA ); Organization.create( user: ml ); Candidate.create( user: ml, office: sfrep );
+
+Twitteruser.create( uid: "823991129", nickname: "JD", name: "John Dennis", location: "Broadmoor, CA", email: "ml@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/1444413542/2010WebsiteHeadshot_400x400.jpg",
+                    description: "Senator Mark Leno represents the 11th Senate District of California, which includes San Francisco, Daly City, Colma, Broadmoor and parts of South San Francisco.", twitter: "https://twitter.com/MarkLeno", #take real one?
+                    token: "823991129-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: ml )
+
+
+hkd = User.create( uid: "8336991129", district: CA ); Organization.create( user: hkd ); Candidate.create( user: hkd, office: sfrep );
+
+Twitteruser.create( uid: "8336991129", nickname: "Harm", name: "Harmeet K Dhillon", location: "San Francisco", email: "hkd@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/526444599519105026/amJDdA1H_400x400.jpeg",
+                    description: "Attorney, politician, knitter, yarntrepreneur, sailor.", twitter: "https://twitter.com/pnjaban", #take real one?
+                    token: "8336991129-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: hkd )
+
+
+dvc = User.create( uid: "8566991129", district: CA ); Organization.create( user: dvc ); Candidate.create( user: dvc, office: sfsrep );
+
+Twitteruser.create( uid: "8566991129", nickname: "Dave", name: "David Chiu", location: "San Francisco", email: "dvc@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/1257297886/davidChiuProfileSquare_400x400.PNG",
+                    description: "California State Assemblymember representing the 17th Assembly District, which encompasses the neighborhoods of eastern San Francisco.", twitter: "https://twitter.com/DavidChiu", #take real one?
+                    token: "8566991129-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: dvc )
+
+
+plt = User.create( uid: "1166991129", district: CA ); Organization.create( user: plt ); Candidate.create( user: plt, office: sfsrep );
+
+Twitteruser.create( uid: "1166991129", nickname: "Phil", name: "Phillip Ting", location: "Colma, CA", email: "plt@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/1410701002/Profile_2_400x400.jpg",
+                    description: "Assemblymember for San Francisco, Daly City and Colma. Launched GoSolarSF. Fighting foreclosures and mortgage fraud. Founded @ResetSF", twitter: "https://twitter.com/PhilTing", #take real one?
+                    token: "1166991129-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: plt )
+
+
+edl = User.create( uid: "2126991129", district: CA ); Organization.create( user: edl ); Candidate.create( user: edl, office: mayor );
+
+Twitteruser.create( uid: "2126991129", nickname: "Ed", name: "Edwin Lee", location: "San Francisco, CA", email: "edl@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/605436334476394496/hzEqicQS_400x400.jpg",
+                    description: "I am honored to serve as the 43rd Mayor of San Francisco - the Innovation Capital of the World!", twitter: "https://twitter.com/mayoredlee", #take real one?
+                    token: "2126991129-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: edl )
+
+
+afw = User.create( uid: "2326991129", district: CA ); Organization.create( user: afw ); Candidate.create( user: afw, office: mayor );
+
+Twitteruser.create( uid: "2326991129", nickname: "Amy", name: "Amy Farah Weiss", location: "San Francisco, CA", email: "afw@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/618964843454857216/ziIWGKKN_400x400.jpg",
+                    description: "Say Yes-In-My-Back-Yard to inclusive and sustainable development, an economy that truly shares, & local government that supports all SF neighbor(hood)s.", twitter: "https://twitter.com/weissformayor", #take real one?
+                    token: "2326991129-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: afw )
+
+
+foh = User.create( uid: "2326912345", district: CA ); Organization.create( user: foh ); Candidate.create( user: foh, office: mayor );
+
+Twitteruser.create( uid: "2326912345", nickname: "Franny", name: "Francisco Herrera", location: "San Francisco, CA", email: "foh@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/631106564988862464/WYXTH9gO_400x400.jpg",
+                    description: "Running for Mayor of San Francisco. Vote on November 3. Official Green party candidate #Francisco4Mayor / https://medium.com/@Francisco4Mayor …", twitter: "https://twitter.com/fherrerasfmayor", #take real one?
+                    token: "2326912345-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: foh )
+
+
+jci = User.create( uid: "2346515355", district: CA ); Organization.create( user: jci ); Candidate.create( user: jci, office: sft );
+
+Twitteruser.create( uid: "2346515355", nickname: "Jose", name: "Jose Cisneros", location: "San Francisco, CA", email: "jci@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/2596581693/3f7gt2n48ejftug7qobn_400x400.jpeg",
+                    description: "Elected Treasurer-Tax Collector of the City and County of San Francisco.", twitter: "https://twitter.com/treasurersf", #take real one?
+                    token: "2346515355-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: jci )
+
+
+jci = User.create( uid: "2346515355", district: CA ); Organization.create( user: jci ); Candidate.create( user: jci, office: sft );
+
+Twitteruser.create( uid: "2346515355", nickname: "Jose", name: "Jose Cisneros", location: "San Francisco, CA", email: "jci@gmail.com",
+                    image: "https://pbs.twimg.com/profile_images/2596581693/3f7gt2n48ejftug7qobn_400x400.jpeg",
+                    description: "Elected Treasurer-Tax Collector of the City and County of San Francisco.", twitter: "https://twitter.com/treasurersf", #take real one?
+                    token: "2346515355-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: jci )
+
+###################################################################### user-organizations:
+
+parenthood = User.create( uid: "3388550193", district: USA )
+
+parenthood_org = Organization.create( user: parenthood )
+
+Twitteruser.create( uid: "3388540193", nickname: "pl-parenthood",
+                    name: "Planned Parenthood Federation of America", location: "USA", email: "plp@gmail.com",
+                    image: "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Planned_Parenthood_logo.svg/1280px-Planned_Parenthood_logo.svg.png",
+                    description: "Hi! We’re America’s most trusted provider of reproductive health care, and we think we look pretty good for nearly 100 years  d.",
+                    website: "http://www.plannedparenthood.org/",
+                    twitter: "https://twitter.com/plp", token: "3388540193-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: parenthood )
+
+
+catholic_vote = User.create( uid: "888852223", district: USA )
+
+catholic_vote_org = Organization.create(user: catholic_vote )
+
+Twitteruser.create( uid: "888852223", nickname: "CatholicVote.org", name: "CatholicVote", location: "USA",
+                    image: "https://upload.wikimedia.org/wikipedia/en/3/30/Catholicvote.org_logo.jpg",
+                    description: "CatholicVote.org is a community of patriotic Americans who believe our nation’s founding principles are good and true, and worth fighting for.", token: "888852223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: catholic_vote )
+
+
+go_proud = User.create( uid: "7777152223", district: USA )
+
+go_proud_org = Organization.create( user: go_proud )
+
+Twitteruser.create( uid: "7777152223", nickname: "GOProud", name: "GOProud", location: "USA",
+                    image: "https://upload.wikimedia.org/wikipedia/en/9/91/GOProud_logo.png",
+                    description: "An organization for gay conservatives and their allies.", token: "7777152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: go_proud )
+
+
+nrlc = User.create( uid: "7744152223", district: USA )
+
+nrlc_org = Organization.create( user: nrlc )
+
+Twitteruser.create( uid: "7744152223", nickname: "NRLC", name: "National Right to Life Committee", location: "USA",
+                    image: "http://nrlc.org/site/wp-content/uploads/header0114.png",
+                    description: "National Right to Life, the federation of 50 state right-to-life affiliates & more than 3,000 local chapters, is the nation’s oldest & largest #prolife org.", token: "7744152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",user: nrlc )
+
+smg = User.create( uid: "7744157777", district: USA )
+
+smg_org = Organization.create( user: smg )
+
+Twitteruser.create( uid: "7744157777", nickname: "SMG", name: "The Scotts Miracle-Gro Company", location: "USA",
+                    image: "https://upload.wikimedia.org/wikipedia/en/f/f8/Scotts-miracle-gro_logo.png",
+                    description: "News & insights from The Scotts Miracle-Gro Company. Follow us to see how we are helping people of all ages express themselves on their own piece of the Earth.", token: "7744157777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: smg )
+
+
+nra = User.create( uid: "999952223", district: USA )
+
+nra_org = Organization.create( user: nra )
+
+Twitteruser.create( uid: "999952223", nickname: "NRA", name: "National Rifle Association", location: "San Francisco", email: "nra@gmail.com",
+                    image: "https://upload.wikimedia.org/wikipedia/en/thumb/7/73/National_Rifle_Association.svg/1024px-National_Rifle_Association.svg.png",
+                    description: "A house and a gun for every American", twitter: "https://twitter.com/nra", token: "999952223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: nra )
+
+
+srclub = User.create( uid: "222252223", district: USA )
+
+srclub_org = Organization.create( user: srclub )
+
+Twitteruser.create( uid: "222252223", nickname: "SierraC", name: "SierraClub", location: "USA", email: "srclub@gmail.com",
+                    image: "http://www.stevestenger.com/wp-content/uploads/2014/10/sierraclub-logo.png",
+                    description: "Since 1892, the Sierra Club has been working to protect communities, wild places, and the planet itself.",
+                    twitter: "https://twitter.com/srclub", token: "222252223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz", user: srclub )
+
+
+
+
 
 Endorsement.create(
   candidate: bbcan,
@@ -468,117 +409,43 @@ Endorsement.create(
   user: nra
   )
 
+Endorsement.create(
+  candidate: hcan,
+  user: parenthood
+  )
+
 Watching.create(
   user: john,
-  organization: parenthoodorg
+  organization: parenthood_org
   )
 
 Watching.create(
   user: bobby,
-  organization: srcluborg
+  organization: srclub_org
   )
 
 Watching.create(
   user: anna,
-  organization: srcluborg
+  organization: srclub_org
   )
 
 Watching.create(
   user: anna,
-  organization: parenthoodorg
+  organization: parenthood_org
   )
 
+Watching.create(
+  user: bobby,
+  organization: parenthood_org
+  )
 
 #------------------------------------------------
 
-catholic_vote = User.create(
-  uid: "888852223",
-  district: usa
-  )
-
-catholic_vote_org = Organization.create(
-  user: catholic_vote
-  )
-
-Twitteruser.create(
- uid: "888852223",
- nickname: "CatholicVote.org",
- name: "CatholicVote",
- location: "USA",
- image: "https://upload.wikimedia.org/wikipedia/en/3/30/Catholicvote.org_logo.jpg",
- description: "CatholicVote.org is a community of patriotic Americans who believe our nation’s founding principles are good and true, and worth fighting for.",
- token: "888852223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: catholic_vote
-  )
-
-#--------
-go_proud = User.create(
-  uid: "7777152223",
-  district: usa
-  )
-
-go_proud_org = Organization.create(
-  user: go_proud
-  )
-
-Twitteruser.create(
- uid: "7777152223",
- nickname: "GOProud",
- name: "GOProud",
- location: "USA",
- image: "https://upload.wikimedia.org/wikipedia/en/9/91/GOProud_logo.png",
- description: "An organization for gay conservatives and their allies.",
- token: "7777152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: go_proud
-  )
-#----------------
-
-#--------
-nrlc = User.create(
-  uid: "7744152223",
-  district: usa
-  )
-
-nrlc_org = Organization.create(
-  user: nrlc
-  )
-
-Twitteruser.create(
- uid: "7744152223",
- nickname: "NRLC",
- name: "National Right to Life Committee",
- location: "USA",
- image: "http://nrlc.org/site/wp-content/uploads/header0114.png",
- description: "National Right to Life, the federation of 50 state right-to-life affiliates & more than 3,000 local chapters, is the nation’s oldest & largest #prolife org.",
- token: "7744152223-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: nrlc
-  )
-
-#--------
-smg = User.create(
-  uid: "7744157777",
-  district: usa
-  )
-
-smg_org = Organization.create(
-  user: smg
-  )
-
-Twitteruser.create(
- uid: "7744157777",
- nickname: "SMG",
- name: "The Scotts Miracle-Gro Company",
- location: "USA",
- image: "https://upload.wikimedia.org/wikipedia/en/f/f8/Scotts-miracle-gro_logo.png",
- description: "News & insights from The Scotts Miracle-Gro Company. Follow us to see how we are helping people of all ages express themselves on their own piece of the Earth.",
- token: "7744157777-Zmzg52Yfc2MKiMMicq6ILXxq79kmsUa3NEgYSzz",
- user: smg
-  )
 #----------------
 #--------
 lwal = User.create(
   uid: "7744157777",
-  district: usa
+  district: USA
   )
 
 lwal_org = Organization.create(
@@ -599,7 +466,7 @@ Twitteruser.create(
 
 dt = User.create(
   uid: "66666333",
-  district: ca
+  district: CA
   )
 
 dt_org = Organization.create(
@@ -626,7 +493,7 @@ dt_can = Candidate.create(
 #--------
 dr = User.create(
   uid: "7744153333",
-  district: usa
+  district: USA
   )
 
 dr_org = Organization.create(
