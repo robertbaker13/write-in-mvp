@@ -6,6 +6,7 @@ $(document).ready(function(){
   endorseListener();
   unwatchListener();
   watchOrganizationListener();
+  watchIndexListener();
 
   autoCompleteListener();
 })
@@ -75,6 +76,34 @@ var endorseListener = function(){
   }
 }
 
+// watchListener
+var watchIndexListener = function () {
+    $(".watch-index-button").on("click", function(e) {
+      console.log("clicked");
+      e.preventDefault();
+      var url = this.parentElement.action;
+      var $watchedCandidate = $(this).closest(".rcorners.bg-w.row")
+      watch(url, $watchedCandidate);
+    });
+    var watch = function(url, $watchedCandidate){
+    var request = $.ajax({
+        url: url,
+        method: "post"
+      })
+
+    request.success(function(data) {
+      console.log("done");
+      debugger
+        $watchedCandidate.toggle("fast");
+      })
+
+    request.fail(function(){
+      debugger
+        console.log("fail");
+      });
+    }
+  }
+
 // unwatchListener
 var unwatchListener = function () {
   $(".unwatch-button").on("submit", function(e) {
@@ -101,7 +130,7 @@ var unwatchListener = function () {
 
 // watchOrganizationListener
 var watchOrganizationListener = function() {
-  $(".watch-button").on("submit", function(e){
+  $(".watch-button").on("click", function(e){
     console.log("submitted!");
     e.preventDefault();
     var url = this.action;
