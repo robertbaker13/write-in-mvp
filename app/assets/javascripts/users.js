@@ -108,18 +108,18 @@ var unwatchListener = function () {
     e.preventDefault();
     console.log("submitted!")
     var url = this.action;
-    var target = this.parentElement.parentElement
-    unwatch(url, target);
+    var $target = $(this).closest(".rcorners")
+    unwatch(url, $target);
   });
 
-  var unwatch = function(url, target){
+  var unwatch = function(url, $target){
     console.log(url);
     $.ajax({
       url: url,
       method: "post",
       dataType: "json"
     }).done(function() {
-      $(target).toggle("fast");
+      $target.toggle("fast");
     }).fail(function(){
       console.log("fail");
     });
