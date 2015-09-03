@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150901230718) do
     t.string   "website"
     t.string   "twitter"
     t.string   "token"
+    t.string   "secret"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

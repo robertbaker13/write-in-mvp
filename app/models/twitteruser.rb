@@ -4,6 +4,7 @@ class Twitteruser < ActiveRecord::Base
   fuzzily_searchable :name
 
   def self.create_or_update(auth)
+    # raise auth.to_yaml
     twitteruser = Twitteruser.find_by(uid: auth["uid"]) || Twitteruser.new(uid: auth["uid"])
     twitteruser.nickname = auth["info"]["nickname"]
     twitteruser.name = auth["info"]["name"]
@@ -13,6 +14,7 @@ class Twitteruser < ActiveRecord::Base
     twitteruser.website = auth["info"]["urls"]["Website"]
     twitteruser.twitter = auth["info"]["urls"]["Twitter"]
     twitteruser.token = auth["credentials"]["token"]
+    twitteruser.secret = auth["credentials"]["secret"]
     twitteruser.save
     twitteruser
   end
@@ -29,5 +31,14 @@ class Twitteruser < ActiveRecord::Base
       find_by_fuzzy_name(input, :limit => 5)
   end
 
+  def twitter
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_KEY']
+      config.consumer_secret     = ENV['TWITTER_SECRET']
+      config.access_token        = token
+      config.access_token_secret = secret
+    end
+    client
+  end
 
 end
