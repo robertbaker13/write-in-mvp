@@ -185,9 +185,14 @@ class User < ActiveRecord::Base
     #sort users with endorsements according to their endorsement count
     users_array_sort = users_endorsing.sort_by {|user| user.org_score}
     #if user has a district it will only show relevant candidates else it will show all
-    filtered_district_user_array = users_array_sort.select {|user| user_specific_districts.include?(user.district_id)}
+    filtered_district_user_array = users_array_sort.reverse.select {|user| user_specific_districts.include?(user.district_id)}
+    #filters out self
+    f_filtered_district_user_array = filtered_district_user_array.select{|user|
+      unless user == self
+        user
+      end }
     #filters out all users that the specific user is already watching
-    filtered_district_and_watched_user_array = filtered_district_user_array.select{|user|
+    filtered_district_and_watched_user_array = f_filtered_district_user_array.select{|user|
       unless already_watched_users.include?(user.id)
         user
       end }
@@ -211,7 +216,7 @@ class User < ActiveRecord::Base
     #selects only the candidates of relevant districts
     filtered_district_candidate_array = candidates_array_sort.select {|user| user_specific_districts.include?(user.district_id)}
     #this filters out all candidates that you are endorsing already
-    filtered_district_and_watched_candidate_array = filtered_district_candidate_array.select {|user|
+    filtered_district_and_watched_candidate_array = filtered_district_candidate_array.reverse.select {|user|
       unless already_endorsed_candidates.include?(user.id)
         user
       end }
@@ -232,7 +237,7 @@ class User < ActiveRecord::Base
     watched_users = watched_organizations.compact.map { |organization| organization.user }
     #sorts users according to organization score
     watched_users_sorted = watched_users.sort_by {|user| user.org_score}
-    watched_users_twitter = watched_users_sorted.compact.map { |user| user.twitteruser }
+    watched_users_twitter = watched_users_sorted.reverse.compact.map { |user| user.twitteruser }
     watched_users_twitter.compact
     # cut_off_twitteruser_array = watched_users_twitter[0..10]
   end
@@ -244,7 +249,7 @@ class User < ActiveRecord::Base
     endorsed_candidate_users = endorsed_candidates.compact.map { |candidate| candidate.user }
     #sorts candidates according to organization score (should be candidate score)
     endorsed_candidate_users_sorted = endorsed_candidate_users.sort_by {|user| user.cand_score}
-    endorsed_users_twitter = endorsed_candidate_users_sorted.map { |user| user.twitteruser }
+    endorsed_users_twitter = endorsed_candidate_users_sorted.reverse.map { |user| user.twitteruser }
     # cut_off_twitteruser_array = endorsed_users_twitter[0..10]
   end
 
@@ -252,7 +257,7 @@ class User < ActiveRecord::Base
   def specific_endorsing_orgs
     candidate = Candidate.find_by(user: self)
     endorsements = Endorsement.where(candidate: candidate)
-    twitterusers = endorsements.map { |endorsement| endorsement.user.twitteruser
+    twitterusers = endorsements.reverse.map { |endorsement| endorsement.user.twitteruser
     }
   end
 
