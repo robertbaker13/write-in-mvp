@@ -89,17 +89,17 @@
       <dd class='c-gy'><span>120</span> endorsements for this candidate</dd>
     </dl>
   </div>
-  <% if @logged_in %>
+<!--   <%# if @logged_in %>
   <div>
     <h4 class='fw-t txt-c'>#Election2016</h4>
     <dl class='p-l-m'>
-      <% current_user.twitteruser.twitter.search("#Election2016", result_type: "popular").take(5).collect do |tweet| %>
-      <dt><%= tweet.text %></dt>
-      <dd class='c-gy'>by <%= tweet.user.screen_name %></dd>
-      <% end %>
+      <%# current_user.twitteruser.twitter.search("#Election2016", result_type: "popular").take(5).collect do |tweet| %>
+      <dt><%# tweet.text %></dt>
+      <dd class='c-gy'>by <%# tweet.user.screen_name %></dd>
+      <%# end %>
     </dl>
 
   </div>
-  <% end %>
+  <%# end %> -->
 </div>
 </div>
