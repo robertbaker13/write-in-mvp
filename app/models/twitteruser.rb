@@ -1,3 +1,5 @@
+require 'twitter'
+
 class Twitteruser < ActiveRecord::Base
   belongs_to :user
 
