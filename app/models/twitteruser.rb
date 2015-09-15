@@ -1,10 +1,11 @@
+require 'twitter'
+
 class Twitteruser < ActiveRecord::Base
   belongs_to :user
 
   fuzzily_searchable :name
 
   def self.create_or_update(auth)
-    # raise auth.to_yaml
     twitteruser = Twitteruser.find_by(uid: auth["uid"]) || Twitteruser.new(uid: auth["uid"])
     twitteruser.nickname = auth["info"]["nickname"]
     twitteruser.name = auth["info"]["name"]
@@ -35,7 +36,7 @@ class Twitteruser < ActiveRecord::Base
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['TWITTER_KEY']
       config.consumer_secret     = ENV['TWITTER_SECRET']
-      config.access_token        = token
+      # config.access_token        = token
       # config.access_token_secret = secret
     end
     client
